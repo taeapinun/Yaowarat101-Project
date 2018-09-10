@@ -1,0 +1,11 @@
+<div *ngIf="product">
+  <h2>{{product.p_Name}} details</h2>
+  <div>
+    <label>Id: </label>{{product.p_Id}}</div>
+  <div>
+    <label>Name: </label>
+    <input [(ngModel)]="product.p_Name" placeholder="name" />
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>
