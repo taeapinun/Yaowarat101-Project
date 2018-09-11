@@ -4,7 +4,8 @@ var bodyParser = require('body-parser')
 var cors = require('cors')
 var mysql = require('mysql'); // mySql Server client
 
-// Connection string parameters.
+
+/////////////////////// start config server mysql ////////////////////
 var connection = mysql.createConnection({
 	user: 'root',
 	password: 'rootroot',
@@ -33,9 +34,15 @@ var corsOptions = {
 
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
+/////////////////////// end config server mysql ////////////////////
 
 
 
+
+////////////////////// start api for product table //////////////////////
+
+
+///////////////////////// get all product
 app.get('/products', function (req, res) {
 	$query = 'SELECT * from ywr_products';
 	connection.query($query, function(err, rows, fields) {
@@ -61,6 +68,7 @@ app.get('/products', function (req, res) {
 // })
 
 
+/////////////////////// get product by product id
 app.get('/products/:p_Id', function (req, res) {
 	$query = 'SELECT * from ywr_products WHERE p_Id = ' + req.params.p_Id;
 	connection.query($query, function(err, rows, fields) {
@@ -73,6 +81,8 @@ app.get('/products/:p_Id', function (req, res) {
 })
 
 
+
+/////////////////////// insert product
 app.post('/products', function (req, res) {
 	$p_Name = req.body.p_Name.toString();
 	$p_Type = req.body.p_Type.toString();
@@ -89,6 +99,7 @@ app.post('/products', function (req, res) {
 })
 
 
+////////////////////// update product by product id
 app.put('/products', function (req, res) {
 	$p_Id = req.body.p_Id.toString();
 	$p_Name = req.body.p_Name.toString();
@@ -108,6 +119,7 @@ app.put('/products', function (req, res) {
 })
 
 
+/////////////////////// delete product by product id
 app.delete('/products/:p_Id', function (req, res) {
 	$p_Id = req.params.p_Id.toString();
     $query = 'DELETE FROM ywr_products WHERE p_Id = ' + $p_Id
@@ -120,15 +132,30 @@ app.delete('/products/:p_Id', function (req, res) {
     });
 })
 
+////////////////////// end api for product table //////////////////////
 
 
 
 
 
-////////////////////// api for cart table //////////////////////
 
 
-// Get Product in Cart by User Id
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////// start api for cart table //////////////////////
+
+
+////////////////////// get product in cart by user id
 app.get('/carts/:u_Id', function (req, res) {
 	$query = 'SELECT * from ywr_cart WHERE u_Id = ' + req.params.u_Id;
 	connection.query($query, function(err, rows, fields) {
@@ -141,7 +168,42 @@ app.get('/carts/:u_Id', function (req, res) {
 })
 
 
-// Delete Product in Cart by User Id and Product Id
+///////////////////// insert product in cart by user id
+app.post('/carts/:u_Id', function (req, res) {
+	$u_Id = req.params.u_Id;
+	$p_Id = req.body.p_Id.toString();
+	$p_Name = req.body.p_Name.toString();
+	$p_Amount = req.body.p_Amount.toString();
+	$p_Price = req.body.p_Price.toString();
+
+	$query = 'INSERT INTO ywr_cart (u_Id, p_Id, p_Name, p_Amount, p_Price) VALUES ("' + $u_Id + '","' + $p_Id + '","' + $p_Name + '","' + $p_Amount + '","' + $p_Price + '")';
+	connection.query($query, function(err, rows, fields){
+    	if(err) console.log(err)
+    	res.end(JSON.stringify('OK'))
+    });
+})
+
+
+
+
+////////////////////// update product by user id and product id
+app.put('/carts/:u_Id', function (req, res) {
+	$u_Id = req.params.u_Id;
+	$p_Id = req.body.p_Id.toString();
+	$p_Amount = req.body.p_Amount.toString();
+
+    $query = 'UPDATE ywr_cart SET p_Amount = "'+ $p_Amount + '" WHERE u_Id = ' + $u_Id + ' AND p_Id = ' + $p_Id;
+
+
+    connection.query($query, function(err, rows, fields){
+    	if(err) console.log(err)
+    	res.end(JSON.stringify('OK'))
+    });
+})
+
+
+
+/////////////////////// delete product in cart by user id and product Id
 app.delete('/carts/:u_Id/:p_Id', function (req, res) {
 	$p_Id = req.params.p_Id.toString();
 	$u_Id = req.params.u_Id.toString();
@@ -154,3 +216,5 @@ app.delete('/carts/:u_Id/:p_Id', function (req, res) {
     	res.end(JSON.stringify('OK'))
     });
 })
+
+////////////////////// end api for cart table //////////////////////
