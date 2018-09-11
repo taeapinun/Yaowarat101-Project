@@ -1,42 +1,28 @@
+<input [(ngModel)]="searchProductText" placeholder="search ...">
 <h2>My Products</h2>
-
 <ul class="products">
-  <li *ngFor="let product of products" (click)="onSelect(product)" [class.selected]="product === selectedProduct">
-    <span class="product-element">
-      <span class="badge">{{product.p_Id}}</span> {{product.p_Name}}
-      <img src="https://i.imgur.com/qpM1ifY.jpg">
-    </span>
-    
-    <button class="delete-button" (click)="delete()">Delete</button>
-  </li>
+  <div *ngFor="let product of products | productFilter : searchProductText">
+    <li (click)="onSelect(product)" [class.selected]="product === selectedProduct">
+      <span class="product-element">
+        <span class="badge">{{product.p_Id}}</span> {{product.p_Name}}
+        <img src="https://i.imgur.com/qpM1ifY.jpg">
+      </span>
+    </li>
+    <button class="delete-button" (click)="deleteProduct(product)">Delete</button>
+  </div>
 </ul>
 
 <div class="error" *ngIf="error">{{error}}</div>
+
 <button (click)="addProduct()">Add New Product</button>
 <div *ngIf="addingProduct">
   <my-product-detail (close)="close($event)"></my-product-detail>
 </div>
 
-<div *ngIf="selectedProduct">
-  <h2>
-    {{selectedProduct.p_Name | uppercase}} is selected
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div>
-
 <div>
   <style>
-    .hidden { visibility: hidden}
+    .hidden {
+      visibility: hidden
+    }
   </style>
-  <!-- <h4>ngFor Features</h4>
-  <button (click)="showNgFor=!showNgFor">{{showNgFor ? 'Hide' : 'Show'}} ngFor Features</button>
-  <table [class.hidden]="!showNgFor">
-    <tbody>
-      <tr *ngFor="let product of products; let ix = index; let c = count; let e = even; let o = odd; let f = first; let l = last">
-        <td>{{product.p_Id}}</td>
-        <td>{{product.p_Type}}</td>
-        <td>{{product.p_Name}}</td>
-      </tr>
-    </tbody>
-  </table> -->
 </div>

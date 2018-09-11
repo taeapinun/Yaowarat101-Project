@@ -1,19 +1,19 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-// import { Hero } from './hero';
 import { Product } from './product';
-import { ProductService } from './product.service';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'my-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  styleUrls: ['./css/product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
   @Input() product: Product;
   @Output() close = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
+  title = '';
 
   constructor(
     private productService: ProductService,
@@ -25,25 +25,26 @@ export class ProductDetailComponent implements OnInit {
       if (params['id'] !== undefined) {
         const id = +params['id'];
         this.navigated = true;
-        this.productService.getProduct(id).subscribe(product => (this.product = product));
+        this.productService.getProduct(id).subscribe(product => (this.product = product, this.title = product.p_Name));
       } else {
         this.navigated = false;
+        this.title = 'Add New Product';
         this.product = new Product();
       }
     });
   }
 
-  // save(): void {
-  //   this.productService.save(this.product).subscribe(product => {
-  //     this.product = product; // saved hero, w/ id if new
-  //     this.goBack(product);
-  //   }, error => (this.error = error)); // TODO: Display error message
-  // }
+  save(): void {
+    this.productService.save(this.product).subscribe(product => {
+      this.product = product;
+      this.goBack(product);
+    }, error => (this.error = error));
+  }
 
-  // goBack(savedProduct: Product = null): void {
-  //   this.close.emit(savedProduct);
-  //   if (this.navigated) {
-  //     window.history.back();
-  //   }
-  // }
+  goBack(savedProduct: Product = null): void {
+    this.close.emit(savedProduct);
+    if (this.navigated) {
+      window.history.back();
+    }
+  }
 }

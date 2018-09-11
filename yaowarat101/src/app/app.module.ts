@@ -2,18 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductService } from './product.service';
-import { DashboardComponent } from './dashboard.component';
+import { ProductService } from './services/product.service';
 import { ProductsComponent } from './products.component';
 import { ProductDetailComponent } from './product-detail.component';
-import { HeroSearchComponent } from './hero-search.component';
+
+
+
+//Filter
+import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
 @NgModule({
   imports: [
@@ -21,18 +19,12 @@ import { HeroSearchComponent } from './hero-search.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false,
-      delay: 300,
-      passThruUnknownUrl: true
-    })
   ],
   declarations: [
     AppComponent,
-    // DashboardComponent,
-    HeroSearchComponent,
     ProductsComponent,
     ProductDetailComponent,
+    SearchProductFilterPipe,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

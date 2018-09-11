@@ -1,11 +1,38 @@
-<div *ngIf="product">
-  <h2>{{product.p_Name}} details</h2>
+<div *ngIf="product" style="width: max-content">
+  <h2>{{this.title}}</h2>
   <div>
-    <label>Id: </label>{{product.p_Id}}</div>
+    <img src="https://i.imgur.com/qpM1ifY.jpg" *ngIf="this.navigated != false">
+  </div>
+  <div>
+    <label>Id: </label>
+    <input [(ngModel)]="product.p_Id" placeholder={{product.p_Id}} disabled />
+  </div>
   <div>
     <label>Name: </label>
     <input [(ngModel)]="product.p_Name" placeholder="name" />
   </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <div>
+    <label>Type: </label>
+    <input [(ngModel)]="product.p_Type" placeholder="Type" />
+  </div>
+  <div>
+    <label>PercentGold: </label>
+    <input [(ngModel)]="product.p_PercentGold" placeholder="PercentGold" />
+  </div>
+  <div>
+    <label>Weight: </label>
+    <input [(ngModel)]="product.p_Weight" placeholder="Weight" />
+  </div>
+  <div>
+    <label>Length: </label>
+    <input [(ngModel)]="product.p_Length" placeholder="Length" />
+  </div>
+  <div>
+    <label>Price: </label>
+    <input [(ngModel)]="product.p_Price" placeholder="Price" />
+  </div>
+  <div >
+    <button (click)="goBack()" *ngIf="this.navigated != false">Back</button>
+    <button (click)="save()" class="buttonSave">Save</button>
+  </div>
 </div>

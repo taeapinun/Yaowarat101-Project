@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Hero } from './hero';
 import { Product } from './product';
-import { ProductService } from './product.service';
+import { ProductService } from './services/product.service';
+// import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
 @Component({
   selector: 'my-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./css/products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  heroes: Hero[];
   products: Product[];
   selectedProduct: Product;
   addingProduct = false;
@@ -28,36 +27,31 @@ export class ProductsComponent implements OnInit {
       )
   }
 
-  // getHeroes(): void {
-  //   this.heroService
-  //     .getHeroes()
-  //     .subscribe(
-  //       heroes => (this.heroes = heroes, console.log(this.heroes)),
-  //       error => (this.error = error)
-  //     )
-  // }
-
   addProduct(): void {
-    this.addingProduct = true;
-    this.selectedProduct = null;
+    if(this.addingProduct == false) {
+      this.addingProduct = true;
+      this.selectedProduct = null;
+    }
+    else{
+      this.addingProduct = false;
+    }
   }
 
-  // close(savedHero: Hero): void {
-  //   this.addingHero = false;
-  //   if (savedHero) {
-  //     this.getHeroes();
-  //   }
-  // }
+  close(savedProduct: Product): void {
+    this.addingProduct = false;
+    if (savedProduct) {
+      this.getProducts();
+    }
+  }
 
-  // deleteHero(hero: Hero, event: any): void {
-  //   event.stopPropagation();
-  //   this.heroService.delete(hero).subscribe(res => {
-  //     this.heroes = this.heroes.filter(h => h !== hero);
-  //     if (this.selectedHero === hero) {
-  //       this.selectedHero = null;
-  //     }
-  //   }, error => (this.error = error));
-  // }
+  deleteProduct(product: Product): void {
+    this.productService.deleteProduct(product).subscribe(res => {
+      this.products = this.products.filter(h => h !== product);
+      if (this.selectedProduct === product) {
+        this.selectedProduct = null;
+      }
+    }, error => (this.error = error));
+  }
 
   ngOnInit(): void {
     this.getProducts();
@@ -66,9 +60,11 @@ export class ProductsComponent implements OnInit {
   onSelect(product: Product): void {
     this.selectedProduct = product;
     this.addingProduct = false;
-  }
-
-  gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedProduct.p_Id]);
   }
+
+  // searchTextChange(text: any): void{
+  //   // this.products = this.searchProductFilter.transform(this.products, text);
+  //   console.log(this.products);
+  // }
 }

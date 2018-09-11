@@ -1,10 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
-// import { Hero } from './hero';
-import { Product } from './product';
+import { Product } from '../product';
+import { Headers } from '@angular/http';
 
 @Injectable()
 export class ProductService {
@@ -18,34 +17,29 @@ export class ProductService {
       .pipe(map(data => data), catchError(this.handleError));
   }
 
-  // getHeroes() {
-  //   return this.http
-  //     .get<Hero[]>(this.heroesUrl)
-  //     .pipe(map(data => data), catchError(this.handleError));
-  // }
-
   getProduct(id: number): Observable<Product> {
     return this.getProducts().pipe(
       map(products => products.find(product => product.p_Id === id))
     );
   }
 
-  save(product: Product) {
+  save(product: Product): Observable<Product> {
     if (product.p_Id) {
-      // return this.put(product);
-      return console.log("already have this product")
+      console.log("already have this product");
+      return this.http.put<Product>(this.productsUrl, product);
     }
-    return this.post(product);
+    return this.http.post<Product>(this.productsUrl, product);
   }
 
-  // delete(hero: Hero) {
-  //   const headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
+  deleteProduct(product: Product) {
+    const options = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
 
-  //   const url = `${this.heroesUrl}/${hero.id}`;
+    const url = `${this.productsUrl}/${product.p_Id}`
 
-  //   return this.http.delete<Hero>(url).pipe(catchError(this.handleError));
-  // }
+    return this.http.delete<Product>(url, options);
+  }
 
   // Add new Product
   private post(product: Product) {
@@ -57,16 +51,6 @@ export class ProductService {
       .post<Product>(this.productsUrl, product)
       .pipe(catchError(this.handleError));
   }
-
-  // Update existing Hero
-  // private put(hero: Hero) {
-  //   const headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-
-  //   const url = `${this.heroesUrl}/${hero.id}`;
-
-  //   return this.http.put<Hero>(url, hero).pipe(catchError(this.handleError));
-  // }
 
   private handleError(res: HttpErrorResponse | any) {
     console.error(res.error || res.body.error);

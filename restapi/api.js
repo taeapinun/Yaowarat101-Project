@@ -37,7 +37,7 @@ app.use(bodyParser.json())
 
 
 app.get('/products', function (req, res) {
-	$query = 'SELECT * from ywr_products LIMIT 30';
+	$query = 'SELECT * from ywr_products';
 	connection.query($query, function(err, rows, fields) {
 		if(err){
             console.log(err);
@@ -46,6 +46,20 @@ app.get('/products', function (req, res) {
         res.end(JSON.stringify(rows));
     });
 })
+
+//Search by Name
+app.get('/products/search/:value', function (req, res) {
+	$query = 'SELECT * from ywr_products WHERE p_Name LIKE "%' + req.params.value + '%" OR p_Id LIKE "%' + req.params.value + '%" OR p_Type LIKE "%' + req.params.value + '%"';
+	// console.log($query)
+	connection.query($query, function(err, rows, fields) {
+		if(err){
+            console.log(err);
+            return;
+        }
+        res.end(JSON.stringify(rows));
+    });
+})
+
 
 app.get('/products/:p_Id', function (req, res) {
 	$query = 'SELECT * from ywr_products WHERE p_Id = ' + req.params.p_Id;
@@ -60,15 +74,15 @@ app.get('/products/:p_Id', function (req, res) {
 
 
 app.post('/products', function (req, res) {
-	$p_Id = req.body.p_Id.toString();
-	$p_Type = req.body.p_Type.toString();
 	$p_Name = req.body.p_Name.toString();
+	$p_Type = req.body.p_Type.toString();
 	$p_PercentGold = req.body.p_PercentGold.toString();
 	$p_Weight = req.body.p_Weight.toString();
 	$p_Length = req.body.p_Length.toString();
+	$p_Price = req.body.p_Price.toString();
 
-    $query = 'INSERT INTO ywr_products (p_Type, p_Name, p_PercentGold, p_Weight, p_Length, p_ImgName) VALUES ("' + $p_Type + '","' + $p_Name + '","' + $p_PercentGold + '","' + $p_Weight + '","' + $p_Length + '", "test")';
-    connection.query($query, function(err, rows, fields){
+	$query = 'INSERT INTO ywr_products (p_Type, p_Name, p_PercentGold, p_Weight, p_Length, p_Price) VALUES ("' + $p_Type + '","' + $p_Name + '","' + $p_PercentGold + '","' + $p_Weight + '","' + $p_Length + '","' + $p_Price + '")';
+	connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
     	res.end(JSON.stringify('OK'))
     });
@@ -77,17 +91,16 @@ app.post('/products', function (req, res) {
 
 app.put('/products', function (req, res) {
 	$p_Id = req.body.p_Id.toString();
-	$p_Type = req.body.p_Type.toString();
 	$p_Name = req.body.p_Name.toString();
+	$p_Type = req.body.p_Type.toString();
 	$p_PercentGold = req.body.p_PercentGold.toString();
 	$p_Weight = req.body.p_Weight.toString();
 	$p_Length = req.body.p_Length.toString();
-	$p_ImgName = 'test';
+	$p_Price = req.body.p_Price.toString();
 
-    $query = 'UPDATE ywr_products SET p_Type = "'+ $p_Type + '", p_Name = "'+ $p_Name + '", p_PercentGold = "'+ $p_PercentGold + '", p_Weight = "'+ $p_Weight + '", p_Length = "'+ $p_Length + '", p_ImgName = "'+ $p_ImgName + '" WHERE p_Id = ' + $p_Id
+    $query = 'UPDATE ywr_products SET p_Type = "'+ $p_Type + '", p_Name = "'+ $p_Name + '", p_PercentGold = "'+ $p_PercentGold + '", p_Weight = "'+ $p_Weight + '", p_Length = "'+ $p_Length + '", p_Price = "'+ $p_Price + '" WHERE p_Id = ' + $p_Id
 
 
-    // console.log($query)
     connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
     	res.end(JSON.stringify('OK'))
@@ -95,8 +108,8 @@ app.put('/products', function (req, res) {
 })
 
 
-app.delete('/products', function (req, res) {
-	$p_Id = req.body.p_Id.toString();
+app.delete('/products/:p_Id', function (req, res) {
+	$p_Id = req.params.p_Id.toString();
     $query = 'DELETE FROM ywr_products WHERE p_Id = ' + $p_Id
 
 
