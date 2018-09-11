@@ -48,17 +48,17 @@ app.get('/products', function (req, res) {
 })
 
 //Search by Name
-app.get('/products/search/:value', function (req, res) {
-	$query = 'SELECT * from ywr_products WHERE p_Name LIKE "%' + req.params.value + '%" OR p_Id LIKE "%' + req.params.value + '%" OR p_Type LIKE "%' + req.params.value + '%"';
-	// console.log($query)
-	connection.query($query, function(err, rows, fields) {
-		if(err){
-            console.log(err);
-            return;
-        }
-        res.end(JSON.stringify(rows));
-    });
-})
+// app.get('/products/search/:value', function (req, res) {
+// 	$query = 'SELECT * from ywr_products WHERE p_Name LIKE "%' + req.params.value + '%" OR p_Id LIKE "%' + req.params.value + '%" OR p_Type LIKE "%' + req.params.value + '%"';
+// 	// console.log($query)
+// 	connection.query($query, function(err, rows, fields) {
+// 		if(err){
+//             console.log(err);
+//             return;
+//         }
+//         res.end(JSON.stringify(rows));
+//     });
+// })
 
 
 app.get('/products/:p_Id', function (req, res) {
@@ -111,6 +111,41 @@ app.put('/products', function (req, res) {
 app.delete('/products/:p_Id', function (req, res) {
 	$p_Id = req.params.p_Id.toString();
     $query = 'DELETE FROM ywr_products WHERE p_Id = ' + $p_Id
+
+
+    // console.log($query)
+    connection.query($query, function(err, rows, fields){
+    	if(err) console.log(err)
+    	res.end(JSON.stringify('OK'))
+    });
+})
+
+
+
+
+
+
+////////////////////// api for cart table //////////////////////
+
+
+// Get Product in Cart by User Id
+app.get('/carts/:u_Id', function (req, res) {
+	$query = 'SELECT * from ywr_cart WHERE u_Id = ' + req.params.u_Id;
+	connection.query($query, function(err, rows, fields) {
+		if(err){
+            console.log(err);
+            return;
+        }
+        res.end(JSON.stringify(rows));
+    });
+})
+
+
+// Delete Product in Cart by User Id and Product Id
+app.delete('/carts/:u_Id/:p_Id', function (req, res) {
+	$p_Id = req.params.p_Id.toString();
+	$u_Id = req.params.u_Id.toString();
+    $query = 'DELETE FROM ywr_cart WHERE p_Id = ' + $p_Id + ' AND u_Id = ' + $u_Id;
 
 
     // console.log($query)

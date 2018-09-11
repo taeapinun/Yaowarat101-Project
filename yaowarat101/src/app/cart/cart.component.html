@@ -1,0 +1,23 @@
+<!-- <input [(ngModel)]="searchCartText" placeholder="search ..."> -->
+<h2>My Carts</h2>
+<ul class="carts">
+  <div *ngFor="let cart of carts">
+    <li (click)="onSelect(cart)" [class.selected]="cart === selectedCart">
+      <span class="cart-element">
+        <span class="badge">{{cart.p_Id}}</span> {{cart.p_Name}} จำนวน {{cart.p_Amount}} ราคาต่อชิ้น {{cart.p_Price}}
+        <img src="https://i.imgur.com/qpM1ifY.jpg">
+      </span>
+    </li>
+    <button class="delete-button" (click)="deleteCart(cart)">Delete</button>
+  </div>
+</ul>
+
+<div class="error" *ngIf="error">{{error}}</div>
+
+<div>
+  <style>
+    .hidden {
+      visibility: hidden
+    }
+  </style>
+</div>

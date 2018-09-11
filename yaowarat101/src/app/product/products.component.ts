@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from './product';
-import { ProductService } from './services/product.service';
+import { ProductService } from './product.service';
 // import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
 @Component({
   selector: 'my-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./css/products.component.css']
+  styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
   products: Product[];

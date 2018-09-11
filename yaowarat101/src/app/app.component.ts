@@ -7,10 +7,11 @@ import { Component } from '@angular/core';
     <div class="header-bar"></div>
     <nav>
       <a routerLink="/products" routerLinkActive="active">Products</a>
+      <a routerLink="/carts" routerLinkActive="active">Carts</a>
     </nav>
     <router-outlet></router-outlet>
   `,
-  styleUrls: ['./css/app.component.css']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Yaowarat101';

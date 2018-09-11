@@ -1,0 +1,38 @@
+<div *ngIf="cart" style="width: max-content">
+  <h2>{{this.title}}</h2>
+  <div>
+    <img src="https://i.imgur.com/qpM1ifY.jpg" *ngIf="this.navigated != false">
+  </div>
+  <div>
+    <label>Id: </label>
+    <input [(ngModel)]="cart.p_Id" placeholder={{cart.p_Id}} disabled />
+  </div>
+  <div>
+    <label>Name: </label>
+    <input [(ngModel)]="cart.p_Name" placeholder="name" />
+  </div>
+  <div>
+    <label>Type: </label>
+    <input [(ngModel)]="cart.p_Type" placeholder="Type" />
+  </div>
+  <div>
+    <label>PercentGold: </label>
+    <input [(ngModel)]="cart.p_PercentGold" placeholder="PercentGold" />
+  </div>
+  <div>
+    <label>Weight: </label>
+    <input [(ngModel)]="cart.p_Weight" placeholder="Weight" />
+  </div>
+  <div>
+    <label>Length: </label>
+    <input [(ngModel)]="cart.p_Length" placeholder="Length" />
+  </div>
+  <div>
+    <label>Price: </label>
+    <input [(ngModel)]="cart.p_Price" placeholder="Price" />
+  </div>
+  <div >
+    <button (click)="goBack()" *ngIf="this.navigated != false">Back</button>
+    <button (click)="save()" class="buttonSave">Save</button>
+  </div>
+</div>

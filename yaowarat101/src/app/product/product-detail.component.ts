@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from './product';
-import { ProductService } from './services/product.service';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'my-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./css/product-detail.component.css']
+  styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
   @Input() product: Product;
