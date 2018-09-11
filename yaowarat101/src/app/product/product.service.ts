@@ -7,7 +7,7 @@ import { Headers } from '@angular/http';
 
 @Injectable()
 export class ProductService {
-  private productsUrl = 'http://192.168.1.198:8081/products'; // URL to web api
+  private productsUrl = '/api/products'; // URL to web api
 
   constructor(private http: HttpClient) {}
 
