@@ -24,7 +24,7 @@ var server = app.listen(8081, function () {
 	var host = server.address().address
 	var port = server.address().port
 
-	console.log("app listening at http://%s:%s", host, port)
+	console.log("app listening at port %s", port)
 });
 var corsOptions = {
   origin: 'http://localhost:4200',
@@ -37,7 +37,18 @@ app.use(bodyParser.json())
 
 
 app.get('/products', function (req, res) {
-	$query = 'SELECT * from ywr_products LIMIT 10';
+	$query = 'SELECT * from ywr_products LIMIT 30';
+	connection.query($query, function(err, rows, fields) {
+		if(err){
+            console.log(err);
+            return;
+        }
+        res.end(JSON.stringify(rows));
+    });
+})
+
+app.get('/products/:p_Id', function (req, res) {
+	$query = 'SELECT * from ywr_products WHERE p_Id = ' + req.params.p_Id;
 	connection.query($query, function(err, rows, fields) {
 		if(err){
             console.log(err);
