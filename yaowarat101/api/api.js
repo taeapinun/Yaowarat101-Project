@@ -198,7 +198,7 @@ router.delete('/carts/:u_Id/:p_Id', function (req, res) {
     });
 })
 
-////////////////////// end api for cart table //////////////////////
+////////////////////// end api for cart table ///////////////////////
 
 
 
