@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/api', require('./api/api.js'));
 
 app.use('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, './dist/index.html'));
 })
 
 const server = app.listen(8081, function (){

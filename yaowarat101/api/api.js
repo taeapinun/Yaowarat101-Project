@@ -31,7 +31,7 @@ router.get('/products', function (req, res) {
             console.log(err);
             return;
         }
-        res.end(JSON.stringify(rows));
+        res.json(rows);
     });
 })
 
@@ -57,7 +57,7 @@ router.get('/products/:p_Id', function (req, res) {
             console.log(err);
             return;
         }
-        res.end(JSON.stringify(rows));
+        res.json(rows);
     });
 })
 
@@ -75,7 +75,7 @@ router.post('/products', function (req, res) {
 	$query = 'INSERT INTO ywr_products (p_Type, p_Name, p_PercentGold, p_Weight, p_Length, p_Price) VALUES ("' + $p_Type + '","' + $p_Name + '","' + $p_PercentGold + '","' + $p_Weight + '","' + $p_Length + '","' + $p_Price + '")';
 	connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
-    	res.end(JSON.stringify('OK'))
+    	res.json(rows);
     });
 })
 
@@ -95,7 +95,7 @@ router.put('/products', function (req, res) {
 
     connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
-    	res.end(JSON.stringify('OK'))
+    	res.json(rows);
     });
 })
 
@@ -109,7 +109,7 @@ router.delete('/products/:p_Id', function (req, res) {
     // console.log($query)
     connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
-    	res.end(JSON.stringify('OK'))
+    	res.json(rows);
     });
 })
 
@@ -144,7 +144,7 @@ router.get('/carts/:u_Id', function (req, res) {
             console.log(err);
             return;
         }
-        res.end(JSON.stringify(rows));
+        res.json(rows);
     });
 })
 
@@ -160,7 +160,7 @@ router.post('/carts/:u_Id', function (req, res) {
 	$query = 'INSERT INTO ywr_cart (u_Id, p_Id, p_Name, p_Amount, p_Price) VALUES ("' + $u_Id + '","' + $p_Id + '","' + $p_Name + '","' + $p_Amount + '","' + $p_Price + '")';
 	connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
-    	res.end(JSON.stringify('OK'))
+    	res.json(rows);
     });
 })
 
@@ -178,7 +178,7 @@ router.put('/carts/:u_Id', function (req, res) {
 
     connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
-    	res.end(JSON.stringify('OK'))
+    	res.json(rows);
     });
 })
 
@@ -194,7 +194,7 @@ router.delete('/carts/:u_Id/:p_Id', function (req, res) {
     // console.log($query)
     connection.query($query, function(err, rows, fields){
     	if(err) console.log(err)
-    	res.end(JSON.stringify('OK'))
+    	res.json(rows);
     });
 })
 
