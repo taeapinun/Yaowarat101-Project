@@ -15,6 +15,7 @@ import { CartDetailComponent } from './cart/cart-detail.component';
 
 //Filter
 import { SearchProductFilterPipe } from './product/searchProductFilter.pipe';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { SearchProductFilterPipe } from './product/searchProductFilter.pipe';
     SearchProductFilterPipe,
     CartsComponent,
     CartDetailComponent,
+    UserComponent,
   ],
   providers: [
     ProductService,

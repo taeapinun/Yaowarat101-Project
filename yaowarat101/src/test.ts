@@ -13,6 +13,8 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 declare const __karma__: any;
 declare const require: any;
 
+
+// kuyrainmnai
 // Prevent Karma from running prematurely.
 __karma__.loaded = function() {};
 
