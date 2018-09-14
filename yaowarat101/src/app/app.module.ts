@@ -18,6 +18,9 @@ import { SearchProductFilterPipe } from './product/searchProductFilter.pipe';
 import { UserComponent } from './user/user.component';
 
 import { SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider } from 'angular-6-social-login'
+import { UserService } from './user/user.service';
+
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 
 export function getAuthServiceConfigs() {
@@ -26,11 +29,7 @@ export function getAuthServiceConfigs() {
         {
           id: FacebookLoginProvider.PROVIDER_ID,
           provider: new FacebookLoginProvider("2230137083687285")
-        },
-        // {
-        //   id: GoogleLoginProvider.PROVIDER_ID,
-        //   provider: new GoogleLoginProvider("Your-Google-Client-Id")
-        // },
+        }
       ]
   );
   return config;
@@ -45,6 +44,7 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     HttpClientModule,
     SocialLoginModule,
+    StorageServiceModule
   ],
   declarations: [
     AppComponent,
@@ -58,6 +58,7 @@ export function getAuthServiceConfigs() {
   providers: [
     ProductService,
     CartService,
+    UserService,
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs

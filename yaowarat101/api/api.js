@@ -238,6 +238,18 @@ router.post('/user', function (req, res) {
 })
 
 
+router.get('/user/email', function (req, res) {
+	$query = 'SELECT u_Email,COUNT(u_Email) from ywr_user GROUP BY u_Email';
+	connection.query($query, function(err, rows, fields) {
+		if(err){
+            console.log(err);
+            return;
+        }
+        res.json(rows);
+    });
+})
+
+
 
 ////////////////////// end api for user table /////////////////////
 
