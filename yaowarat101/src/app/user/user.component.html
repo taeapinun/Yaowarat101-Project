@@ -1,3 +1,38 @@
-<p>
-  user works!
-</p>
+<h1>
+  Sign in
+</h1>
+
+<button (click)="socialSignIn('facebook')">Sign in with Facebook</button>
+<button (click)="socialSignIn('google')">Sign in with Google</button>          
+
+<div *ngIf="user" style="width: max-content">
+  <h2>Register</h2>
+  <div>
+    <label>Id: </label>
+    <input [(ngModel)]="user.u_Id" placeholder="Id" />
+  </div>
+  <div>
+    <label>Email: </label>
+    <input [(ngModel)]="user.u_Email" placeholder="Email" />
+  </div>
+  <div>
+    <label>Name: </label>
+    <input [(ngModel)]="user.u_Name" placeholder="Name" />
+  </div>
+  <div>
+    <label>Tel: </label>
+    <input [(ngModel)]="user.u_Tel" placeholder="Weight" />
+  </div>
+  <div>
+    <label>Gender: </label>
+    <input [(ngModel)]="user.u_Gender" placeholder="Length" />
+  </div>
+  <div>
+    <label>Address: </label>
+    <input [(ngModel)]="user.u_Address" placeholder="Length" />
+  </div>
+  <div>
+    <!-- <button (click)="goBack()" *ngIf="this.navigated != false">Back</button>
+    <button (click)="save()" class="buttonSave">Save</button> -->
+  </div>
+</div>

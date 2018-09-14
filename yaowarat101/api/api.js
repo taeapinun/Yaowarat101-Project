@@ -204,4 +204,45 @@ router.delete('/carts/:u_Id/:p_Id', function (req, res) {
 
 
 
+
+
+
+
+////////////////////// start api for user table /////////////////////
+
+
+router.get('/user', function (req, res) {
+	$query = 'SELECT * from ywr_user';
+	connection.query($query, function(err, rows, fields) {
+		if(err){
+            console.log(err);
+            return;
+        }
+        res.json(rows);
+    });
+})
+
+
+router.post('/user', function (req, res) {
+	$u_Email = req.body.u_Email.toString();
+	$u_Name = req.body.u_Name.toString();
+	$u_Tel = req.body.u_Tel.toString();
+	$u_Gender = req.body.u_Gender.toString();
+	$u_Address = req.body.u_Address.toString();
+
+	$query = 'INSERT INTO ywr_user (u_Email, u_Name, u_Tel, u_Gender, u_Address) VALUES ("' + $u_Email + '","' + $u_Name + '","' + $u_Tel + '","' + $u_Gender + '","' + $u_Address + '")';
+	connection.query($query, function(err, rows, fields){
+    	if(err) console.log(err)
+    	res.json(rows);
+    });
+})
+
+
+
+////////////////////// end api for user table /////////////////////
+
+
+
+
+
 module.exports = router;

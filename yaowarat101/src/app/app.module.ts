@@ -17,12 +17,34 @@ import { CartDetailComponent } from './cart/cart-detail.component';
 import { SearchProductFilterPipe } from './product/searchProductFilter.pipe';
 import { UserComponent } from './user/user.component';
 
+import { SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginProvider } from 'angular-6-social-login'
+
+
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("2230137083687285")
+        },
+        // {
+        //   id: GoogleLoginProvider.PROVIDER_ID,
+        //   provider: new GoogleLoginProvider("Your-Google-Client-Id")
+        // },
+      ]
+  );
+  return config;
+}
+
+
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    SocialLoginModule,
   ],
   declarations: [
     AppComponent,
@@ -35,7 +57,11 @@ import { UserComponent } from './user/user.component';
   ],
   providers: [
     ProductService,
-    CartService
+    CartService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
   ],
   bootstrap: [
     AppComponent
