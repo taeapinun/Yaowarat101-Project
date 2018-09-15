@@ -7,6 +7,7 @@ import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
     <h1>{{title}}</h1>
     <div class="header-bar"></div>
     <nav>
+    <a routerLink="/" routerLinkActive="active">Home</a>
       <a routerLink="/products" routerLinkActive="active">Products</a>
       <a routerLink="/carts" routerLinkActive="active">Carts</a>
       <a *ngIf="userName == null" routerLink="/user" routerLinkActive="active">Login</a>

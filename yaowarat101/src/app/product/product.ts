@@ -6,4 +6,5 @@ export class Product {
   p_Weight: number;
   p_Length: number;
   p_Price: number;
+  p_Amount: number;
 }

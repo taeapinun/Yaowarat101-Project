@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Cart } from './cart';
+import { Product } from '../product/product'
 import { Headers } from '@angular/http';
 
 @Injectable()
@@ -42,13 +43,13 @@ export class CartService {
   }
 
   // Add new Cart
-  private post(cart: Cart) {
+  post(product: Product) {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
 
     return this.http
-      .post<Cart>(this.cartsUrl, cart)
+      .post<Cart>(this.cartsUrl, product)
       .pipe(catchError(this.handleError));
   }
 

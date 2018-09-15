@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from './product';
 import { ProductService } from './product.service';
+import { CartService } from '../cart/cart.service';
 // import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
 @Component({
@@ -16,13 +17,13 @@ export class ProductsComponent implements OnInit {
   error: any;
   showNgFor = false;
 
-  constructor(private router: Router, private productService: ProductService) {}
+  constructor(private router: Router, private productService: ProductService, private cartService: CartService) {}
 
   getProducts(): void {
     this.productService
       .getProducts()
       .subscribe(
-        products => (this.products = products, console.log(this.products)),
+        products => (this.products = products),
         error => (this.error = error)
       )
   }
@@ -61,6 +62,13 @@ export class ProductsComponent implements OnInit {
     this.selectedProduct = product;
     this.addingProduct = false;
     this.router.navigate(['/detail', this.selectedProduct.p_Id]);
+  }
+
+  addtoCart(product: Product): void {
+    console.log(product)
+    this.cartService.post(product).subscribe(res => {
+      console.log(res);
+    })
   }
 
   // searchTextChange(text: any): void{

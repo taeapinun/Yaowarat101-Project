@@ -1,14 +1,22 @@
 <input [(ngModel)]="searchProductText" placeholder="search ...">
 <h2>My Products</h2>
 <ul class="products">
-  <div *ngFor="let product of products | productFilter : searchProductText">
+  <div *ngFor="let product of products | productFilter : searchProductText" style="padding-right: 1em;">
     <li (click)="onSelect(product)" [class.selected]="product === selectedProduct">
       <span class="product-element">
         <span class="badge">{{product.p_Id}}</span> {{product.p_Name}}
         <img src="https://i.imgur.com/qpM1ifY.jpg">
       </span>
     </li>
-    <button class="delete-button" (click)="deleteProduct(product)">Delete</button>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">จำนวน</span>
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="product.p_Amount">
+    </div>
+    <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Delete</button>
+    <button class="btn btn-success btn-sm float-right" style (click)="addtoCart(product)">Add to cart</button>
+    
   </div>
 </ul>
 
@@ -24,6 +32,5 @@
     .hidden {
       visibility: hidden
     }
-    
   </style>
 </div>

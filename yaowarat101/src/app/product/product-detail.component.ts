@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from './product';
 import { ProductService } from './product.service';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'my-product-detail',
@@ -16,9 +17,7 @@ export class ProductDetailComponent implements OnInit {
   title = '';
 
   constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute
-  ) {}
+    private productService: ProductService, private route: ActivatedRoute, private cartService: CartService) {}
 
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
@@ -47,4 +46,12 @@ export class ProductDetailComponent implements OnInit {
       window.history.back();
     }
   }
+
+  addtoCart(product: Product): void {
+    console.log(product)
+    this.cartService.post(product).subscribe(res => {
+      console.log(res);
+    })
+  }
+  
 }

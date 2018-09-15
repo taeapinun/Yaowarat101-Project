@@ -21,7 +21,7 @@ export class CartsComponent implements OnInit {
     this.cartService
       .getCarts()
       .subscribe(
-        carts => (this.carts = carts, console.log(this.carts)),
+        carts => (this.carts = carts),
         error => (this.error = error)
       )
   }

@@ -1,5 +1,12 @@
 <div *ngIf="product" style="width: max-content">
   <h2>{{this.title}}</h2>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">จำนวน</span>
+    </div>
+    <input type="text" class="form-control" [(ngModel)]="product.p_Amount">
+  </div>
+  <button class="btn btn-success btn-sm float-right" style (click)="addtoCart(product)">Add to cart</button>
   <div>
     <img src="https://i.imgur.com/qpM1ifY.jpg" *ngIf="this.navigated != false">
   </div>
@@ -32,7 +39,7 @@
     <input [(ngModel)]="product.p_Price" placeholder="Price" />
   </div>
   <div >
-    <button (click)="goBack()" *ngIf="this.navigated != false">Back</button>
-    <button (click)="save()" class="buttonSave">Save</button>
+    <button (click)="goBack()" *ngIf="this.navigated != false" class="btn btn-secondary btn-sm">Back</button>
+    <button (click)="save()" class="btn btn-success btn-sm float-right">Save</button>
   </div>
 </div>
