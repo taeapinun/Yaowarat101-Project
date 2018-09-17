@@ -21,6 +21,12 @@ import { SocialLoginModule,AuthServiceConfig,GoogleLoginProvider,FacebookLoginPr
 import { UserService } from './user/user.service';
 
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { HomeComponent } from './home/home.component';
+
+import { MDBBootstrapModule } from 'angular-bootstrap-md'
+
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations'
+import { MatSelectModule, MatInputModule } from '@angular/material'
 
 
 export function getAuthServiceConfigs() {
@@ -44,7 +50,12 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     HttpClientModule,
     SocialLoginModule,
-    StorageServiceModule
+    StorageServiceModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatSelectModule,
+    MatInputModule
   ],
   declarations: [
     AppComponent,
@@ -54,6 +65,7 @@ export function getAuthServiceConfigs() {
     CartsComponent,
     CartDetailComponent,
     UserComponent,
+    HomeComponent,
   ],
   providers: [
     ProductService,

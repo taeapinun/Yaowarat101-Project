@@ -1,0 +1,170 @@
+<nav class="navbar navbar-dark bg-dark sticky-top navbar-expand-lg navbar-light bg-light mb-3">
+    <a class="navbar-brand" routerLink="/" routerLinkActive="active">{{title}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/" routerLinkActive="active">Promotion <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/products" routerLinkActive="active">Products <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Products
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/products" routerLinkActive="active">All Products</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/" routerLinkActive="active">Content <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/" routerLinkActive="active">Contact Us <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/carts" routerLinkActive="active">Carts</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a *ngIf="userName == null" routerLink="/user" routerLinkActive="active">Login</a>
+                <a *ngIf="userName != null" routerLink="/user" routerLinkActive="active">{{userName}}</a>
+                <a *ngIf="userName != null" (click)="logout()" routerLinkActive="active">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+
+
+<!-- footer -->
+<footer class="mt-5">
+    <div class="container-fluid bg-footer mt-5">
+        <div class="container">
+            <div class="row py-3">
+                <!-- footer column 1 start -->
+                <div class="col-md-4">
+                    <!-- row start -->
+                    <div class="row py-2">
+                        <div class="col-sm-3 hidden-md-down">
+                            <a class="bg-circle bg-info" href="https://twitter.com/ ">
+                                <i class="fa fa-2x fa-fw fa-twitter" aria-hidden="true "></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4 class="text-white">Logo</h4>
+                            <p class="text-white">Embed here?</p>
+                        </div>
+                    </div>
+                    <!-- row end -->
+                </div>
+                <!-- footer column 1 end -->
+                <!-- footer column 2 start -->
+                <div class="col-md-4">
+                    <!-- row start -->
+                    <div class="row py-2">
+                        <div class="col-sm-3 hidden-md-down">
+                            <a class="bg-circle bg-info" href="#">
+                                <i class="fa fa-2x fa-fw fa-address-card" aria-hidden="true "></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4 class="text-white">Contact us</h4>
+                            <p class="text-white">บริษัท ห้างทองเยาวราช จำกัด
+                                182-184 ถนนเทวาภิบาล ต.ในเมือง อ.เมือง
+                              ร้อยเอ็ด 45000</p>
+                        </div>
+                    </div>
+                    <!-- row end -->
+                    <!-- row start -->
+                    <div class="row py-2">
+                        <div class="col-sm-3 hidden-md-down">
+                            <a class="bg-circle bg-info" href="#">
+                                <i class="fa fa-2x fa-fw fa-laptop" aria-hidden="true "></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4 class="text-white">Phone</h4>
+                            <p class="text-white">Tel. 043513917,043511329,0894245999 </p>
+                        </div>
+                    </div>
+                    <!-- row end -->
+                </div>
+                <!-- footer column 2 end -->
+                <!-- footer column 3 start -->
+                <div class="col-md-4">
+                    <!-- row starting  -->
+                    <div class="row py-2">
+                        <div class="col-sm-3 hidden-md-down">
+                            <a class="bg-circle bg-danger" href="# ">
+                                <i class="fa fa-2x fa-fw fa-file-pdf-o" aria-hidden="true "></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4 class="text-white">Email</h4>
+                            <p class="text-white">yaowarat101@yahoo.com</p>
+                        </div>
+                    </div>
+                    <!-- row ended -->
+                    <!-- row starting  -->
+                    <div class="row py-2">
+                        <div class="col-sm-3 hidden-md-down">
+                            <a class="bg-circle bg-info" href="https://twitter.com/ ">
+                                <i class="fa fa-2x fa-fw fa-info" aria-hidden="true "></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-9">
+                            <h4 class="text-white">Info</h4>
+                            <p class="text-white">About us.</p>
+                        </div>
+                    </div>
+                    <!-- row ended -->
+                </div>
+                <!-- footer column 3 end -->
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid bg-primary py-3">
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-md-9">
+                    <p class="text-white">© Copyright 2017 YOUWARAT101.COM</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="d-inline-block">
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://www.facebook.com/" class="text-white"><i class="fa fa-2x fa-fw fa-facebook"></i>
+                            </a>
+                        </div>
+
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://twitter.com/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-twitter"></i></a>
+                        </div>
+
+                        <div class="bg-circle-outline d-inline-block">
+                            <a href="https://www.linkedin.com/company/" class="text-white">
+                                <i class="fa fa-2x fa-fw fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- footer end -->

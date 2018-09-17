@@ -1,28 +1,81 @@
-<input [(ngModel)]="searchProductText" placeholder="search ...">
+<div class="input-group mb-3 w-25 float-right">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">SEARCH</span>
+  </div>
+  <input [(ngModel)]="searchProductText" placeholder=". . ." class="form-control">
+</div>
+
+<div class="input-group mb-3 w-25 float-right">
+  <mat-form-field>
+    <mat-select [(value)]="iteminPage" placeholder="show item" (selectionChange)="selectChange()">
+      <mat-option value="10">10</mat-option>
+      <mat-option value="20">20</mat-option>
+      <mat-option value="30">30</mat-option>
+      <mat-option value="40">40</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+
 <h2>My Products</h2>
-<ul class="products">
-  <div *ngFor="let product of products | productFilter : searchProductText" style="padding-right: 1em;">
-    <li (click)="onSelect(product)" [class.selected]="product === selectedProduct">
-      <span class="product-element">
-        <span class="badge">{{product.p_Id}}</span> {{product.p_Name}}
-        <img src="https://i.imgur.com/qpM1ifY.jpg">
-      </span>
-    </li>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">จำนวน</span>
+<ul class="products w-100">
+  <div *ngFor="let product of products | productFilter : searchProductText ; let i=index" style="display: inline-flex">
+    <div class="row" *ngIf="i < iteminPage*inPage && i >= (iteminPage*inPage)-iteminPage" style="padding-right: 1em; width: 303px;">
+      <div class="col-sm">
+        <li (click)="onSelect(product)" [class.selected]="product === selectedProduct">
+          <span class="product-element">
+            <span class="badge">{{product.p_Id}}</span> {{product.p_Name}}
+            <img src="https://i.imgur.com/qpM1ifY.jpg">
+          </span>
+        </li>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">จำนวน</span>
+          </div>
+          <input type="text" class="form-control" [(ngModel)]="product.p_Amount">
+        </div>
+        <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Delete</button>
+        <button class="btn btn-success btn-sm float-right" style (click)="addtoCart(product)">Add to cart</button>
       </div>
-      <input type="text" class="form-control" [(ngModel)]="product.p_Amount">
     </div>
-    <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Delete</button>
-    <button class="btn btn-success btn-sm float-right" style (click)="addtoCart(product)">Add to cart</button>
-    
   </div>
 </ul>
 
+<nav>
+  <ul class="pagination pg-blue">
+    <!--Arrow left-->
+    <li class="page-item">
+      <a class="page-link" aria-label="Previous" (click)="changePage(inPage-1)">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+
+    <!--Numbers-->
+    <div *ngFor="let page of pageArray">
+      <li class="page-item active" *ngIf="inPage == page">
+        <a class="page-link" (click)="changePage(page)">{{page}}</a>
+      </li>
+      <li class="page-item" *ngIf="inPage != page">
+        <a class="page-link" (click)="changePage(page)">{{page}}</a>
+      </li>
+    </div>
+
+
+    <!--Arrow right-->
+    <li class="page-item">
+      <a class="page-link" aria-label="Next" (click)="changePage(inPage+1)">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
 <div class="error" *ngIf="error">{{error}}</div>
 
-<button (click)="addProduct()">Add New Product</button>
+<button (click)="addProduct()" class="btn btn-primary btn-sm">Add New Product</button>
 <div *ngIf="addingProduct">
   <my-product-detail (close)="close($event)"></my-product-detail>
 </div>

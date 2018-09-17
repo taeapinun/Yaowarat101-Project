@@ -21,10 +21,14 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "./src/styles.scss",
+              "./node_modules/font-awesome/scss/font-awesome.scss",
+              "./node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+              "./node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": [
+              "./node_modules/chart.js/dist/Chart.js",
+              "./node_modules/hammerjs/hammer.min.js",
               "./node_modules/jquery/dist/jquery.slim.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -124,7 +128,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "my",
-      "styleext": "css"
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "my"

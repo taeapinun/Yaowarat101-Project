@@ -1,44 +1,53 @@
-<div *ngIf="product" style="width: max-content">
+<div *ngIf="product" style="width: max-content; margin-left: 4em">
   <h2>{{this.title}}</h2>
-  <div class="input-group mb-3">
+  <div *ngIf="this.navigated != false" class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text">จำนวน</span>
     </div>
     <input type="text" class="form-control" [(ngModel)]="product.p_Amount">
   </div>
-  <button class="btn btn-success btn-sm float-right" style (click)="addtoCart(product)">Add to cart</button>
+  <button *ngIf="this.navigated != false" class="btn btn-success btn-sm float-right" style (click)="addtoCart(product)">Add
+    to cart</button>
   <div>
     <img src="https://i.imgur.com/qpM1ifY.jpg" *ngIf="this.navigated != false">
   </div>
-  <div>
-    <label>Id: </label>
-    <input [(ngModel)]="product.p_Id" placeholder={{product.p_Id}} disabled />
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="product.p_Id" placeholder="Id" />
+    </mat-form-field>
+
+  </div>
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="product.p_Name" placeholder="Name" />
+    </mat-form-field>
+  </div>
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="product.p_Type" placeholder="Type" />
+    </mat-form-field>
+  </div>
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="product.p_PercentGold" placeholder="Percent Gold" />
+    </mat-form-field>
+  </div>
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="product.p_Weight" placeholder="Weight" />
+    </mat-form-field>
+  </div>
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="product.p_Length" placeholder="Length" />
+    </mat-form-field>
+  </div>
+  <div class="input-group mb-3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="product.p_Price" placeholder="Price" />
+    </mat-form-field>
   </div>
   <div>
-    <label>Name: </label>
-    <input [(ngModel)]="product.p_Name" placeholder="name" />
-  </div>
-  <div>
-    <label>Type: </label>
-    <input [(ngModel)]="product.p_Type" placeholder="Type" />
-  </div>
-  <div>
-    <label>PercentGold: </label>
-    <input [(ngModel)]="product.p_PercentGold" placeholder="PercentGold" />
-  </div>
-  <div>
-    <label>Weight: </label>
-    <input [(ngModel)]="product.p_Weight" placeholder="Weight" />
-  </div>
-  <div>
-    <label>Length: </label>
-    <input [(ngModel)]="product.p_Length" placeholder="Length" />
-  </div>
-  <div>
-    <label>Price: </label>
-    <input [(ngModel)]="product.p_Price" placeholder="Price" />
-  </div>
-  <div >
     <button (click)="goBack()" *ngIf="this.navigated != false" class="btn btn-secondary btn-sm">Back</button>
     <button (click)="save()" class="btn btn-success btn-sm float-right">Save</button>
   </div>
