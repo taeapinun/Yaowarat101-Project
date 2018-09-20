@@ -1,8 +1,5 @@
-<div *ngIf="userName == null">
-  <h1>
-    Sign in
-  </h1>
-
+<div *ngIf="userName == null" class="modal-footer d-flex justify-content-center">
+  
   <button (click)="socialSignIn('facebook')" type="button" mdbBtn class="btn-tw waves-light" mdbWavesEffect style="background-color: #3b5998"><i class="fa fa-facebook left"></i>Login with Facebook</button>
   <button (click)="socialSignIn('email')" type="button" mdbBtn class="btn-tw waves-light" mdbWavesEffect style="color: #000000"><i class="fa fa-at left"></i>Login with Email</button>
 

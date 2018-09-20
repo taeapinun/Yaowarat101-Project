@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from './cart';
 import { CartService } from './cart.service';
+import { forEach } from '@angular/router/src/utils/collection';
+import { Title } from '@angular/platform-browser'
 
 @Component({
   selector: 'my-cart',
@@ -14,14 +16,20 @@ export class CartsComponent implements OnInit {
   addingCart = false;
   error: any;
   showNgFor = false;
+  totalPrice: number;
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(private router: Router, private cartService: CartService, private titleService:Title) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Yaowarat101 - Carts');
+    this.getCarts();
+  }
 
   getCarts(): void {
     this.cartService
       .getCarts()
       .subscribe(
-        carts => (this.carts = carts),
+        carts => (this.carts = carts, this.calTotalPrice()),
         error => (this.error = error)
       )
   }
@@ -49,16 +57,23 @@ export class CartsComponent implements OnInit {
       if (this.selectedCart === cart) {
         this.selectedCart = null;
       }
+      this.calTotalPrice();
     }, error => (this.error = error));
   }
 
-  ngOnInit(): void {
-    this.getCarts();
-  }
+  
 
   onSelect(cart: Cart): void {
     this.selectedCart = cart;
     this.addingCart = false;
     this.router.navigate(['/detail', this.selectedCart.p_Id]);
+  }
+
+  calTotalPrice(): void{
+    var totalPrice = 0;
+    this.carts.forEach(cart => {
+      totalPrice += (cart.p_Price * Number(cart.p_Amount))
+    });
+    this.totalPrice = totalPrice;
   }
 }

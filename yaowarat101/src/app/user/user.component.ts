@@ -4,6 +4,7 @@ import { User } from './user';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'my-user',
@@ -14,14 +15,16 @@ export class UserComponent implements OnInit {
   user: User;
   users: User[];
   userName: string;
-  constructor(private socialAuthService: AuthService, private userService: UserService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
+  constructor(private socialAuthService: AuthService, private userService: UserService, private router: Router, @Inject(SESSION_STORAGE) private storage: WebStorageService, private modalService: NgbModal) { }
 
 
 
 
   ngOnInit() {
     this.userName = this.storage.get('userName');
+    
   }
+
 
   public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;

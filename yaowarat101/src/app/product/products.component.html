@@ -1,49 +1,65 @@
 <div class="input-group mb-3 w-25 float-right">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1">SEARCH</span>
+    <span class="input-group-text" id="basic-addon1">
+      <i class="fa fa-search"></i>
+    </span>
   </div>
-  <input [(ngModel)]="searchProductText" placeholder=". . ." class="form-control">
+  <input [(ngModel)]="searchProductText" placeholder="" class="form-control">
 </div>
 
-<div class="input-group mb-3 w-25 float-right">
-  <mat-form-field>
-    <mat-select [(value)]="iteminPage" placeholder="show item" (selectionChange)="selectChange()">
-      <mat-option value="10">10</mat-option>
-      <mat-option value="20">20</mat-option>
-      <mat-option value="30">30</mat-option>
-      <mat-option value="40">40</mat-option>
+<div class="input-group mb-3 w-25 float-right" style="max-width: fit-content; margin-top: -0.6em;">
+  <mat-form-field style="text-align: center;">
+    <mat-select [(ngModel)]="categoryBy" placeholder="{{categoryBy}}" (selectionChange)="categoryChange()">
+      <mat-option value="">All Product</mat-option>
+      <mat-option value="necklace">สร้อยคอ</mat-option>
+      <mat-option value="ring">แหวน</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
 
 
 
+
+
 <h2>My Products</h2>
 <ul class="products w-100">
-  <div *ngFor="let product of products | productFilter : searchProductText ; let i=index" style="display: inline-flex">
+  <div *ngFor="let product of products | productFilter : searchProductText : categoryBy ; let i=index" style="display: inline-flex">
     <div class="row" *ngIf="i < iteminPage*inPage && i >= (iteminPage*inPage)-iteminPage" style="padding-right: 1em; width: 303px;">
       <div class="col-sm">
-        <li (click)="onSelect(product)" [class.selected]="product === selectedProduct">
+        <button style="opacity:1;margin-right: 0.6em;background-color: transparent" class="close" type="button"
+          aria-label="Close" (click)="deleteProduct(product)">
+          <span aria-hidden="true" style=" font-size: larger; color:#dc3545">&times;</span>
+        </button>
+        <li (click)="onSelect(product)" [class.selected]="product === selectedProduct" style="margin-top: 2em;">
           <span class="product-element">
             <span class="badge">{{product.p_Id}}</span> {{product.p_Name}}
-            <img src="https://i.imgur.com/qpM1ifY.jpg">
+            <div class="zoom view overlay">
+              <img *ngIf="product.p_Type == 'สร้อยคอ'" src="assets/image/products/{{ product.p_Id }}.jpg" style="width: 225px; height: 300px;">
+              <img *ngIf="product.p_Type == 'แหวน'" src="assets/image/products/{{ product.p_Id }}.jpg" style="width: 225px; height: 216px;">
+            </div>
+            ราคา: {{product.p_Price | number:'1.2-2'}} ฿
           </span>
         </li>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">จำนวน</span>
           </div>
-          <input type="text" class="form-control" [(ngModel)]="product.p_Amount">
+          <input type="number" class="form-control" [(ngModel)]="product.p_Amount">
         </div>
-        <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Delete</button>
-        <button class="btn btn-success btn-sm float-right" style (click)="addtoCart(product)">Add to cart</button>
+        <button class="btn btn-sm float-right" style="text-transform: none; background-color: #d6b50f;" (click)="addtoCart(product)">
+          <i class="fa fa-shopping-cart"></i>
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>
 </ul>
 
+
+
+
 <nav>
-  <ul class="pagination pg-blue">
+  <ul class="pagination pg-blue float-right" style="margin-top: 0.7em;">
     <!--Arrow left-->
     <li class="page-item">
       <a class="page-link" aria-label="Previous" (click)="changePage(inPage-1)">
@@ -55,7 +71,7 @@
     <!--Numbers-->
     <div *ngFor="let page of pageArray">
       <li class="page-item active" *ngIf="inPage == page">
-        <a class="page-link" (click)="changePage(page)">{{page}}</a>
+        <a class="page-link" style="background-color: rgba(214, 181, 15, 1);" (click)="changePage(page)">{{page}}</a>
       </li>
       <li class="page-item" *ngIf="inPage != page">
         <a class="page-link" (click)="changePage(page)">{{page}}</a>
@@ -73,12 +89,46 @@
   </ul>
 </nav>
 
+<div class="input-group mb-3 w-25 float-right" style="max-width: fit-content;">
+  <mat-form-field style="text-align: center;inline-size: 5em;">
+    <mat-select [(ngModel)]="iteminPage" placeholder="{{ iteminPage }}" (selectionChange)="selectChange()">
+      <mat-option value="10">10</mat-option>
+      <mat-option value="15">15</mat-option>
+      <mat-option value="30">30</mat-option>
+      <mat-option value="45">45</mat-option>
+      <mat-option value="100">100</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
 <div class="error" *ngIf="error">{{error}}</div>
 
-<button (click)="addProduct()" class="btn btn-primary btn-sm">Add New Product</button>
-<div *ngIf="addingProduct">
-  <my-product-detail (close)="close($event)"></my-product-detail>
+<button (click)="addProduct()"  data-toggle="modal" data-target="#modalProduct" class="btn btn-primary btn-sm">Add New Product</button>
+
+<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Add New Product</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close(null)">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body mx-3">
+
+            <div *ngIf="addingProduct">
+              <my-product-detail (close)="close($event)"></my-product-detail>
+            </div>
+
+          </div>
+          <!-- <div class="modal-footer d-flex justify-content-center">
+              <button class="btn btn-unique">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+          </div> -->
+      </div>
+  </div>
 </div>
+
+
 
 <div>
   <style>

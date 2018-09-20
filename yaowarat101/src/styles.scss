@@ -2,7 +2,24 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 h2 { color: #444; font-weight: lighter; }
-body { margin: 2em; }
+body { 
+    margin: 2em; 
+    background: url("assets/image/bgw.jpg") no-repeat center center fixed;
+}
 body, input[text], button { color: #888; font-family: Cambria, Georgia; }
 button { padding: 0.2em; font-size: 14px}
 * { font-family: Arial; }
+
+
+.form-control:focus {
+    border-color: rgb(214, 181, 15) !important;
+    box-shadow: 0 0 0 0.2rem rgba(214, 181, 15, 0.25) !important;
+  }
+
+.btn:focus, .btn.focus {
+    box-shadow: 0 0 0 0.2rem rgba(214, 181, 15, 0.25) !important;
+}
+
+button:focus {
+    outline: 5px auto rgba(214, 181, 15, 0.70) !important;
+}

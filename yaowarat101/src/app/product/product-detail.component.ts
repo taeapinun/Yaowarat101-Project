@@ -27,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
         this.productService.getProduct(id).subscribe(product => (this.product = product, this.title = product.p_Name));
       } else {
         this.navigated = false;
-        this.title = 'Add New Product';
+        this.title = '';
         this.product = new Product();
       }
     });

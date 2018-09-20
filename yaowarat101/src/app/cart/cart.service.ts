@@ -5,13 +5,13 @@ import { catchError, map } from 'rxjs/operators';
 import { Cart } from './cart';
 import { Product } from '../product/product'
 import { Headers } from '@angular/http';
+import { LinkApi } from '../app.link-api'
 
 @Injectable()
 export class CartService {
-  private cartsUrl = '/api/carts/1'; // URL to web api
+  private cartsUrl = this.linkapi.link + 'carts/1'; // URL to web api
 
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private linkapi: LinkApi) {}
   getCarts() {
     return this.http
       .get<Cart[]>(this.cartsUrl)

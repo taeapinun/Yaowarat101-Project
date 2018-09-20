@@ -1,6 +1,97 @@
 <!-- <input [(ngModel)]="searchCartText" placeholder="search ..."> -->
 <h2>My Carts</h2>
-<ul class="carts">
+
+<div class="container">
+  <div class="row">
+    <div class='table-responsive col-sm-8'>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td style="font-weight:bold">&nbsp;</td>
+            <td style="font-weight:bold">#</td>
+            <td style="font-weight:bold">&nbsp;</td>
+            <td style="font-weight:bold">Id</td>
+            <td style="font-weight:bold">Product</td>
+            <td style="font-weight:bold">Price</td>
+            <td style="font-weight:bold">Amount</td>
+            <td style="font-weight:bold">Total Price</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cart of carts; let i = index">
+            <td><button style="color: #d6b50f;" class="close bg-white" type="button" aria-label="Close" (click)="deleteCart(cart)"><span aria-hidden="true">&times;</span></button></td>
+            <td>{{ i+1 }}</td>
+            <td>{{ cart.p_Id }}.jpg</td>
+            <td>{{ cart.p_Id }}</td>
+            <td>{{ cart.p_Name }}</td>
+            <td>{{ cart.p_Price | number:'1.2-2' }} ฿</td>
+            <td><input type="number" id="inputAmount" class="form-control w-50 float-left" [(ngModel)]="cart.p_Amount" (ngModelChange)="calTotalPrice()"></td>
+            <td>{{ cart.p_Price * cart.p_Amount | number:'1.2-2'}} ฿</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" style="vertical-align: middle;">
+              <div class="md-form">
+                <i class="fa fa-envelope prefix" style="color:#d6b50f"></i>
+                <input type="text" id="inputCouponCode" class="form-control" style="padding: 0.6rem 0 0.3rem 0;"
+                  placeholder="Enter Coupon Code">
+              </div>
+            </td>
+            <td colspan="3" style="vertical-align: middle;">
+              <button type="button" class="btn" style="text-transform: none; background-color: #d6b50f;">Apply coupon</button>
+            </td>
+
+
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="table-responsive col-sm-4" style="background-color:#f0f0f0">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Subtotal</th>
+            <td>&nbsp;</td>
+            <td>{{ totalPrice | number:'1.2-2' }} ฿</td>
+          </tr>
+          <tr>
+            <th>Total</th>
+            <td>&nbsp;</td>
+            <td>{{ totalPrice | number:'1.2-2' }} ฿</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">
+              <button type="button" class="btn float-right" style="text-transform: none;background-color: #d6b50f;">Proceed to
+                checkout</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- <ul class="carts">
   <div *ngFor="let cart of carts">
     <li (click)="onSelect(cart)" [class.selected]="cart === selectedCart">
       <span class="cart-element">
@@ -10,7 +101,7 @@
     </li>
     <button class="delete-button" (click)="deleteCart(cart)">Delete</button>
   </div>
-</ul>
+</ul> -->
 
 <div class="error" *ngIf="error">{{error}}</div>
 

@@ -17,12 +17,15 @@ nav a {
   /* background-color: #eee; */
   border-radius: 4px;
 }
+.nav-link{
+  color: red !important;
+}
 nav a:visited, a:link {
   color: #607D8B;
 }
 nav a:hover {
   color: #039be5;
-  background-color: #CFD8DC;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 nav a.router-link-active {
   color: #039be5;
@@ -79,5 +82,7 @@ nav a.router-link-active {
    outline: none;
    color: #ececec;
  }
+
+
  /* footer end */
  

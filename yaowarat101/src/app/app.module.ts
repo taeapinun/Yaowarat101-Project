@@ -26,7 +26,11 @@ import { HomeComponent } from './home/home.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md'
 
 import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations'
-import { MatSelectModule, MatInputModule } from '@angular/material'
+import { MatSelectModule, MatInputModule } from '@angular/material';
+import { ContactComponent } from './contact/contact.component'
+import { LinkApi } from './app.link-api';
+
+import { FileSelectDirective } from 'ng2-file-upload';
 
 
 export function getAuthServiceConfigs() {
@@ -66,6 +70,8 @@ export function getAuthServiceConfigs() {
     CartDetailComponent,
     UserComponent,
     HomeComponent,
+    ContactComponent,
+    FileSelectDirective
   ],
   providers: [
     ProductService,
@@ -74,7 +80,8 @@ export function getAuthServiceConfigs() {
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    }
+    },
+    LinkApi
   ],
   bootstrap: [
     AppComponent

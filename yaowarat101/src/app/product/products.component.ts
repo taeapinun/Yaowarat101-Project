@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Product } from './product';
 import { ProductService } from './product.service';
 import { CartService } from '../cart/cart.service';
+import { Title } from '@angular/platform-browser';
+
 // import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
 @Component({
@@ -20,8 +22,21 @@ export class ProductsComponent implements OnInit {
   iteminPage = 10;
   maxPage = 0;
   pageArray: number[];
+  categoryBy = '';
+  searchProductText = '';
 
-  constructor(private router: Router, private productService: ProductService, private cartService: CartService) {}
+  constructor(private router: Router, private productService: ProductService, private cartService: CartService, private titleService:Title, private route:ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Yaowarat101 - Products');
+    this.getProducts();
+    this.route.params.forEach((param: Params) => {
+      if(param['category'] !== undefined){
+        this.categoryBy = param['category'];
+      }
+    })
+  }
+
 
   getProducts(): void {
     this.productService
@@ -73,15 +88,16 @@ export class ProductsComponent implements OnInit {
     }, error => (this.error = error));
   }
 
-  ngOnInit(): void {
-    this.getProducts();
-
-    
-    
-  }
+  
 
   selectChange(): void{
     this.getPageArray()
+  }
+
+  categoryChange(): void{
+    if(this.categoryBy == 'allproduct') this.categoryBy = '';
+    if(this.categoryBy == 'necklace') this.categoryBy = 'สร้อยคอ';
+    if(this.categoryBy == 'ring') this.categoryBy = 'แหวน';
   }
 
   changePage(page: number): void{
@@ -95,6 +111,8 @@ export class ProductsComponent implements OnInit {
     this.addingProduct = false;
     this.router.navigate(['/detail', this.selectedProduct.p_Id]);
   }
+
+
 
   addtoCart(product: Product): void {
     console.log(product)

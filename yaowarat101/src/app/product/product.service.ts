@@ -4,12 +4,13 @@ import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Product } from './product';
 import { Headers } from '@angular/http';
+import { LinkApi } from '../app.link-api'
 
 @Injectable()
 export class ProductService {
-  private productsUrl = '/api/products'; // URL to web api
+  private productsUrl = this.linkapi.link + 'products'; // URL to web api
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private linkapi: LinkApi) {}
 
   getProducts() {
     return this.http

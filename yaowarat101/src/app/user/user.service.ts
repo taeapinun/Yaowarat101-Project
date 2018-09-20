@@ -4,12 +4,13 @@ import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from './user';
 import { Headers } from '@angular/http';
+import { LinkApi } from '../app.link-api'
 
 @Injectable()
 export class UserService{
-  private usersUrl = '/api/user'; // URL to web api
+  private usersUrl = this.linkapi.link + 'user'; // URL to web api
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private linkapi: LinkApi) { }
 
 
   getUsers() {

@@ -9,7 +9,7 @@ import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
 export class AppComponent implements OnInit {
   constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService) { }
   userName: string;
-  title = 'Yaowarat101';
+  
 
   ngOnInit() {
     this.userName = this.storage.get('userName');
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     this.storage.remove('userName');
     window.location.reload();
   }
+
 }
 
 
