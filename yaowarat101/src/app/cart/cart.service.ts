@@ -9,9 +9,9 @@ import { LinkApi } from '../app.link-api'
 
 @Injectable()
 export class CartService {
-  private cartsUrl = this.linkapi.link + 'carts/1'; // URL to web api
+  private cartsUrl = LinkApi.link + 'carts/1'; // URL to web api
 
-  constructor(private http: HttpClient, private linkapi: LinkApi) {}
+  constructor(private http: HttpClient) {}
   getCarts() {
     return this.http
       .get<Cart[]>(this.cartsUrl)

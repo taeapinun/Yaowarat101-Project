@@ -4,6 +4,7 @@ import { Cart } from './cart';
 import { CartService } from './cart.service';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Title } from '@angular/platform-browser'
+import { LinkApi } from '../app.link-api';
 
 @Component({
   selector: 'my-cart',
@@ -17,6 +18,7 @@ export class CartsComponent implements OnInit {
   error: any;
   showNgFor = false;
   totalPrice: number;
+  picApi = LinkApi.pic;
 
   constructor(private router: Router, private cartService: CartService, private titleService:Title) {}
 

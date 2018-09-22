@@ -4,6 +4,7 @@ import { Product } from './product';
 import { ProductService } from './product.service';
 import { CartService } from '../cart/cart.service';
 import { Title } from '@angular/platform-browser';
+import { LinkApi } from '../app.link-api';
 
 // import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
@@ -24,6 +25,9 @@ export class ProductsComponent implements OnInit {
   pageArray: number[];
   categoryBy = '';
   searchProductText = '';
+  linkApi = LinkApi.link;
+  picApi = LinkApi.pic;
+  
 
   constructor(private router: Router, private productService: ProductService, private cartService: CartService, private titleService:Title, private route:ActivatedRoute) {}
 
@@ -54,7 +58,7 @@ export class ProductsComponent implements OnInit {
 
   getPageArray(): void{
     this.pageArray = [];
-    this.maxPage = this.products.length / this.iteminPage;
+    this.maxPage = Math.ceil(this.products.length / this.iteminPage);
     this.pageArray.push(1);
     for (let index = 2; index <= this.maxPage; index++) {
       this.pageArray.push(index);
@@ -77,6 +81,8 @@ export class ProductsComponent implements OnInit {
     if (savedProduct) {
       this.getProducts();
     }
+    let element: HTMLElement = document.getElementById('closemodalProduct') as HTMLElement;
+    element.click();
   }
 
   deleteProduct(product: Product): void {
@@ -101,15 +107,16 @@ export class ProductsComponent implements OnInit {
   }
 
   changePage(page: number): void{
-    if(page > 0 && page < this.maxPage){
+    if(page > 0 && page <= this.maxPage){
       this.inPage = page;
+      window.scroll(0,0);
     }
   }
 
   onSelect(product: Product): void {
     this.selectedProduct = product;
     this.addingProduct = false;
-    this.router.navigate(['/detail', this.selectedProduct.p_Id]);
+    // this.router.navigate(['/detail', this.selectedProduct.p_Id]);
   }
 
 

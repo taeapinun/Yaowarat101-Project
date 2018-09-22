@@ -8,9 +8,9 @@ import { LinkApi } from '../app.link-api'
 
 @Injectable()
 export class UserService{
-  private usersUrl = this.linkapi.link + 'user'; // URL to web api
+  private usersUrl = LinkApi.link + 'user'; // URL to web api
 
-  constructor(private http: HttpClient, private linkapi: LinkApi) { }
+  constructor(private http: HttpClient) { }
 
 
   getUsers() {

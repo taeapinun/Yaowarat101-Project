@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql'); 
+const path = require('path');
+const fs = require('fs');
+const multer = require('multer');
 
 
 /////////////////////// start config server mysql ////////////////////
@@ -18,6 +21,38 @@ connection.connect(function(err) {
 	}
 });
 /////////////////////// end config server mysql ////////////////////
+
+
+////////////////// start config directory file upload ////////////////
+const dirProducts = '../image/products';
+var fileName = '';
+
+let storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, dirProducts);
+	},
+	filename: (req, file, cb) => {
+		cb(null, fileName + path.extname(file.originalname));
+	}
+})
+let upload = multer({ storage: storage });
+
+router.post('/upload', upload.single('photo'), function (req, res) {
+	if (!req.file) {
+		console.log("No file received");
+		return res.send({
+			success: false
+		});
+
+	} else {
+		console.log('file received');
+		return res.send({
+			success: true
+		})
+	}
+
+});
+////////////////// end config directory file upload ////////////////
 
 
 ////////////////////// start api for product table //////////////////////

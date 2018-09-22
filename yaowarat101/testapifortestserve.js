@@ -22,7 +22,7 @@ let storage = multer.diskStorage({
 })
 let upload = multer({ storage: storage });
 
-app.post('/api/upload', upload.single('photo'), function (req, res) {
+app.post('/api/upload',upload.single('test'), function (req, res) {
     if (!req.file) {
         console.log("No file received");
         return res.send({

@@ -19,9 +19,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let cart of carts; let i = index">
-            <td><button style="color: #d6b50f;" class="close bg-white" type="button" aria-label="Close" (click)="deleteCart(cart)"><span aria-hidden="true">&times;</span></button></td>
+            <td><button style="color: #d6b50f;background-color: transparent;" class="close" type="button" aria-label="Close" (click)="deleteCart(cart)"><span aria-hidden="true">&times;</span></button></td>
             <td>{{ i+1 }}</td>
-            <td>{{ cart.p_Id }}.jpg</td>
+            <td><img src="{{ picApi }}image/products/{{ cart.p_Id }}.jpg" style="width:100px;height:100px;"></td>
             <td>{{ cart.p_Id }}</td>
             <td>{{ cart.p_Name }}</td>
             <td>{{ cart.p_Price | number:'1.2-2' }} ฿</td>

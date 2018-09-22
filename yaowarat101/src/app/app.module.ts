@@ -80,8 +80,7 @@ export function getAuthServiceConfigs() {
     {
       provide: AuthServiceConfig,
       useFactory: getAuthServiceConfigs
-    },
-    LinkApi
+    }
   ],
   bootstrap: [
     AppComponent

@@ -8,9 +8,9 @@ import { LinkApi } from '../app.link-api'
 
 @Injectable()
 export class ProductService {
-  private productsUrl = this.linkapi.link + 'products'; // URL to web api
+  private productsUrl = LinkApi.link + 'products'; // URL to web api
 
-  constructor(private http: HttpClient, private linkapi: LinkApi) {}
+  constructor(private http: HttpClient) {}
 
   getProducts() {
     return this.http
@@ -24,7 +24,7 @@ export class ProductService {
     );
   }
 
-  save(product: Product): Observable<Product> {
+  save(product: Product): Observable<any> {
     if (product.p_Id) {
       console.log("already have this product");
       return this.http.put<Product>(this.productsUrl, product);

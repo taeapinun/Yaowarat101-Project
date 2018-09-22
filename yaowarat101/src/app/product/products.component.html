@@ -20,7 +20,6 @@
 
 
 
-
 <h2>My Products</h2>
 <ul class="products w-100">
   <div *ngFor="let product of products | productFilter : searchProductText : categoryBy ; let i=index" style="display: inline-flex">
@@ -30,12 +29,12 @@
           aria-label="Close" (click)="deleteProduct(product)">
           <span aria-hidden="true" style=" font-size: larger; color:#dc3545">&times;</span>
         </button>
-        <li (click)="onSelect(product)" [class.selected]="product === selectedProduct" style="margin-top: 2em;">
+        <li (click)="onSelect(product)" data-toggle="modal" data-target="#modalOnSelect" [class.selected]="product === selectedProduct" style="margin-top: 2em;">
           <span class="product-element">
             <span class="badge">{{product.p_Id}}</span> {{product.p_Name}}
             <div class="zoom view overlay">
-              <img *ngIf="product.p_Type == 'สร้อยคอ'" src="assets/image/products/{{ product.p_Id }}.jpg" style="width: 225px; height: 300px;">
-              <img *ngIf="product.p_Type == 'แหวน'" src="assets/image/products/{{ product.p_Id }}.jpg" style="width: 225px; height: 216px;">
+              <img *ngIf="product.p_Type == 'สร้อยคอ'" src="{{ picApi }}image/products/{{ product.p_Id }}.jpg" style="width: 225px; height: 300px;">
+              <img *ngIf="product.p_Type == 'แหวน'" src="{{ picApi }}image/products/{{ product.p_Id }}.jpg" style="width: 225px; height: 216px;">
             </div>
             ราคา: {{product.p_Price | number:'1.2-2'}} ฿
           </span>
@@ -103,14 +102,14 @@
 
 <div class="error" *ngIf="error">{{error}}</div>
 
-<button (click)="addProduct()"  data-toggle="modal" data-target="#modalProduct" class="btn btn-primary btn-sm">Add New Product</button>
+<button (click)="addProduct()"  data-toggle="modal" data-target="#modalProduct" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-sm">Add New Product</button>
 
 <div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header text-center">
               <h4 class="modal-title w-100 font-weight-bold">Add New Product</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close(null)">
+              <button id="closemodalProduct" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close(null)">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
@@ -118,6 +117,28 @@
 
             <div *ngIf="addingProduct">
               <my-product-detail (close)="close($event)"></my-product-detail>
+            </div>
+
+          </div>
+          <!-- <div class="modal-footer d-flex justify-content-center">
+              <button class="btn btn-unique">Send <i class="fa fa-paper-plane-o ml-1"></i></button>
+          </div> -->
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalOnSelect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header text-center">
+              <h4 class="modal-title w-100 font-weight-bold">Detail Product</h4>
+              <button id="closemodalProduct" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close(null)">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div>
+              <my-product-detail [productInput]="selectedProduct" [products]="products"></my-product-detail>
             </div>
 
           </div>
