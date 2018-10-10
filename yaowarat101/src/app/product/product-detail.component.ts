@@ -54,11 +54,13 @@ export class ProductDetailComponent implements OnInit {
 
 
   save(): void {
+    console.log(this.product)
     this.productService.save(this.product).subscribe(product => {
       this.product = product;
       this.textAfterSave = 'Add product successfully';
       this.uploader.uploadAll();
       this.close.emit(null);
+      window.location.reload();
     }, error => (this.error = error));
   }
 
@@ -69,11 +71,11 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  addtoCart(product: Product): void {
-    console.log(product)
-    this.cartService.post(product).subscribe(res => {
-      console.log(res);
-    })
-  }
+  // addtoCart(product: Product): void {
+  //   console.log(product)
+  //   this.cartService.post(product).subscribe(res => {
+  //     console.log(res);
+  //   })
+  // }
 
 }

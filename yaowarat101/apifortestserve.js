@@ -33,6 +33,7 @@ var server = app.listen(8081, function () {
 	console.log("app listening at port %s", port)
 });
 var corsOptions = {
+	// origin: 'http://192.168.1.198:4200',
 	origin: 'http://192.168.1.198:4200',
 	optionsSuccessStatus: 200
 }
@@ -297,7 +298,7 @@ app.post('/user', function (req, res) {
 
 
 app.get('/user/email', function (req, res) {
-	$query = 'SELECT u_Email,COUNT(u_Email) from ywr_user GROUP BY u_Email';
+	$query = 'SELECT u_Email,COUNT(u_Email),u_Role from ywr_user GROUP BY u_Email';
 	connection.query($query, function (err, rows, fields) {
 		if (err) {
 			console.log(err);
@@ -308,5 +309,182 @@ app.get('/user/email', function (req, res) {
 })
 
 
+app.get('/user/id/:id', function (req, res) {
+	$query = 'SELECT * from ywr_user WHERE u_Id = ' + req.params.id;
+	connection.query($query, function (err, rows, fields) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		res.json(rows);
+	});
+})
 
 ////////////////////// end api for user table /////////////////////
+
+////////////////////// start api for get image /////////////////////
+
+app.use('/image/products/:picName', function (req, res) {
+	res.sendFile(path.join(__dirname, './image/products/' + req.params.picName));
+})
+
+app.use('/image/:picName', function (req, res) {
+	res.sendFile(path.join(__dirname, './image/' + req.params.picName));
+})
+
+
+////////////////////// end api for get image /////////////////////
+
+
+
+
+/////////////////////////////// end insert data order /////////////////////////////
+// app.post('/checkout/', function (req, res) {
+// 	var productlist;
+// 	var userData;
+// 	var orderId;
+// 	var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
+// 	$query = 'SELECT * from ywr_user WHERE u_Id = ' + req.params.u_Id;
+
+// 	connection.query($query, function (err, rows, fields) {
+// 		if (err) {
+// 			console.log(err);
+// 			return;
+// 		}
+// 		userData = rows
+// 		$queryforaddorder = 'INSERT INTO ywr_order (u_Id, u_Name, u_Address, u_Tel, o_Datetime, o_Status) VALUES ("' + userData[0].u_Id + '","' + userData[0].u_Name + '","' + userData[0].u_Address + '","' + userData[0].u_Tel + '","' + date + '","' + 'confirm checkout' + '")';
+// 		connection.query($queryforaddorder, function (err, rows, fields) {
+// 			if (err) console.log(err)
+// 				orderId = rows.insertId
+// 			$queryforproduct = 'SELECT * from ywr_cart WHERE u_Id = ' + req.params.u_Id;
+// 			connection.query($queryforproduct, function (err, rows, fields) {
+// 				if (err) {
+// 					console.log(err);
+// 					return;
+// 				}
+// 				productlist = rows
+
+// 				for(i in productlist){
+
+// 					$queryforaddorderproduct = 'INSERT INTO ywr_orderproduct (o_Id, p_Id) VALUES ("' + orderId +'","'+ productlist[i].p_Id + '")'
+// 					connection.query($queryforaddorderproduct, function(err, rows, fields){
+// 						if (err) {
+// 							console.log(err);
+// 							return;
+// 						}
+// 						res.end("succesfully")
+// 					})
+// 				}
+
+// 			});
+
+// 		});
+// 	});
+// })
+
+/////////////////////////////// end insert data order /////////////////////////////
+
+
+
+app.post('/checkout/', function (req, res) {
+	var productlist;
+	var userData;
+	var orderId;
+	var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
+	$query = '     INSERT INTO ywr_order (u_Id, u_Name, u_Address, u_Tel, o_Datetime, o_Status) VALUES                     ';
+
+	connection.query($query, function (err, rows, fields) {
+		if (err) {
+			console.log(err);
+		}
+
+	});
+})
+
+/////////////////////////////// end insert data order /////////////////////////////
+
+
+
+/////////////////////////////// get data order /////////////////////////////
+app.get('/checkout/:u_Id', function (req, res) {
+	var productlist;
+	var userData;
+	var orderId;
+	var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
+	$query = 'SELECT * FROM ywr_order INNER JOIN ywr_orderproduct ON ywr_orderproduct.o_Id = ywr_order.o_Id INNER JOIN ywr_products ON ywr_products.p_Id = ywr_orderproduct.p_Id WHERE u_Id = ' + req.params.u_Id;
+	// console.log($query)
+
+	connection.query($query, function (err, rows, fields) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		res.json(rows);
+	});
+})
+
+app.get('/checkout/orders/:u_Id', function (req, res) {
+	var productlist;
+	var userData;
+	var orderId;
+	var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
+	$query = 'SELECT * FROM ywr_order WHERE u_Id = ' + req.params.u_Id;
+	// console.log($query)
+
+	connection.query($query, function (err, rows, fields) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+		res.json(rows);
+	});
+})
+
+/////////////////////////////// get data order /////////////////////////////
+
+
+/////////////////////////////// get data order /////////////////////////////
+var o_Id;
+app.post('/checkout/order/', function (req, res) {
+
+	$u_Id = req.body.u_Id.toString();
+	$u_Name = req.body.u_Name.toString();
+	$u_Address = req.body.u_Address.toString();
+	$u_Tel = req.body.u_Tel.toString();
+	var date = new Date().toLocaleString().slice(0, 19).replace('T', ' ');
+
+	$query = 'INSERT INTO ywr_order (u_Id, u_Name, u_Address, u_Tel, o_Datetime, o_Status) VALUES ("' + $u_Id + '", "' + $u_Name + '", "' + $u_Address + '", "' + $u_Tel + '", "' + date + '", "confirm checkout")';
+
+	// console.log($query)
+
+	connection.query($query, function (err, rows, fields) {
+		if (err) {
+			console.log(err);
+		}
+		o_Id = rows.insertId;
+		res.json(rows)
+	});
+})
+
+app.post('/checkout/orderproduct/', function (req, res) {
+	// console.log(o_Id)
+	req.body.forEach(data => {
+		// console.log(data.c_Id)
+		// console.log(data)
+		$query2 = 'INSERT INTO ywr_orderproduct (o_Id,p_Id,op_Amount) VALUES ("' + o_Id + '", "' + data.p_Id + '", "' + data.p_Amount + '")';
+
+		connection.query($query2, function (err, rows, fields) {
+			if (err) {
+				console.log(err);
+			}
+			res.end("ok")
+		});
+	});
+
+})
+
+
+
+/////////////////////////////// get data order /////////////////////////////
+
+

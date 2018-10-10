@@ -1,34 +1,177 @@
 <div *ngIf="userName == null" class="modal-footer d-flex justify-content-center">
-  
-  <button (click)="socialSignIn('facebook')" type="button" mdbBtn class="btn-tw waves-light" mdbWavesEffect style="background-color: #3b5998"><i class="fa fa-facebook left"></i>Login with Facebook</button>
-  <button (click)="socialSignIn('email')" type="button" mdbBtn class="btn-tw waves-light" mdbWavesEffect style="color: #000000"><i class="fa fa-at left"></i>Login with Email</button>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <ul class="nav nav-pills nav-justified mb-3 mt-4 mx-4" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-Login-tab" data-toggle="pill" href="#pills-Login" role="tab"
+              aria-controls="pills-Login" aria-selected="true" style="color: #ff0000"><i class="fa fa-user mr-1"></i>
+              เข้าสู่ระบบ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-Register-tab" data-toggle="pill" href="#pills-Register" role="tab"
+              aria-controls="pills-Register" aria-selected="false" style="color: #ff0000"><i class="fa fa-user-plus mr-1"></i>
+              สมัครสมาชิก</a>
+          </li>
+        </ul>
+
+        <!-- <ul class="nav md-pills nav-justified pills-primary mt-4 mx-4" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"><i class="fa fa-user mr-1"></i>
+              Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#panel2" role="tab"><i class="fa fa-user-plus mr-1"></i>
+              Register</a>
+          </li>
+        </ul> -->
 
 
-  <div *ngIf="user" style="width: max-content">
-    <h2>Register</h2>
-    <div>
-      <label>Email: </label>
-      <input [(ngModel)]="user.u_Email" placeholder="Email" />
-    </div>
-    <div>
-      <label>Name: </label>
-      <input [(ngModel)]="user.u_Name" placeholder="Name" />
-    </div>
-    <div>
-      <label>Tel: </label>
-      <input [(ngModel)]="user.u_Tel" placeholder="Tel" />
-    </div>
-    <div>
-      <label>Gender: </label>
-      <input [(ngModel)]="user.u_Gender" placeholder="Gender" />
-    </div>
-    <div>
-      <label>Address: </label>
-      <input [(ngModel)]="user.u_Address" placeholder="Address" />
-    </div>
-    <div>
-      <!-- <button (click)="goBack()" *ngIf="this.navigated != false">Back</button> -->
-      <button (click)="save()" class="buttonSave">Save</button>
+        <div class="tab-content pt-2 pl-1" id="pills-tabContent">
+
+          <div class="tab-pane fade show active" id="pills-Login" role="tabpanel" aria-labelledby="pills-Login-tab">
+
+            <div class="row">
+              <div class="col-md-12">
+
+                <div class="md-form mb-5">
+                 
+                </div>
+
+                <div class="md-form mb-4">
+                  
+
+                  <form align="center">
+
+                     <!-- <i class="fa fa-envelope prefix grey-text"></i> -->
+                    <input [(ngModel)]="login.email" [ngModelOptions]="{standalone: true}" type="email" id="defaultForm-email" class="form-control validate"
+                      placeholder="อีเมล">
+
+                       <!-- <i class="fa fa-lock prefix grey-text"></i> -->
+                    <input [(ngModel)]="login.password" [ngModelOptions]="{standalone: true}" type="password" id="defaultForm-pass" class="form-control validate"
+                      placeholder="รหัสผ่าน">
+                     
+
+                    <button class="btn" style="background-color: #ff0000; color:white;" (click)="loginBtn()">เข้าสู่ระบบ
+                      <i class="fa fa-sign-in ml-1" style="font-size:20px;"></i></button>
+
+                  </form>
+
+                  <p class="font-small blue-text d-flex justify-content-end"> <a href="#" class="blue-text ml-1">
+                      ลืมรหัสผ่าน?</a></p>
+                </div>
+
+
+                
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="text-center mb-3 col-md-12">
+                <hr>
+                <button (click)="socialSignIn('facebook')" type="button" mdbBtn class="btn btn-tw btn-fb waves-light col-md-7"
+                  mdbWavesEffect style="background-color: #3b5998"><i class="fa fa-facebook left" style="font-size:20px;"></i> เข้าสู่ระบบด้วย
+                  Facebook</button>
+                <!-- <button (click)="socialSignIn('email')" type="button" mdbBtn class="btn-tw waves-light col-md-5"
+                  mdbWavesEffect style="color: #000000" disabled><i class="fa fa-at left"></i>Register</button> -->
+              </div>
+            </div>
+
+            <!-- <div *ngIf="user" hidden style="width: max-content">
+              <h2>Register</h2>
+              <div>
+                <label>Email: </label>
+                <input [(ngModel)]="user.u_Email" placeholder="Email" />
+              </div>
+              <div>
+                <label>Name: </label>
+                <input [(ngModel)]="user.u_Name" placeholder="Name" />
+              </div>
+              <div>
+                <label>Tel: </label>
+                <input [(ngModel)]="user.u_Tel" placeholder="Tel" />
+              </div>
+              <div>
+                <label>Gender: </label>
+                <input [(ngModel)]="user.u_Gender" placeholder="Gender" />
+              </div>
+              <div>
+                <label>Address: </label>
+                <input [(ngModel)]="user.u_Address" placeholder="Address" />
+              </div>
+              <div>
+
+                <button (click)="save()" class="buttonSave">Save</button>
+              </div>
+            </div> -->
+
+          </div>
+
+          <div class="tab-pane fade" id="pills-Register" role="tabpanel" aria-labelledby="pills-Register-tab">
+
+            <!-- <p class="h4 mb-4">Contact us</p> -->
+            <div class="md-form mt-3">
+              <i class="fa fa-user-circle prefix grey-text" aria-hidden="true"></i>
+              <input [(ngModel)]="user.u_Name" type="text" id="materialContactFormName" class="form-control"
+                placeholder="ชื่อ">
+            </div>
+
+
+            <div class="md-form">
+              <i class="fa fa-envelope prefix grey-text"></i>
+              <input [(ngModel)]="user.u_Email" type="email" id="materialContactFormEmail" class="form-control"
+                placeholder="อีเมล">
+            </div>
+
+            <div class="md-form">
+              <i class="fa fa-lock prefix grey-text"></i>
+              <input [(ngModel)]="user.u_Password" type="password" id="materialContactFormPassword" class="form-control"
+                placeholder="รหัสผ่าน">
+            </div>
+
+            <div class="md-form">
+              <i class="fa fa-lock prefix grey-text"></i>
+              <input [(ngModel)]="confirmPassword" type="password" id="materialContactFormConfirmPassword" class="form-control"
+                placeholder="ยืนยันรหัสผ่าน">
+            </div>
+
+            <div class="md-form">
+              <i class="fa fa-phone prefix grey-text" aria-hidden="true"></i>
+              <input [(ngModel)]="user.u_Tel" type="text" id="materialContactFormPhone" class="form-control"
+                placeholder="เบอร์ติดต่อ" maxlength="10">
+            </div>
+
+
+            <div class="md-form">
+              <i class="fa fa-transgender prefix grey-text" aria-hidden="true"></i>
+              <select style="margin-left: 2.5em; width: 91%;" class="browser-default custom-select" [(ngModel)]="user.u_Gender">
+                <option [ngValue]="gender" disabled selected>เพศ</option>
+                <option value="Male">ชาย</option>
+                <option value="Female">หญิง</option>
+              </select>
+            </div>
+
+            <div class="md-form">
+              <i class="fa fa-address-card prefix grey-text"></i>
+              <textarea [(ngModel)]="user.u_Address" type="text" id="materialContactFormAddress" class="form-control"
+                placeholder=" ที่อยู่"></textarea>
+            </div>
+
+
+
+            <button class="btn btn-block" type="submit" style="background-color: #ff0000; color:white;" (click)="save()">สมัครสมาชิก</button>
+
+
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

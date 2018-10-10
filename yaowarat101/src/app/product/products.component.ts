@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Product } from './product';
 import { ProductService } from './product.service';
 import { CartService } from '../cart/cart.service';
 import { Title } from '@angular/platform-browser';
 import { LinkApi } from '../app.link-api';
+import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import swal from 'sweetalert2';
 
 // import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
@@ -20,25 +22,44 @@ export class ProductsComponent implements OnInit {
   error: any;
   showNgFor = false;
   inPage = 1;
-  iteminPage = 10;
+  iteminPage = "10";
+  iteminPageStr = "10";
   maxPage = 0;
   pageArray: number[];
   categoryBy = '';
   searchProductText = '';
   linkApi = LinkApi.link;
   picApi = LinkApi.pic;
+
+  userName = undefined;
+  userRole = undefined;
+  userId = undefined;
+  // this.user.userName = null;
+  // this.user.userRole = null;
+
   
 
-  constructor(private router: Router, private productService: ProductService, private cartService: CartService, private titleService:Title, private route:ActivatedRoute) {}
+  constructor(private router: Router, private productService: ProductService, private cartService: CartService, private titleService:Title, private route:ActivatedRoute, @Inject(SESSION_STORAGE) private storage: WebStorageService) {}
 
   ngOnInit(): void {
+    window.scroll(0,0);
     this.titleService.setTitle('Yaowarat101 - Products');
-    this.getProducts();
+    this.userName = this.storage.get('userName');
+    this.userRole = this.storage.get('userRole');
+    this.userId = this.storage.get('userId');
+    
+
+
+
+    
     this.route.params.forEach((param: Params) => {
       if(param['category'] !== undefined){
         this.categoryBy = param['category'];
       }
+      
     })
+
+    this.getProducts();
   }
 
 
@@ -47,8 +68,8 @@ export class ProductsComponent implements OnInit {
       .getProducts()
       .subscribe(
         products => (
-          this.products = products,
-          this.getPageArray()
+          this.products = products
+          // this.getPageArray()
           ),
         error => (this.error = error)
       )
@@ -56,14 +77,18 @@ export class ProductsComponent implements OnInit {
       
   }
 
-  getPageArray(): void{
-    this.pageArray = [];
-    this.maxPage = Math.ceil(this.products.length / this.iteminPage);
-    this.pageArray.push(1);
-    for (let index = 2; index <= this.maxPage; index++) {
-      this.pageArray.push(index);
-    }
-  }
+  // getPageArray(): void{
+  //   // console.log(this.products)
+  //   this.pageArray = [];
+  //   // console.log(this.maxPage)
+  //   let element = ((document.getElementById('itemMax') as HTMLInputElement).value);
+  //   var productLength = element == '0' ? this.products.length:element;
+  //   this.maxPage = Math.ceil(Number(productLength) / this.iteminPage);
+  //   this.pageArray.push(1);
+  //   for (let index = 2; index <= this.maxPage; index++) {
+  //     this.pageArray.push(index);
+  //   }
+  // }
 
 
   addProduct(): void {
@@ -85,25 +110,47 @@ export class ProductsComponent implements OnInit {
     element.click();
   }
 
-  deleteProduct(product: Product): void {
-    this.productService.deleteProduct(product).subscribe(res => {
-      this.products = this.products.filter(h => h !== product);
-      if (this.selectedProduct === product) {
-        this.selectedProduct = null;
+  async deleteProduct(product: Product) {
+    await swal({
+      title: 'ยืนยันที่จะลบสินค้านี้?',
+      text: "",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก'
+    }).then((result) => {
+      if (result.value) {
+        this.productService.deleteProduct(product).subscribe(async res => {
+          this.products = this.products.filter(h => h !== product);
+          await swal(
+            'ลบสินค้าสำเร็จ!',
+            'สินค้าของคุณถูกลบแล้ว.',
+            'success'
+          )
+          if (this.selectedProduct === product) {
+            this.selectedProduct = null;
+          }
+        }, error => (this.error = error));
+        
+
       }
-    }, error => (this.error = error));
+    })
+    
   }
 
   
 
   selectChange(): void{
-    this.getPageArray()
+    // this.getPageArray()
   }
 
   categoryChange(): void{
-    if(this.categoryBy == 'allproduct') this.categoryBy = '';
-    if(this.categoryBy == 'necklace') this.categoryBy = 'สร้อยคอ';
-    if(this.categoryBy == 'ring') this.categoryBy = 'แหวน';
+    if(this.categoryBy == 'all') this.categoryBy = '';
+    // this.getPageArray()
+    this.changePage(1);
+    // console.log(this.categoryBy)
   }
 
   changePage(page: number): void{
@@ -111,6 +158,7 @@ export class ProductsComponent implements OnInit {
       this.inPage = page;
       window.scroll(0,0);
     }
+    // this.getPageArray()
   }
 
   onSelect(product: Product): void {
@@ -121,11 +169,35 @@ export class ProductsComponent implements OnInit {
 
 
 
-  addtoCart(product: Product): void {
-    console.log(product)
-    this.cartService.post(product).subscribe(res => {
-      console.log(res);
-    })
+  async addtoCart(product: Product, id: number) {
+    if(this.userId != undefined)
+    {
+      this.cartService.post(product,id).subscribe(async res => {
+        await swal({
+          title: 'ตะกร้าสินค้า',
+          text: 'เพิ่มในตะกร้าสินค้าสำเร็จ',
+          type: 'success',
+          confirmButtonText: 'ยืนยัน',
+          backdrop: false
+        })
+      })
+    }
+    else{
+      await swal({
+        title: 'เข้าสู่ระบบ',
+        text: 'โปรดเข้าสู่ระบบ',
+        type: 'error',
+        showConfirmButton: true
+      })
+    }
+    
+    
+  }
+
+  counter(i: number) {
+    i = Math.ceil(Number(i/Number(this.iteminPage)));
+    this.maxPage = new Array(i).length;
+    return new Array(i);
   }
 
   // searchTextChange(text: any): void{

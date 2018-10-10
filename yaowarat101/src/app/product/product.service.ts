@@ -25,10 +25,11 @@ export class ProductService {
   }
 
   save(product: Product): Observable<any> {
-    if (product.p_Id) {
-      console.log("already have this product");
-      return this.http.put<Product>(this.productsUrl, product);
-    }
+    console.log(product)
+    // if (product.p_Id) {
+    //   console.log("already have this product");
+    //   return this.http.put<Product>(this.productsUrl, product);
+    // }
     return this.http.post<Product>(this.productsUrl, product);
   }
 
@@ -37,9 +38,9 @@ export class ProductService {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
 
-    const url = `${this.productsUrl}/${product.p_Id}`
+    const url = `${this.productsUrl}delete/${product.p_Id}`
 
-    return this.http.delete<Product>(url, options);
+    return this.http.post<Product>(url, options);
   }
 
   // Add new Product

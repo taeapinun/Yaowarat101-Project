@@ -19,6 +19,12 @@ export class UserService{
       .pipe(map(data => data), catchError(this.handleError));
   }
 
+  getUser(id: number) {
+    return this.http
+      .get<User>(this.usersUrl + '/id/' + id)
+      .pipe(map(data => data), catchError(this.handleError));
+  }
+
   save(user: User): Observable<User> {
     // if (user.p_Id) {
     //   console.log("already have this product");

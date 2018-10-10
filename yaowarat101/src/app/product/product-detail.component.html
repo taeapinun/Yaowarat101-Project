@@ -74,49 +74,65 @@
         <div class="zoom view overlay">
           <img *ngIf="productInput.p_Type == 'สร้อยคอ'" src="{{ picApi }}image/products/{{ productInput.p_Id }}.jpg"
             style="width: 225px; height: 300px;" class="img-fluid rounded mx-auto d-block">
-          <img *ngIf="productInput.p_Type == 'แหวน'" src="{{ picApi }}image/products/{{ productInput.p_Id }}.jpg" style="width: 225px; height: 216px;" class="img-fluid rounded mx-auto d-block">
+          <img *ngIf="productInput.p_Type == 'แหวน'" src="{{ picApi }}image/products/{{ productInput.p_Id }}.jpg" style="width: 225px; height: 216px;"
+            class="img-fluid rounded mx-auto d-block">
+          <img *ngIf="productInput.p_Type == 'กำไล'" src="{{ picApi }}image/products/{{ productInput.p_Id }}.jpg" style="width: 225px; height: 216px;"
+            class="img-fluid rounded mx-auto d-block">
+          <img *ngIf="productInput.p_Type == 'สร้อยข้อมือ'" src="{{ picApi }}image/products/{{ productInput.p_Id }}.jpg" style="width: 225px; height: 216px;"
+            class="img-fluid rounded mx-auto d-block">
+            <img *ngIf="productInput.p_Type == 'ต่างหู'" src="{{ picApi }}image/products/{{ productInput.p_Id }}.jpg" style="width: 225px; height: 216px;"
+            class="img-fluid rounded mx-auto d-block">
         </div>
       </div>
       <div class="col-md-6">
         <div class="md-form">
+          <p>รหัส : {{productInput.p_Id}} </p>
           <input style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Id" placeholder="Id" class="form-control "
             hidden />
         </div>
         <div class="md-form">
-          <input style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Name" placeholder="Name" class="form-control " />
+          <p>ชื่อ : {{productInput.p_Name}} </p>
+          <input hidden style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Name" placeholder="Name"
+            class="form-control " />
         </div>
         <div class="md-form">
-          <select class="form-control" style="border: none;border-bottom: 1px solid #ced4da; line-height: normal;" type="text"
-            [(ngModel)]="productInput.p_Type" placeholder="Type">
+          <p>ประเภท : {{productInput.p_Type}} </p>
+          <select hidden class="form-control" style="border: none;border-bottom: 1px solid #ced4da; line-height: normal;"
+            type="text" [(ngModel)]="productInput.p_Type" placeholder="Type">
             <option value="สร้อยคอ">สร้อยคอ</option>
             <option value="แหวน">แหวน</option>
           </select>
         </div>
         <div class="md-form">
-          <input style="line-height: normal;" type="text" [(ngModel)]="productInput.p_PercentGold" placeholder="Percent Gold"
+          <p>เปอร์เซนต์ทอง : {{productInput.p_PercentGold}} %</p>
+          <input hidden style="line-height: normal;" type="text" [(ngModel)]="productInput.p_PercentGold" placeholder="Percent Gold"
             class="form-control " />
         </div>
         <div class="md-form">
-          <input style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Weight" placeholder="Weight"
+          <p>น้ำหนัก : {{productInput.p_Weight}} กรัม</p>
+          <input hidden style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Weight" placeholder="Weight"
             class="form-control " />
         </div>
         <div class="md-form">
-          <input style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Length" placeholder="Length"
+          <p>ขนาด : {{productInput.p_Length}} %</p>
+          <input hidden style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Length" placeholder="Length"
             class="form-control " />
         </div>
         <div class="md-form">
-          <input style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Price" placeholder="Price" class="form-control " />
+          <p class="font-weight-bold">ราคา : {{productInput.p_Price}} บาท</p>
+          <input hidden style="line-height: normal;" type="text" [(ngModel)]="productInput.p_Price" placeholder="Price"
+            class="form-control " />
         </div>
 
-        
-        <input type="file" name="photo" accept=".jpg" ng2FileSelect [uploader]="uploader" />
+
+        <input hidden type="file" name="photo" accept=".jpg" ng2FileSelect [uploader]="uploader" />
 
         <div>
           <button (click)="goBack()" *ngIf="this.navigated != false" class="btn btn-secondary btn-sm">Back</button>
           <!-- <button (click)="save()" class="btn btn-success btn-sm float-right">Save</button> -->
         </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button (click)="save()" class="btn btn-success btn-sm float-right" [disabled]="!uploader.getNotUploadedItems().length">Save
+        <div class="d-flex justify-content-center">
+          <button hidden (click)="save()" class="btn btn-success btn-sm float-right" [disabled]="!uploader.getNotUploadedItems().length">Save
             <i class="fa fa-paper-plane-o ml-1"></i></button>
         </div>
       </div>
@@ -124,3 +140,11 @@
   </div>
 </div>
 <!-- End Select Product -->
+
+<div>
+  <style>
+    .hidden {
+      visibility: hidden
+    }
+  </style>
+</div>

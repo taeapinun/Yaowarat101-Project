@@ -14,6 +14,7 @@ import { LinkApi } from '../app.link-api';
 export class HomeComponent implements OnInit {
   linkApi = LinkApi.link;
   picApi = LinkApi.pic;
+  
 
   constructor(private titleService: Title) { }
 
