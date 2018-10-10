@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@font-face{
+    font-family: Basicaline;
+    src: url("./Basicaline-NonCommercial.otf") format("truetype");
+}
+
+@font-face{
+    font-family: was_piaere;
+    src: url("./was@piaere.ttf") format("truetype");
+}
+
+@font-face{
+    font-family: sukhumvit;
+    src: url("./sukhumvit.ttf") format("truetype");
+}
+
+h2 { color: #444; font-weight: lighter; }
+body { 
+    margin: 2em; 
+    // background: url("assets/bgw.jpg") no-repeat center center fixed;
+    background-color: red !important;
+}
+body, input[text], button { color: #888; font-family: Cambria, Georgia; }
+button { padding: 0.2em; font-size: 14px}
+* { font-family: sukhumvit; }
+
+
+.form-control:focus {
+    border-color: rgb(214, 181, 15) !important;
+    box-shadow: 0 0 0 0.2rem rgba(214, 181, 15, 0.25) !important;
+  }
+
+.btn:focus, .btn.focus {
+    box-shadow: 0 0 0 0.2rem rgba(214, 181, 15, 0.25) !important;
+}
+
+button:focus {
+    outline: 5px auto rgba(214, 181, 15, 0.70) !important;
+}

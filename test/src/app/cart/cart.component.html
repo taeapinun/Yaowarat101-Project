@@ -1,0 +1,189 @@
+<!-- <input [(ngModel)]="searchCartText" placeholder="search ..."> -->
+<div *ngIf="userId">
+  <!-- <h2>My Carts</h2> -->
+
+  <div class="container">
+    <div class="row">
+      <div class='table-responsive col-sm-8' style="background-color:#f0f0f0">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td>&nbsp;</td>
+              <td class="font-weight-bold">#</td>
+              <td>&nbsp;</td>
+              <td class="font-weight-bold">Id</td>
+              <td class="font-weight-bold">Product</td>
+              <td class="font-weight-bold">Price</td>
+              <td class="font-weight-bold">Amount</td>
+              <td class="font-weight-bold">Total Price</td>
+            </tr>
+          </thead>
+
+
+
+          <tbody>
+            <tr *ngFor="let cart of carts; let i = index">
+              <td><button style="color: #d6b50f;background-color: transparent;" class="close" type="button" aria-label="Close"
+                  (click)="deleteCart(cart)"><span aria-hidden="true">&times;</span></button></td>
+              <td>{{ i+1 }}</td>
+              <td><img src="{{ picApi }}image/products/{{ cart.p_Id }}.jpg" style="width:100px;height:100px;"></td>
+              <td>{{ cart.p_Id }}</td>
+              <td>{{ cart.p_Name }}</td>
+              <td>{{ cart.p_Price | number:'1.2-2' }}&nbsp;฿</td>
+              <td><input type="number" id="inputAmount" class="form-control w-50 float-left" [(ngModel)]="cart.p_Amount"
+                  (ngModelChange)="calTotalPrice()" min="1" oninput="this.value = Math.abs(this.value)"></td>
+              <td>{{ cart.p_Price * cart.p_Amount | number:'1.2-2'}}&nbsp;฿</td>
+            </tr>
+          </tbody>
+
+
+
+          <tfoot>
+            <tr>
+              <td colspan="5" style="vertical-align: middle;">
+                <div class="md-form">
+                  <i class="fa fa-envelope prefix" style="color:#d6b50f"></i>
+                  <input type="text" id="inputCouponCode" class="form-control" style="padding: 0.6rem 0 0.3rem 0;"
+                    placeholder="Enter Coupon Code">
+                </div>
+              </td>
+              <td colspan="3" style="vertical-align: middle;">
+                <button type="button" class="btn" style="text-transform: none; background-color: #d6b50f;" disabled>Apply coupon</button>
+              </td>
+
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="table-responsive col-sm-4" style="background-color:#f0f0f0">
+        <div class="container mt-3 mb-3">
+
+          <div class="row">
+            <div class="col-md-12 font-weight-bold" style="font-size: 20px">ที่อยู่ในการจัดส่ง/ใบกำกับภาษี</div>
+
+          </div>
+
+          <div class="row">
+            <span class="col-md-8">ที่อยู่ในการจัดส่ง</span>
+            <a class="col-md-4 text-right" data-toggle="modal" data-target="#modalAddress" style="color: #e2b714" *ngIf="user">แก้ไข</a>
+
+          </div>
+          <div *ngIf="user">
+            <div class="row">
+              <div class="col-md-12 font-weight-bold">{{user.u_Name}} {{user.u_Tel}}</div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                {{user.u_Address}}
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <table class="table">
+
+          <tbody>
+            <tr>
+              <th>Subtotal</th>
+              <td>&nbsp;</td>
+              <td>{{ totalPrice | number:'1.2-2' }} ฿</td>
+            </tr>
+            <tr>
+              <th>Total</th>
+              <td>&nbsp;</td>
+              <td>{{ totalPrice | number:'1.2-2' }} ฿</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" *ngIf="carts">
+                <button type="button" class="btn float-right" style="text-transform: none;background-color: #d6b50f;"
+                  (click)="proceedCheckout()" [disabled]="carts.length <= '0'">
+                  Proceed
+                  to
+                  checkout</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- <ul class="carts">
+  <div *ngFor="let cart of carts">
+    <li (click)="onSelect(cart)" [class.selected]="cart === selectedCart">
+      <span class="cart-element">
+        <span class="badge">{{cart.p_Id}}</span> {{cart.p_Name}} จำนวน {{cart.p_Amount}} ราคาต่อชิ้น {{cart.p_Price}}
+        <img src="https://i.imgur.com/qpM1ifY.jpg">
+      </span>
+    </li>
+    <button class="delete-button" (click)="deleteCart(cart)">Delete</button>
+  </div>
+</ul> -->
+
+  <div class="error" *ngIf="error">{{error}}</div>
+
+  <div>
+    <style>
+      .hidden {
+      visibility: hidden
+    }
+  </style>
+  </div>
+
+
+
+  <div class="modal fade" id="modalAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title font-weight-bold">แก้ไขที่อยู่ในการจัดส่ง</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container" *ngIf="user">
+
+            <div class="row">
+              <div class="col mr-2">
+                <div class="row">
+                  <label>ชื่อ-นามสกุล</label>
+                  <input type="text" class="form-control" placeholder="Name" [(ngModel)]="user.u_Name">
+                </div>
+                <div class="row">
+                  <label>เบอร์ติดต่อ</label>
+                  <input type="text" class="form-control" placeholder="Tel" [(ngModel)]="user.u_Tel">
+                </div>
+
+              </div>
+              <div class="col ml-2">
+                <div class="row">
+                  <label>ที่อยู่ในการจัดส่ง</label>
+                  <textarea class="form-control" placeholder="Address..." rows="3" [(ngModel)]="user.u_Address"></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="text-center mb-3 col-md-12">
+          <button class="btn btn-default float-right" data-dismiss="modal" (click)="updateUser()">บันทึก</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!userId" align="center">
+    <img class="img-fluid" src="{{picApi}}image/alertlogin.png" alt="">
+</div>
