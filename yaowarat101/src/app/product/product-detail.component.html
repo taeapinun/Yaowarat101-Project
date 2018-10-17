@@ -19,11 +19,15 @@
   <div class="md-form">
     <input style="line-height: normal;" type="text" [(ngModel)]="product.p_Name" placeholder="Name" class="form-control " />
   </div>
-  <div class="md-form">
-    <select class="form-control" style="border: none;border-bottom: 1px solid #ced4da; line-height: normal;" type="text"
-      [(ngModel)]="product.p_Type" placeholder="Type">
+  <div class="form-group row">
+    <select class="browser-default custom-select" style="border: none;border-bottom: 1px solid #ced4da; line-height: normal;" [(ngModel)]="product.p_Type">
+      <option value="" disabled selected>กรุณาเลือก</option>
       <option value="สร้อยคอ">สร้อยคอ</option>
       <option value="แหวน">แหวน</option>
+      <option value="กำไล">กำไล</option>
+      <option value="สร้อยข้อมือ">สร้อยข้อมือ</option>
+      <option value="ต่างหู">ต่างหู</option>
+      <option value="จี้">จี้</option>
     </select>
   </div>
   <div class="md-form">

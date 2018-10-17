@@ -1,6 +1,12 @@
 <div class="col-md-12 mt-1 mb-3" align="center" style="margin-top:-3em;">
     <img src="{{picApi}}image/pro970x90.jpg" class="img-fluid" alt="Responsive image">
 </div>
+<div class="row mb-4" *ngIf="userRole == 'admin'">
+    <div class="col-md-3">
+      <button type="button" class="btn btn-rounded btn-amber float-left" data-toggle="modal" data-target="#modalAddPromotion"
+        style="color : #000 !important;">Add Promotion</button>
+    </div>
+  </div>
 
 <div class="col-md-12" align="center">
     <!--Featured image-->
@@ -47,3 +53,53 @@
     <!-- </div> -->
 
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade right" id="modalAddPromotion" tabindex="-1" role="dialog" aria-labelledby="modalAddPromotion"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalPreviewLabel">Add Promotion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="inputHeaderContent" placeholder="หัวเรื่อง">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+
+            <app-ngx-editor [config]="editorConfig" [placeholder]="'Enter text here...'" [spellcheck]="true"
+              [(ngModel)]="htmlContent"></app-ngx-editor>
+
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-12">
+            รูปภาพ
+            <input type="file" name="photoorder" accept=".jpg" />
+          </div>
+        </div>
+
+        <div *ngIf="htmlContent">
+          <h6>HTML Output</h6>
+          <div class="html">
+            {{ htmlContent }}
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->

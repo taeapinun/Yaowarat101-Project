@@ -98,12 +98,11 @@
 
             <div class="row" *ngIf="i < iteminPage*inPage && i >= (iteminPage*inPage)-iteminPage" style="padding-right: 1em; ">
               <div class="col-sm shadow-sm p-3 mb-5 bg-white rounded" style="margin-right:1.5rem !important;">
-                <button style="opacity:1;margin-right: 0.6em;background-color: transparent" class="close" type="button"
+                <button style="opacity:1;margin-bottom: 0.6em;background-color: transparent" class="close" type="button"
                   aria-label="Close" (click)="deleteProduct(product)" *ngIf="userRole == 'admin'">
                   <span aria-hidden="true" style=" font-size: larger; color:#dc3545">&times;</span>
                 </button>
-                <li (click)="onSelect(product)" data-toggle="modal" data-target="#modalOnSelect" [class.selected]="product === selectedProduct"
-                  style="margin-top: 2em;">
+                <li (click)="onSelect(product)" data-toggle="modal" data-target="#modalOnSelect" [class.selected]="product === selectedProduct">
                   <span class="product-element">
                     <span class="badge">{{product.p_Id}}</span> 
                     <div class="zoom view overlay">
@@ -114,6 +113,8 @@
                       <img *ngIf="product.p_Type == 'ต่างหู'" src="{{ picApi }}image/products/{{ product.p_Id }}.jpg"
                         style="width: 225px; height: 216px;">
                       <img *ngIf="product.p_Type == 'สร้อยข้อมือ'" src="{{ picApi }}image/products/{{  product.p_Id }}.jpg"
+                        style="width: 225px; height: 216px;">
+                        <img *ngIf="product.p_Type == 'กำไล'" src="{{ picApi }}image/products/{{  product.p_Id }}.jpg"
                         style="width: 225px; height: 216px;">
                     </div>
                    

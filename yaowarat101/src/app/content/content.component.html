@@ -1,95 +1,345 @@
-<div class="col-md-12" align="center">
-  <div class="card card-cascade wider reverse" style="padding : 20px;" [ngStyle]="{'background-image': 'url('+picApi+'image/bg_w.jpg)'}">
-    <div class="view view-cascade overlay ">
-      <div class="card-deck">
-        <div class="card mb-4" style="height: fit-content">
-          <div class="view overlay">
-            <img class="card-img-top" src="{{picApi}}image/content01.jpg" alt="Card image cap">
-            <a href="#!" data-toggle="modal" data-target="#modalContent">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">ซื้อทองคำแท่งยังไงให้เก็บไว้ขายในอนาคตแล้วได้ราคา</h4>
-            <hr>
-            <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent">
-              <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
-            </a>
-          </div>
-        </div>
-
-        <div class="card mb-4" style="height: fit-content" >
-          <div class="view overlay">
-            <img class="card-img-top" src="{{picApi}}image/content02.jpg" alt="Card image cap">
-            <a href="#!" data-toggle="modal" data-target="#modalContent2">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">ซื้อทองที่ไหนก็ได้ไม่เท่า ที่ “ห้างทองเยาวราช”</h4>
-            <hr>
-            <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent2">
-              <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
-            </a>
-
-          </div>
-
-        </div>
-        
-
-        <!-- Card -->
-        <div class="card mb-4" style="height: fit-content">
-
-          <!--Card image-->
-          <div class="view overlay">
-            <img class="card-img-top" src="{{picApi}}image/content03.jpg" alt="Card image cap">
-            <a href="#!" data-toggle="modal" data-target="#modalContent3">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-
-          <!--Card content-->
-          <div class="card-body">
-
-            <!--Title-->
-            <h4 class="card-title">วัด Size แหวนได้ด้วยตัวคุณเอง 💍💍</h4>
-            <!--Text-->
-            <hr>
-            <!-- <p class="card-text">สำหรับท่านใดที่อาจจะไม่รู้ไซซ์แหวนของตัวเอง
-          ทางร้านเรามีวิธีวัดขนาดนิ้วมือ ให้เลือกใส่แหวนแบบ
-          สวยพอดีไม่มีพลาด มาฝากกันค่ะ 
-          
-          สิ่งที่ต้องเตรียม ได้แก่ เส้นดาย ปากกาเมจิก และไม้บรรทัด
-          ส่วนวิธีก็ง่ายมากเลยค่ะ นำด้ายพันรอบนิ้วบริเวณที่สวมแหวน
-          ใช้เมจิกทำเครื่องหมายไว้ตรงที่ด้ายประกบกันพอดี
-          
-          จากนั้นนำไม้บรรทัดมาวัดความยาวของเส้นด้าย (หน่วยวัดมิลลิเมตร)
-          และนำไปเทียบกับตารางขนาดแหวนเท่านี้ก็ได้ไซซ์แหวนที่พอดี
-          ใส่แล้วสบายนิ้ว ไม่รัดแน่หรือลวมจนเกินไปแล้วค่ะ
-          
-          รู้วิธีการวัด Size แหวนกันแล้ว ลองเอาไปทำกันดูนะคะ
-          คิดจะซื้อแหวนทองให้นึกถึง #บริษัทห้างทองเยาวราช จำกัด
-          
-          ทองลายสวย ทองประณีต ที่สำคัญราคาเป็นกันเอง
-          สนใจลายทองแบบไหนสามารถสอบถามได้เลยนะคะ</p> -->
-            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-            <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent3">
-              <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
-            </a>
-
-          </div>
-
-        </div>
-        <!-- Card -->
-
-      </div>
-      <!-- Card deck -->
-
+<div class="card card-cascade wider reverse" style="padding : 20px;" [ngStyle]="{'background-image': 'url('+picApi+'image/bg_w.jpg)'}"
+  align="center">
+  <div class="row mb-4" *ngIf="userRole == 'admin'">
+    <div class="col-md-3">
+      <button type="button" class="btn btn-rounded btn-amber float-left" data-toggle="modal" data-target="#modalAddContent"
+        style="color : #000 !important;">Add Content</button>
     </div>
   </div>
 
-</div>
+  <div class="row">
 
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+          <img class="card-img-top" src="{{picApi}}image/content01.jpg" alt="Card image cap">
+          <a href="#!" data-toggle="modal" data-target="#modalContent">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">ซื้อทองคำแท่งยังไงให้เก็บไว้ขายในอนาคตแล้วได้ราคา</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+          <img class="card-img-top" src="{{picApi}}image/content02.jpg" alt="Card image cap">
+          <a href="#!" data-toggle="modal" data-target="#modalContent2">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">ซื้อทองที่ไหนก็ได้ไม่เท่า ที่ “ห้างทองเยาวราช”</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent2">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="background-color:rgba(255,255,255,0.2)">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+              <!-- <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> -->
+            </ol>
+            <!-- <div class="carousel-inner zoom view overlay"> -->
+            <div class="carousel-item active">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content05_1.jpg" alt="First slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content05_2.jpg" alt="Second slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content05_3.jpg" alt="Third slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content05_4.jpg" alt="four slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <!-- <div class="carousel-item">
+                        <img class="d-block w-100" src="{{picApi}}image/home05.jpg" alt="5 slide">
+                        <div class="mask flex-center rgba-white-slight">
+                    
+                        </div>
+                      </div> -->
+            <a class="carousel-control-prev ml-5" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next mr-5" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">“ทองคำ” ไม่ได้มีแค่ 2 อย่างที่เรารู้จัก</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent5">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+
+          <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel" style="background-color:rgba(255,255,255,0.2)">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators3" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
+              <!-- <li data-target="#carouselExampleIndicators3" data-slide-to="3"></li> -->
+              <!-- <li data-target="#carouselExampleIndicators2" data-slide-to="4"></li> -->
+            </ol>
+            <!-- <div class="carousel-inner zoom view overlay"> -->
+            <div class="carousel-item active">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content08_1.jpg" alt="First slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content08_2.jpg" alt="Second slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content08_3.jpg" alt="Third slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <!-- <div class="carousel-item">
+                <img class="d-block w-100" src="{{picApi}}image/content07_4.jpg" alt="four slide">
+                <div class="mask flex-center rgba-white-slight">
+  
+                </div>
+              </div> -->
+            <!-- <div class="carousel-item">
+                  <img class="d-block w-100" src="{{picApi}}image/content06_5.jpg" alt="5 slide">
+                  <div class="mask flex-center rgba-white-slight">
+    
+                  </div>
+                </div> -->
+            <a class="carousel-control-prev ml-5" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next mr-5" href="#carouselExampleIndicators3" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">สิ่งที่ล้างเครื่องประดับ ให้กลับมาเงางาม</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent8">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+
+          <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" style="background-color:rgba(255,255,255,0.2)">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators1" data-slide-to="3"></li>
+              <li data-target="#carouselExampleIndicators1" data-slide-to="4"></li>
+            </ol>
+            <!-- <div class="carousel-inner zoom view overlay"> -->
+            <div class="carousel-item active">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content06_1.jpg" alt="First slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content06_2.jpg" alt="Second slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content06_3.jpg" alt="Third slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content06_4.jpg" alt="four slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content06_5.jpg" alt="5 slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <a class="carousel-control-prev ml-5" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next mr-5" href="#carouselExampleIndicators1" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">4 ช่องทางยก "ห้างทองเยาวราช"</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent6">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+
+          <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" style="background-color:rgba(255,255,255,0.2)">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators2" data-slide-to="3"></li>
+              <!-- <li data-target="#carouselExampleIndicators2" data-slide-to="4"></li> -->
+            </ol>
+            <!-- <div class="carousel-inner zoom view overlay"> -->
+            <div class="carousel-item active">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content07_1.jpg" alt="First slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100 mx-auto" src="{{picApi}}image/content07_2.jpg" alt="Second slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content07_3.jpg" alt="Third slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{picApi}}image/content07_4.jpg" alt="four slide">
+              <div class="mask flex-center rgba-white-slight">
+
+              </div>
+            </div>
+            <!-- <div class="carousel-item">
+                <img class="d-block w-100" src="{{picApi}}image/content06_5.jpg" alt="5 slide">
+                <div class="mask flex-center rgba-white-slight">
+  
+                </div>
+              </div> -->
+            <a class="carousel-control-prev ml-5" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next mr-5" href="#carouselExampleIndicators2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">มองหางานทองถูกใจซักชุด ต้องห้ามพลาด‼</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent7">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+          <img class="card-img-top" src="{{picApi}}image/content03.jpg" alt="Card image cap">
+          <a href="#!" data-toggle="modal" data-target="#modalContent3">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">วัด Size แหวนได้ด้วยตัวคุณเอง 💍💍</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent3">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4 d-flex align-items-stretch">
+      <div class="card" style="height: fit-content">
+        <div class="view overlay">
+          <img class="card-img-top" src="{{picApi}}image/content04.jpg" alt="Card image cap">
+          <a href="#!" data-toggle="modal" data-target="#modalContent4">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">วัด Size สร้อยข้อมือได้ด้วยตัวคุณเอง</h4>
+          <hr>
+          <a href="" class="black-text d-flex justify-content-end" data-toggle="modal" data-target="#modalContent4">
+            <h5 style="color:#a0c6e8">Read more <i class="fa fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
 
 <!-- modalContent -->
 <div class="modal fade" id="modalContent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -123,7 +373,7 @@
             มองหาทองคำเนื้อดี ได้มาตรฐาน และไว้ใจได้
             เลือก บริษัทห้างทองเยาวราช จำกัด ไม่มีผิดหวังค่ะ</p>
         </div>
-        
+
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
@@ -138,7 +388,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">ซื้อทองคำแท่งยังไงให้ได้ราคา</h4>
+        <h4 class="modal-title w-100 font-weight-bold">ซื้อทองที่ไหนก็ได้ไม่เท่าที่ “ห้างทองเยาวราช” </h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -149,18 +399,18 @@
         </div>
         <hr>
         <div class="md-form mb-4">
-          <p class="card-text">บอกเลยว่า ซื้อทองที่ไหนก็ได้ไม่เท่า ที่ “ห้างทองเยาวราช” 
+          <p class="card-text">บอกเลยว่า ซื้อทองที่ไหนก็ได้ไม่เท่า ที่ “ห้างทองเยาวราช”
             ทองถูกใจ งานดี งานมีมาตรฐาน เท่านั้นยังไม่พอ‼
-            
-            ✨ พี่โกมุ ✨ แจกของสัมมนาคุณอีกไม่อั้น 
-            อาจเป็นกิจกรรมพิเศษๆ จากทางร้าน 
+
+            ✨ พี่โกมุ ✨ แจกของสัมมนาคุณอีกไม่อั้น
+            อาจเป็นกิจกรรมพิเศษๆ จากทางร้าน
             หรือโอกาสพิเศษมากมาย ถ้าใครไม่อยากพลาด
             ของพรีเมียมสุดพิเศษจาก ✨ พี่โกมุ ✨
             ต้องติดตามกิจกรรมจากทางร้านให้ดีนะคะ รับรองว่าฟิน‼
-            
+
             มองหางานทองถูกใจ นึกถึงห้างทองเยาวราช</p>
         </div>
-        
+
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
@@ -176,7 +426,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">ซื้อทองคำแท่งยังไงให้ได้ราคา</h4>
+        <h4 class="modal-title w-100 font-weight-bold">วัด Size แหวนได้ด้วยตัวคุณเอง 💍💍</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -191,22 +441,22 @@
 
             สำหรับท่านใดที่อาจจะไม่รู้ไซซ์แหวนของตัวเอง
             ทางร้านเรามีวิธีวัดขนาดนิ้วมือ ให้เลือกใส่แหวนแบบ
-            สวยพอดีไม่มีพลาด มาฝากกันค่ะ 
-            
+            สวยพอดีไม่มีพลาด มาฝากกันค่ะ
+
             สิ่งที่ต้องเตรียม ได้แก่ เส้นดาย ปากกาเมจิก และไม้บรรทัด
             ส่วนวิธีก็ง่ายมากเลยค่ะ นำด้ายพันรอบนิ้วบริเวณที่สวมแหวน
             ใช้เมจิกทำเครื่องหมายไว้ตรงที่ด้ายประกบกันพอดี
-            
+
             จากนั้นนำไม้บรรทัดมาวัดความยาวของเส้นด้าย (หน่วยวัดมิลลิเมตร)
             และนำไปเทียบกับตารางขนาดแหวนเท่านี้ก็ได้ไซซ์แหวนที่พอดี
             ใส่แล้วสบายนิ้ว ไม่รัดแน่หรือลวมจนเกินไปแล้วค่ะ
-            
+
             รู้วิธีการวัด Size แหวนกันแล้ว ลองเอาไปทำกันดูนะคะ
             คิดจะซื้อแหวนทองให้นึกถึง #บริษัทห้างทองเยาวราช จำกัด
-            
+
             ทองลายสวย ทองประณีต ที่สำคัญราคาเป็นกันเอง</p>
         </div>
-        
+
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
@@ -214,3 +464,254 @@
     </div>
   </div>
 </div>
+
+<!-- modalContent3 -->
+<div class="modal fade" id="modalContent4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">วัด Size สร้อยข้อมือได้ด้วยตัวคุณเอง</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <img class="card-img-top" src="{{picApi}}image/content04.jpg" alt="content03">
+        </div>
+        <hr>
+        <div class="md-form mb-4">
+          <p class="card-text">วัด Size สร้อยข้อมือได้ด้วยตัวคุณเอง
+
+            มีลูกค้าสอบถามมากเข้ามาเยอะพอสมควร
+            สำหรับวิธีการวัดขนาดกำไลหรือสร้อยข้อมือด้วยตัวเอง
+
+            เราเลยจะมาบอกวิธีการวัดง่ายๆ ที่คุณก็สามารถทำได้เอง
+            ตามมาดูก่อนเลยค่ะ
+
+            การวัดข้อมือจะคล้ายกับการวัดไซซ์แหวน
+            - นำกระดาษพันรอบข้อมือให้ครบหนึ่งรอบพอดี
+            - ขีดรอบปากกาให้ตรงกัยรอยที่วนครบรอบข้อมือ
+            - นำกระดาษมาวัดกับไม้บรรทัด เพื่อดูขนาดเส้นรอบวงของข้อมือ
+
+            เพียงเท่านี้ก็จะทราบขนาดเส้นรอบวงข้อมือ
+            คราวนี้ก็สามารถเลือกสร้อยข้อมือที่พอดีกับข้อมือเราได้แล้ว
+
+            แนะนำว่าการเลือกซื้อข้อมือ ควรเลือกที่พอดีและหย่อนเล็กน้อย
+            เพราะเมื่อเวลาผ่านไปจะพอดีกับข้อมือของคุณพอดีค่ะ
+
+            เลือกซื้อทองไว้ใจให้ บริษัทห้างทองเยาวราช จำกัด
+            ช่วยดูแลนะคะ ด้วยประสบการณ์ที่เปิดมามากกว่า 10 ปี จึงทำให้
+            คุณมั่นใจได้ทั้งคุณภาพและการบริการ</p>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modalContent3 -->
+<div class="modal fade" id="modalContent5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">ไม่ได้มีแค่ 2 อย่างที่เรารู้จัก</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <img class="card-img-top" src="{{picApi}}image/content05_1.jpg" alt="content03">
+        </div>
+        <hr>
+        <div class="md-form mb-4">
+          <p class="card-text">จริงๆ แล้ว “ทองคำ” ไม่ได้มีแค่ 2 อย่างที่เรารู้จักนะคะ
+            ส่วนใหญ่คนจะรู้แค่มีทองรูปพรรณ และทองคำแท่งเท่านั้น
+            แต่จริงๆ ในตลาดทองคำ จะนิยมมากๆ อยู่ 3 ประเภทนี้ค่ะ
+
+            1⃣ทองคำแท่ง
+            ทองที่ถูกอัดเป็นแท่ง ไม่มีความสวยงาม เหมาะสำหรับเก็บ
+            หรือสะสมเท่านั้น ไว้เก็งกำไร หรือเก็บไว้เป็นทรัพย์สินก็ได้
+
+            2⃣ทองรูปพรรณ
+            เครื่องประดับที่ทำขึ้นจากทองคำ ไม่ว่าจะเป็น กำไร สร้อยคอ
+            แหวน ต้มหู เป็นต้น ผ่านการออกแบบ และมีรูปทรงสวยงาม
+
+            3⃣เหรียญทองคำ
+            เป็นทองรูปแบบเหรียญ หรือรูปทรงคล้ายๆ แผ่น ไม่มีความ
+            สวยงาม หรือโดดเด่นเป็นพิเศษ แต่ก็เป็นที่นิยมมากเช่นกัน
+
+            สำหรับใครที่กำลังมองหาทองคำกันอยู่ ลองเลือกให้เหมาะ
+            กับวัตถุประสงค์เลยค่ะ ว่าอยากจะมีไว้เพื่ออะไร จะได้เลือก
+            แล้วคุ้มค่า เพราะทองแต่ละประเภท ราคาต่างกันอยู่ค่ะ</p>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modalContent3 -->
+<div class="modal fade" id="modalContent6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">4 ช่องทางยก "ห้างทองเยาวราช"</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <img class="card-img-top" src="{{picApi}}image/content06_1.jpg" alt="content03">
+        </div>
+        <hr>
+        <div class="md-form mb-4">
+          <p class="card-text">อยากซื้อทองกับ ✨✨ “ห้างทองเยาวราช”
+            ❌ แต่ไม่มีเวลาเข้ามาที่ร้าน หรืออยู่ไกล
+            ไม่มีโอกาสมาที่ร้านได้ด้วยตัวเอง ไม่เป็นปัญหา
+            เรายกร้านทองไปไว้ที่บ้านให้คุณ กับ 4 ช่องทางนี้
+            👉 ไปดูเลยว่ามีช่องทางไหนบ้าง
+            สะดวกทางไหนเลือกใช้โลดด‼</p>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modalContent3 -->
+<div class="modal fade" id="modalContent7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">มองหางานทองถูกใจซักชุด ต้องห้ามพลาด‼</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <img class="card-img-top" src="{{picApi}}image/content07_1.jpg" alt="content03">
+        </div>
+        <hr>
+        <div class="md-form mb-4">
+          <p class="card-text">มองหางานทองถูกใจซักชุด ต้องห้ามพลาด‼
+            ห้างทองเยาวราช รวมงานทองสุดปัง จัดเซ็ทเก๋ๆ
+            ให้คุณได้เป็นเจ้าของ เซ็ทไหนถูกใจ จับจองกันได้เลย</p>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modalContent3 -->
+<div class="modal fade" id="modalContent8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">สิ่งที่ล้างเครื่องประดับ ให้กลับมาเงางาม</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <img class="card-img-top" src="{{picApi}}image/content08_1.jpg" alt="content03">
+        </div>
+        <hr>
+        <div class="md-form mb-4">
+          <p class="card-text">เครื่องเงินใช้ไปนานๆ ก็หมอง ถึงจะเป็นเงินแท้ก็หมองได้ค่ะ
+            แต่การทำความสะอาดให้เงินกลับมาใหม่ ก็ไม่ใช่เรื่องยาก
+
+            เพียงใช้น้ำมะขามเปียก หรือน้ำมะนาวในการล้าง
+            ทำความสะอาด และใช้แปรงขนนุ่ม ค่อยๆ ถูอย่างเบามือ
+            ก็สามารถทำให้เครื่องเงินกลับมาใหม่ สดใสได้แล้วค่ะ
+
+            วิธีง่ายๆ ที่ลองทำกันเองได้ที่บ้าน จะช่วยปลุกความใหม่
+            ให้เครื่องเงินของคุณแลดูเหมือนพึ่งซื้อมา ทีนี้จะนานแค่ไหน
+            ก็ไม่หวั่นแล้ว แต่ถ้าอยาได้ใหม่ก็อย่าได้แคร์ เลือกโลดดด</p>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <!-- <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade right" id="modalAddContent" tabindex="-1" role="dialog" aria-labelledby="modalAddContent"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalPreviewLabel">Add Content</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="inputHeaderContent" placeholder="หัวเรื่อง">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-12">
+
+            <!-- <app-ngx-editor [config]="editorConfig" [placeholder]="'Enter text here...'" [spellcheck]="true"
+              [(ngModel)]="htmlContent"></app-ngx-editor> -->
+
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-12">
+            รูปภาพ
+            <input type="file" name="photoorder" accept=".jpg" />
+          </div>
+        </div>
+
+        <!-- <div *ngIf="htmlContent">
+          <h6>HTML Output</h6>
+          <div class="html">
+            {{ htmlContent }}
+          </div>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
+
+<!-- <div class="editor block">
+  <app-ngx-editor [config]="editorConfig" [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="htmlContent"></app-ngx-editor>
+</div>
+
+<div *ngIf="htmlContent" class="htmlblock block">
+  <h6>HTML Output</h6>
+  <div class="html">
+    {{ htmlContent }}
+  </div>
+</div> -->

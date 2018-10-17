@@ -23,6 +23,7 @@ export class TryproductComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    alert("กำลังอยู่ในการพัฒนา v0.0.1");
   }
 
   rotateImage(name: string, deg: number): void {

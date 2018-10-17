@@ -33,73 +33,6 @@
 
     <div class="collapse navbar-collapse mm" id="navbarSupportedContent" align="center">
         <ul class="nav navbar-nav m-auto" style="font-size: 1.5em;text-shadow: 0px 0px 3px rgba(0,0,0,0.3);">
-            <!-- <li class="nav-item mari mr-auto ml-auto">
-                    <a class="nav-link" routerLink="/home" routerLinkActive="active">หน้าหลัก <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item mari mr-auto ml-auto">
-                    <a class="nav-link" routerLink="/promotion" routerLinkActive="active">โปรโมชั่น <span class="sr-only">(current)</span></a>
-                </li>
-               
-       
-                <li class="nav-item dropdown mr-auto ml-auto" dropdown>
-                    <a class="nav-link dropdown-toggle">
-                        สินค้า<span class="caret"> </span></a>
-                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary dd" role="menu" style="left: -8px; padding-top: 0px; padding-bottom: 0px;">
-                        <a class="dropdown-item fz" routerLink="/products">
-                            <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKISURBVGhD7Zo5i1VBEIWfigqjP83f4AIm4xK6BOKCEwimZqYmbomJu8birr/ARAQXjFwS9XzBg7Y4z666bxTRPvAl/eoUVcztvt23ZzY0NDRJm8RecUs8KnBXHBCbxSLx20FxT7gci7gpdouNIiWauCK+L8FtsUVEMUYDzpPlsqDGrvhLuARVDouoo8LFVtkjurohnLnKYxH1TLjYKtdFVy+EM1d5J6IYc7FVqLGr9Wrko4hizMVWSTXyRjhzlS8iijEXW4Uau/osnLnKNxHFmIutQo1dvRat6YFgyetxX7S+zF8Ej8sVoYbWR41dxTlyVuxIwHLb+jJzBI/LFaGG1jdpso9GRNRoRLS+/7uRS+JYgvOi9b0XUYy1MXhcrgg1tL5UI2zFW9NU2FdFvRQutsod0dV+4cxVjouoU8LFVtknuuLMwHnCJcjyUKyIKMY4JDlPFg57vzq4/aSt4oh4It6KDwl4/p+LE8I1Mdc2QQzPOR6XK0IN1MLikG5iaGioLyY7Hwp4F3A8dRMwwsTlPcFE3i4Wid9OC2Irk/2poCb3dcZqPZZflli3ctEEq4/zZKG21MrFBzaXoMpJEbUmXGwVXtpdLfsBbQ7vlKg/ukWJm8ap8PxHMeZiq0za/U4ls42fSqoRVghnrvJVRDHmYqtQY1f/zOegV6I1sds8l+CqaH2fRBRjbQwelytCDa2PGruKc2Sc2UXUaES0vtGISx756xu5Js4kuCBaX+aiB4/LFaGG1pdq5HdevbEVd7FVUldvXDQ6c5VDIio+flPZKbriHnvZ62nuxBddT8eXW5WLYoNIiWZ2CR6z9tK+B4eeVdH7hwHOPMS6HIugFmpKNzE0NDTXbPYDtoiIVyg1m+sAAAAASUVORK5CYII=">
-                            สินค้าทั้งหมด
-                        </a>
-                        <a class="dropdown-item fz" routerLink="/products/แหวน">
-                            <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQmSURBVGhD7ZlZzF1TFMe/moqEkNbURCMeCCGKFzEkRSNB0gcikRIxJDRBanzwYHpQVHnwQHlpQlNBzGoIEsMDQgkSTYM0hiilqaGGatHfLzlLVnbOucP3ffe7N3L+yS85d5219lnnnL3X3vvcsVatWrVq9X/SNNgbDoTDKjzWNrLaGU6Cm+Fx+AS2wL8NeE6fx8CYE2EnGIp2hDPhCfgV6hLuB9uwrTPAtgeu3eBa+ArqEqrjj4q6c3V8CdfArjAQXQhNN/APvA/3wsVwNOwPORmPtR0D+uhrTF174g1dAJOmmfA01F3sY7gKZsN4dRD4Bhw3ddd4EmbAhHQ4fANl42+C/dnqNFmyLcedbZfX+xqsfOOSXeAHyA1+C+fBIOUNnQ/rIV97A9hl+9Is+B5yQ6tgKucBu9OLkHP4Dg6AnmT5K1/vnbADTLW85lLIubwBPZVoB14OvB2Grbsg53Q1dNRe8AtEwDMwCnLcPAuR1ybYExp1BYTzb7APjIrMxZwiP3Nt1PMQjo9qGKece5zMlsBDFR5rm8icYE6Rn2+oUWsgHK/U0Kecd5zAtkG0U+I511X69qtFEO18qqFJayEcz9HQo+zDN8FWiPhu6Hsj9DOpngsRb66N+gjC8XoNPchS+AhEXODk+TDcWuGxttJvJfS64rWCRtyHGpr0MoTjqxp6kH0/YoL7wX1KKW3LoPS/A7rJ2HUQMU6WjboFwvFvOAo6aR6Ef+ZHcKVbSttGKP1dPc+FTroOcoxduVHHQnZ2mb071Mm+vRrC11e9Of120Jd6CuK8vsbE7/egabycCuWu01w7qlyevAX7Qim3qOHj27MKXZ5s4uIv5HE+p68xxobteCi1AH6HHPs6dNUJUJZPu4qlbw8I5TVQ1HSfqGMr7CbwRUVORp94+s9B2B1vIZ94ns0DczsOelKuDhln1htA+abCfpmGSm6Uus0j+oQWQpxzQajugxyTuQ16VlNJlXtAfQZhO1lDpbMg+9dxNoSMDbttKrfB2T/op1T/p13ApUXZWKyG837lbXilwj1D2C2RVjbJewtjw/+dyibGqroesRwm9NnIsZErxgOgPoB8oRJn7kMg5HG3md821YMQtj/BHCZFh4KVwoZf0oAsr3GxJk6DkMd1Phk/8KmYmF+D/DAmTafDC2A/vQQiAQewG7JL4d3KJn4+8g1K/pSkj77G5MJwEdi23dBrTYncH+SSGmNnDnSrWvqovLwZ6v7HNVIk4jiaD9PBj2thL/GcPqfAX5VNFsPQ5NbYyS6S8WbKLx/RtbLNDVx+m5bdjlvXqdCR8DPkRANn7ZD7/zqfn+AIGAm5nPBrYF2idp/chTLG+CFwpOQSfQXkRWAT+rjR2g9GVu5hXMbksRN8DndDt33OyMm/Eg6uGNj/Ha1atWrVakgaG9sOolRAH9bqvswAAAAASUVORK5CYII=">
-                            แหวน
-                        </a>
-                        <a class="dropdown-item fz" routerLink="/products/สร้อยคอ">
-                            <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJpSURBVGhD7ZfL6w1hGICP247cV25/gIVy2dsp91J2WEtSJISyZeNuY0WiLNxJ2IiFCHsKJbfsXQvPU+etr9P51Zk5czmjeeqpr3dm3vf9zsx35ptOS0tLy3/DEbzfdaWBmliF0cdhA1m5hX+7bjVQE9sw+rCnzFzGSLDfQE0cwOjjkoGsHMdIcMpATZzG6OOogazsxkhw00BNWDv62GUgK+swErwzUBPvMfpYYyArCzAS6EysmtmY9jAXc/EFI8kGAxWzEaP+RwN5uYiR6KyBirFm1L9gIC9bMBJ9xUlYFdayZtTfjLmZhj8wkq3GqliLUdce7GUormAkvGugIh5g1PXlPDQrMBL+wUVYNkswaupyHJpx+BIj6R0sm3sY9V4YKIr1GIk114tpQNIXsbpWCuURRvIPOB2LxpzmjjoPsXAWYvoP5iM2AYvCXP6ZRH5rWbMU9mIU0hNYBK7DM5jm3oelYcEbmBY8huMxL96Jk5jmvI7WKpWp+BTTwtdwBmZlFqbbdH2C1qgEd6XPMW3ATd0mHOTueBfccnzCNMczNHelTMHbmDair9DP08U4EQPHvugO4mvsvc5HdjLWgs+xX23fsLcx/Y2fuzrud47X7sTS18QgzMfz+Av7NdtPzz2HXjtyzMM9+Bi/Y2/zxjzmOXOwEbgm/MVjEo7TNdMo0pec48aS7mIdN5LtGJMIjTWKpfgTeydizGONwG/rN9g7idBjQ39/V8Eh7DeBVM8Zefy132K/CajHGnFHZBmOtUY81ih2YO9EjDUON4FXMSbheCQ2hnmI9dKodTEWronGrYuWlpaWMul0/gGdcQVoK1PIxgAAAABJRU5ErkJggg==">
-                            สร้อยคอ
-                        </a>
-                        <a class="dropdown-item fz" routerLink="/products/กำไล">
-                            <img width="25" src="data:image/png;base64,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">
-                            กำไล
-                        </a>
-                        <a class="dropdown-item fz" routerLink="/products/สร้อยข้อมือ">
-                            <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMZSURBVGhD7Zk3qxRRGECfWlgYUBS0NIA2Zuy1ERULwYiFEbEw/Ba1sFLLJwqKnYU5gAlBsTGBYGFsVEyF8Zz39sLHoLjOzJ1dZA4c2L278907Ozd+O9DS0tLSEliExzv6uu+ZiXtx5dC7YSbiO/zZ8S1OwMQq9Bqv7Qvm4SdMDb6I1/F9KEta5meXQpnXzsWecxBjY/UWHsGvoczXlt0IZUlj9JRl+Bxjo15iYhM+woe40YIOLzBeYwxjNcYMvICv8Cr+wCd4F22Q3WQ9/o0N+Bm95j4aw1jGNPY5nIbZOI/xl7yGY3AUzkYHeLc48OfgSDRGsct5M9l4g7Gyk1gXpzDGtq5sOCPFynZgXWzDGPsyZmEJ2o/tTqdxO9bJCPRmfMpO0da1FGtjPu7HZ+igtD/nZhw+Reu0bsdSJZylPmJ63LfRwZkb67iDqV7bMB1LswdTsOQszI11FOu1LaVZgTGYv8xYzM14jD1BbUslXAAN5Gq82oKGWIvuEqzbNlTGcXFz+GVPsG7bUIkp+AUPD73rDUfRNkwaelcCD0If0EfrznUzNs0W/Ia2wfNMqcPZMTRA0jWkadw1xzbYpn+mH27kAcY2lLqRBRi7lo+5abbid7QNdq2FWIo02B1wvaLyYE849d0bftkTapl+JW3dXZzWWNAQHpNfo3VXXhB/t0VxZ5obT48xM6OVtii92jR6bC7Wuw9LU9zGm2RoYhtvDiAlNNSnUzmRZ/LsAHrIcV4fjbmxDuuyzkNoErA20lHXTIqJAo+6Hk/rZCd6jD6DtR91IyYE0uNWF6y62IUxdrbkgxTTQSewLkw6xNhZ00HFBJ1dwP7s4HQ282TXLX7Xa7zWGMaKsc9iNkwAWIEL1RW0H7tDdeW3cmeXbhZNv5PWCWcnYxjLmMa2jqwp0yIORmeW+Euau014hnmMJrLXWdAhHWGTxsg2sLvlT38ruNlLhyLt678VxHUmLprONt6IO9bYWLXMz1JCQz0q9MUfPeLY8W80syxpbZmK8QY9T0zGxHLcjZUSb02xGAc7lj4UtbS0tPxvDAz8ApkTOxUR9/CjAAAAAElFTkSuQmCC">
-                            สร้อยข้อมือ
-                        </a>
-                        <a class="dropdown-item fz" routerLink="/products/ต่างหู">
-                            <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALySURBVGhD7ZnZq01xFMdPyPRgekEo04syJV48EMKL+cn0ZEpJFw8opWR4QaHk0ZAhIaUM5X+QB3NkKHPKEFKmz7f2qtVt1733/IZzLvtTnzqtc/dav87+nX3Wb91aRUVFxX/PaFyNB/A83izUa8VW4ShsSgbgVryPf9rpPdQ1/bHh9MSd+BnLFtseP+EO7I4NYSI+wLLFPcGTuA83Fuq1Ynqv7BrdoXGYlcX4Hf1CvuAeHI9tMQH1t7rG51BO5c7CcvyJVvw3HsWB2FEGoa5VDsun3MswKTPwB1pRfaKLMJQl6O+OakzHJAzGt2jF3qG2SCyU6z1a/tdYz11ukwtoRfSJzcTYKKe/42cxKtPQkssWTMVm9LWmYjSuoyW+g10xFcp9F63eVYzCcPRPlXmYmvlo9X7hMAxGbYQlfaZAJp6j1d2iQCg30BIeViATqmV1rykQyge0hLMVyMQctLp61AehrtaSyZGYC7X6vnY/rBudLXwydbu5UC1fO+gMo27UEqmFyI1vW4I646FoiWQXzEU39LWHYN30xmjJOohq+dq9MIgXaMn0Q5WLhWh1nyoQim8WDyqQiUNodc8pEMo6tIQvMcf3RP2W2niruwaD0ZTDH2uXYmp0CrV637AvRuEUWmKNfFJOPJT7IVq94xgN/Rj5A89uTMVetDqqOQKjoimhFdCAYAHGRjn9YGM/Rkctw220Il9Rw4hYzELltPy3sAcmYQyqE7ViuvWa5Zahvb4SjxSuKGJlrEW/dVVDfV5SJuFHtKLyEnrUJZfNgRVr3UFfRv83yq0pZhY0TfSjzytoaAs+Qr84r55IfsvoWnvvMY7FrOischG1gPUKFGib2ML0xdW8V/ovsd+OG1AxdRANnczPRb8VtGhb8DEFCvTa4icUKNC1Og02HWfQFqxHtqE+zeKnFWh2NqEtWO3FrkLf5ujfDE2P+qI3aItu7Svsg52CKegH3qY62snYqdATaDvq8Sq3YdAkpKKiouJfoVb7CzlAPiA289e/AAAAAElFTkSuQmCC">
-                            ต่างหู
-                        </a>
-                    </div>
-                </li>
-              
-                <li class="nav-item mari mr-auto ml-auto">
-                    <a class="nav-link" routerLink="/home" routerLinkActive="active">ลองทอง<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown mr-auto ml-auto" dropdown>
-                  
-                    <a routerLink="/redeemreward" class="nav-link dropdown-toggle">แลกของรางวัล</a>
-                    <div class="dropdown-menu dropdown dropdown-primary rr" style="Top:-15px; left: 10px; padding-top: 0px; padding-bottom: 0px;">
-                      <a routerLink="/subscription" class="dropdown-item fz" style="font-size: 20px !important;">ขั้นตอนการสมัครสมาชิก</a>
-                    </div>
-                  </li>
-                <li class="nav-item mari mr-auto ml-auto">
-                    <a class="nav-link" routerLink="/content" routerLinkActive="active">คอนเทนท์ <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item mari mr-auto ml-auto">
-                    <a class="nav-link" routerLink="/contact" routerLinkActive="active">ติดต่อเรา <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item mari mr-auto ml-auto">
-                    <a class="nav-link" routerLink="/order" routerLinkActive="active">รายการสั่งซื้อ <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item mr-auto ml-auto">
-                    <a class="nav-link" routerLink="/carts" routerLinkActive="active">
-                        <i class="fa fa-shopping-cart"></i>
-
-                    </a>
-                </li> -->
-
-            <!-- test dropdown-->
-
             <div class="ddd">
                 <a class="dbtn" routerLink="/home" routerLinkActive="active">หน้าหลัก <span class="sr-only">(current)</span></a>
             </div>
@@ -201,11 +134,15 @@
                         <i class="fa fa-facebook-f text-light" aria-hidden="true "></i>
                     </a>
 
-                    <a target="_blank" class="bg-circle" style="background-color: #00b900; width: 50px; height : 50px; margin-bottom: 30px;"
+                    <a target="_blank" class="bg-circle" style="background-color: #00b900; width: 50px; height : 50px; margin-bottom: 30px; margin-right: 5px;"
                         href="https://line.me/R/ti/p/%40yaowarat">
                         <i class="fa fa-fw fa fa-comments text-light" aria-hidden="true "></i>
                     </a>
 
+                    <a target="_blank" class="bg-circle" style="background-color: #3f729b; width: 50px; height : 50px; margin-bottom: 30px;"
+                        href="https://www.instagram.com/yaowarat_roiet/">
+                        <i class="fa fa-fw fa fa-instagram text-light" aria-hidden="true "></i>
+                    </a>
 
                     <p class="text-white" style="font-size:10px;">© Copyright 2017 YAOWARAT101.NET</p>
                 </div>
@@ -218,24 +155,6 @@
     </div>
 
 </footer>
-
-<!-- footer end -->
-
-
-<!-- <ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">Login</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <my-user></my-user>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-    </div>
-</ng-template> -->
 
 <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -259,48 +178,77 @@
     aria-hidden="true">
     <div class="modal-dialog modal-danger modal-side modal-top-right" role="document" style="width:auto; max-width:550px;">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #fcf173;">
 
-                <h5 class="modal-title font-weight-bold white-text" id="exampleModalPreviewLabel"><img src="{{picApi}}image/logo_red.png"
-                        alt="Logo" style="width:100px;">ราคาทองคำวันนี้</h5>
+            <div class="modal-header" [ngStyle]="{'background-image': 'url('+picApi+'image/gold_red.png)'}">
+
+                <div class="modal-title ftim">
+                    <div>
+                        <img class="iii float-left w-25" src="{{picApi}}image/logo_yellow.png" alt="Logo">
+                    </div>
+                    <div>
+                        <h5 class="font-weight-bold yellow-text float-left aaa" id="exampleModalPreviewLabel" style="padding-top: 8px; padding-left: 8px;">
+                            ราคาทองคำวันนี้</h5>
+                    </div>
+
+
+                </div>
+
+
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" [ngStyle]="{'background-image': 'url(https://1434697713.rsc.cdn77.org/assets/uploads/2018/04/29/today-gold-prices-in-pakistan-1.jpg)'}">
+
+            <div class="modal-body" [ngStyle]="{'background-image': 'url('+picApi+'image/gold_today.jpg)'}">
                 <div class="container">
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col-4">&nbsp;</div>
                         <div class="col-4">
                             <div class="card">
                                 <div class="card-body p-0">
                                     <div class="pt-3 pr-3">
-                                        <p class="font-weight-bold">รับชื้อ</p>
+                                        <p class="font-weight-bold red-text text-center">รับชื้อ</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4" style="background-color: #fff;">ขายออก</div>
-                    </div>
-                    <div class="row mt-2 white-text" *ngIf="goldPrice">
-                        <div class="col-4">ทองคำแท่ง</div>
                         <div class="col-4">
-                            <div class="form-group mb-2">
-                                {{ goldPrice.dataBuy }}
-                                <!-- <input *ngIf="userRole == 'admin'" type="text" class="form-control" value="{{ goldPrice.dataBuy }}"
-                                    disabled>
-                                <input *ngIf="userRole != 'admin'" type="text" class="form-control" value="{{ goldPrice.dataBuy }}"
-                                    disabled> -->
+                            <div class="card">
+                                <div class="card-body p-0">
+                                    <div class="pt-3 pr-3">
+                                        <p class="font-weight-bold red-text text-center">ขายออก</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4 mb-4" *ngIf="goldPrice">
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body p-0">
+                                    <div class="pt-3 pr-3">
+                                        <p class="font-weight-bold red-text text-center">ทองคำแท่ง</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="form-group mb-2">
-                                {{ goldPrice.dataSell }}
-                                <!-- <input *ngIf="userRole == 'admin'" type="text" class="form-control" value="{{ goldPrice.dataSell }}"
-                                    disabled>
-                                <input *ngIf="userRole != 'admin'" type="text" class="form-control" value="{{ goldPrice.dataSell }}"
-                                    disabled> -->
+                            <div class="card">
+                                <div class="card-body p-0">
+                                    <div class="pt-3 pr-3">
+                                        <p class="font-weight-bold red-text text-center">{{ goldPrice.dataBuy }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body p-0">
+                                    <div class="pt-3 pr-3">
+                                        <p class="font-weight-bold red-text text-center">{{ goldPrice.dataSell }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -323,36 +271,48 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <p>
+            <div class="modal-footer ftim" [ngStyle]="{'background-image': 'url('+picApi+'image/gold_yellow.jpg)'}">
+                <div>
                     <img style="width : 25px; height : 25px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJsSURBVGhD7ZlLyE1BAMc/j5RHZKcssMGCUkqRhK2lJBJJbCVlZ2nBkoUNKY+SLCysWBIbIhsL2VggyfsVid/vuJPpfnPuPX3f6Z75an71qztzzsw9/86Z85gZKxQKE2Ia7sMH+BP/dOwHvIorsTGGOI+hk9/4rkM/YTiWz7gFG7EXbfQRPSvzsGuW4mX0uF7jfByKl5MNDJETXil30GM7aMUg3Nkx4eWUw5no5zAa5GxVGsACdEcHV47sRo/vSlUaQAkyIrINshDn/vvZiKyCbMdb+AP9L/2OD/E0bkJvOimyCDILb2A4+F/4Et/2fod6vYgpsggSP9B86M7BgCHX4QV0n5uYovMgW9F+fVtYbkUN2zDrINfRfo9VpfH4yuFryAHMNogD9z3a7yIrIjbgPXRbbJZBFqN9vqhK/5mBb9BtX/B55DlM0WmQ1Wif3l5jVqH1j3GmFQ3IIohvrjEbMVU/iJEHmY1re+7EQUEeYdg3aPgUIw8SzkJsXZCU9zFFZ0G+oR9q2j+A12DYFnyFtjuDKToL8qQqNSc8/fdXpfFMmSBP0XbZjZFnGAbwCozxUzoe4OvRT2wvx7rb8ZQa7HUDXUYeZBne7umB2WddEF9fwr56BOsYeZCYcHbqgvTXD6IEaYMSJEEJ0gYlSIISpA1KkASNgzhp5o5OBrRFm0H2oG0uVaUhhKkb55naoM0gJ9A2J6vSEFw9DamnWzFJ2gqyBF0ctU2jBVGnNL+iDe6iy107JuFRtC8/muL645iq73cXeiZCiLrJuyQmDpNnOWmIRiu6MX7BHUIXHq91qHeoU7gZC4XChBgb+wu+/tWVAQWd/AAAAABJRU5ErkJggg==">
                     บริษัทห้างทองเยาวราช จำกัด
+                </div>
+                <div>
                     <img style="width : 25px; height : 25px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMOSURBVGhD7ZlLqE1RGMev96uITETyTsJEobwKAzIlZSAjGZiIGKib8ooUAwbKSFEGninKzESKkIkBkYmZMCBvv5/uV6vTOeeeu8/a+1L7X7/u3Wuv/X3nf/baa6/1nZ5atWrVqvU/aTTMgiWZMeYoKF3L4RZ8gd8lYewbYK7sGgLH4Rc0S14G5joK5s4mTTQm+gbvM2PMxjzHIIu8xemdeARrYSjk1jAw9hOIfOZeBl3rJqQmxkLZMsdjiLw+M13JGSR9sP22qtI6iLyfYSQU1myIYI7fTofTNNgGB+F0H/5vm+c6kcPsO0R+p+bCWgQR6IMNbeRw2AnPIa5pxTOw7xhoJ3PGNX6WwurUyHp4A9G3U15Du+FaqZG90M37xWv3QDNVZmQ3xPlu2QWNqsTIfMi5VHFmmgepKjFyBeKc/GxxnL6tYwimq4J0WF6GVKUbmQRfIc7dg8XJ8f2+4wcwBd6C7avAcyshdAriOu/wRAiVbmQ1RLtcgunJ8e2+Y/+qFeA7wXi2+fcCvIIfkMZKTZZuZCtEu7QzMg4Wwn5IjcwB9yAOpzSWsUOlG9kA0S7tjEwAX5K+MDUVRpzxzoN3JY21EUKlG5kB0S4aGQ8H4BC4yEuN2OccqDCyGez/ECKOD/5UCJVuRKUfwDe066gtsANegPuId9AL0e8w2Pck2FfuQpx3IkhViZFNEOdysQZSVWJEXYQ43y2ukBtVmRH3CHcg+hTFzdsIaFRlRpT7hhOQ7h0GgtNvMxOqUiOhBXAVmhUQWnEG/CJaaVCMhCbDdjgLzl5xfcpHcMbqT4NqJNVwaNxwOW3PhU70zxhRL8HrXabvg3ZDqVHZjLjhj0CO/YF8iNAn8IGe+feoc2UtPlgO8puMYEXKQUXLONYBIm/X5SCVFugsmlVRoHNx+RQi7zXoWpYr012c5UyLZ0WGWX8yprFTE+ZeClnkAjACB47ftACdg2Yv1SOQTZb2NZPembIxlyay/qwQsjLvXiOdAHJj7OuQpQLfn5zNyvjpzSm6kp/eatWqVatWBvX0/AGw1YvV/Mu8SQAAAABJRU5ErkJggg==">
                     @yaowarat
+                </div>
+                <div>
                     <img style="width : 25px; height : 25px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANjSURBVGhD7ZnZy41RFMaPIXOZZQwZCiF/AYkLKcUFcc+VkDKV4cKNC8IlQpnHQhkSpYzlChemCGWIQsk8/h5Ztdq9r+8cn/fd+9R56tfXeb91zl7P2dPa+1Qaaqih/66BMBkG/X5Vh+oAe+EH/Pzzdz90hrqRTJwDGQi5DJ0gebWB0+CTfxm8vgAym6xk4jj4pPdAa9jmnomz0A6SUys4DD7Zg6DnUgvYAf7/J0Hmk1KY5BFQT3jJlHrIxx2FMC6a5oJP7gTkfdMyo57y8QfAei6a2sIrsKROQVPDRT2gnvBmVkNUTQBLRoaqXY1kVj1n7/0CfSGaZoAlc10PapDMPAR7/1SIppFgiXyFflCtNJzsvWIMRFNLeACWzBqoRqEJza3oWgaW0BNoajkNTdyAnhBdveAzWGJzIE/qsSRNmHaBJXcfsnplOiRtQhoGmuyW5DwIpYXAxyyAJLUFLEnNlayicB9YzFNoD8lpAHwES3QFhBoB38FilkCS2gCW5HsYDKG2gsW8g6GQnLrAM7BEz4BKeK+u8Bws5iokV85Ls8CSFPMh1EzwMTrfR6+As3QMLMkPoFIm1HbwZjTkqjWjHhwOhZ8ye4AfYnchvEFREpfAm1FF/LfLCQ1TLSK2qKhqXgeF9qbus/wKpaNt2KDMqWq2GHELRkMomQjP/oZOnoWaWQm+wY0QSj2go7GP+wR6r+0zWSY0ZP3rQs0ogUPgG1SCoRS3HL6Bj30MsyE0cQVU46lq9s8LNaNT4zXwDS6ELE0EfyzIQiZsvumoXaqZbnATfIOrIEsaTprAmsg+XngTptLN9AdVxr7BTZDXoKqCnWCFpq5b8+6OSzfTB7Qq+QaVgHb7PKmyXgt5JkxZZtZDYdIwU1niG1RPjYXmShulN6PFQz9tFKaOoJ8ZvBktuUtB9wDNkczcBvvcaVCotOQq8XDJvQij4F+1GPznjYNSNB60X/jGrfRQNV2LQhPnQV9YadJE3g0+CfEatFFW8+NQaOIOaHGJoimQtSG+AG2imltZSsqESRui7r7egk9OvAGdQoeApGGjatjHyETUe+RQ3UHzREdmn6hQVa396JF7JpIz4dUbNoPO9z7pkKRNeGlBWAT3wBvQ/qPquNYVLrq0YepaSTeXk6DuDDTUUNqqVH4BW6B8jO/x0lsAAAAASUVORK5CYII=">
-                    089-4245999</p>
+                    089-4245999
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Modal -->
 
-
-
 <!-- Modal -->
 <div class="modal fade right" id="modalGoldDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-danger modal-side modal-top-right modal-notify" role="document">
+    <div class="modal-dialog modal-danger modal-side modal-top-right" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalPreviewLabel">
+            <div class="modal-header" [ngStyle]="{'background-image': 'url('+picApi+'image/gold_red.png)'}">
+                <!-- <h5 class="modal-title" id="exampleModalPreviewLabel">
                     <p class="modal-title w-100 font-weight-bold white-text" style="font-size: 22px;">รายละเอียดราคาทอง</p>
-                </h5>
+                </h5> -->
+                <div class="modal-title ftim">
+                    <div>
+                        <img class="iii float-left w-25" src="{{picApi}}image/logo_yellow.png" alt="Logo">
+                    </div>
+                    <div>
+                        <h5 class="font-weight-bold yellow-text float-left aaa" id="exampleModalPreviewLabel" style="padding-top: 8px; padding-left: 8px;">
+                            รายละเอียดราคาทอง</h5>
+                    </div>
+                </div>
                 <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" [ngStyle]="{'background-image': 'url('+picApi+'image/bg_w.jpg)'}">
                 <div class="container" style="font-size: 16px;">
                     <div class="row mb-2">
                         <div class="col-12">

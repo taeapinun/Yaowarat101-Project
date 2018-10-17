@@ -235,6 +235,21 @@ border-radius: 0 !important;
   width: 100% !important;
 }
 
+@media screen and (max-width: 560px) {
+  .ftim {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+  }
+  .iii {
+    width: 40% !important;
+    float : none !important;
+  }
+  .aaa {
+    float: none !important;
+  }
+}
+
 .ddd {float: none;width: 100% !important;}
 .ddd-ct {position: relative;width: 100% !important;background-color: #fff !important;}
 .fz {color :#000 !important;}

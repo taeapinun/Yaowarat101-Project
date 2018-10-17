@@ -45,6 +45,9 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2'
 import { AppService } from './app.service';
 import { AngularDraggableModule } from 'angular2-draggable';
 
+import { NgxEditorModule } from 'ngx-editor';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 // import { NgxAlertsModule } from '@ngx-plus/ngx-alerts';
 
 
@@ -78,7 +81,9 @@ export function getAuthServiceConfigs() {
     FileUploadModule,
     FacebookModule.forRoot(),
     SweetAlert2Module.forRoot(),
-    AngularDraggableModule
+    AngularDraggableModule,
+    NgxEditorModule,
+    TooltipModule
     // NgxAlertsModule.forRoot()
   ],
   declarations: [

@@ -1,4 +1,4 @@
-<div style="height: 1800px">
+<div hidden style="height: 1800px">
   <div class="row">
 
     <img src="https://www.catdumb.com/wp-content/uploads/2016/02/%E0%B8%AB%E0%B8%B8%E0%B9%88%E0%B8%99-3.jpg" style="height: 50vw; ">
@@ -6,72 +6,272 @@
     <div class="col-sm-8">
       <div class="col-sm-8" [ngDraggable]="!sliderNecklaceEnable" [ngResizable]="!sliderNecklaceEnable" [rzMaxWidth]="300"
         style="z-index: 10;width: 300px">
-        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus" class="btn btn-outline-grey" (click)="showSlider('necklace')">
+        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+          class="btn btn-outline-grey" (click)="showSlider('necklace')">
           <i class="fa fa-repeat"></i>
         </button>
-        <input *ngIf="sliderNecklaceEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180" max="180" value="0"
-          (ngModelChange)="rotateImage('necklace')" [(ngModel)]="necklaceDeg">
+        <input *ngIf="sliderNecklaceEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+          max="180" value="0" (ngModelChange)="rotateImage('necklace')" [(ngModel)]="necklaceDeg">
         <img id="necklace" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
       </div>
 
       <div class="col-sm-8" [ngDraggable]="!sliderEarringEnable" [ngResizable]="!sliderEarringEnable" [rzMaxWidth]="300"
         style="z-index: 10;width: 300px">
-        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus" class="btn btn-outline-grey" (click)="showSlider('earring')">
+        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+          class="btn btn-outline-grey" (click)="showSlider('earring')">
           <i class="fa fa-repeat"></i>
         </button>
-        <input *ngIf="sliderEarringEnable" class="custom-range" style="z-index:500; width:80%"  type="range" min="-180" max="180" value="0"
-          (ngModelChange)="rotateImage('earring')" [(ngModel)]="earringDeg">
+        <input *ngIf="sliderEarringEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+          max="180" value="0" (ngModelChange)="rotateImage('earring')" [(ngModel)]="earringDeg">
         <img id="earring" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
       </div>
 
 
       <div class="col-sm-8" [ngDraggable]="!sliderBangleEnable" [ngResizable]="!sliderBangleEnable" [rzMaxWidth]="300"
         style="z-index: 10;width: 300px">
-        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus" class="btn btn-outline-grey" (click)="showSlider('bangle')">
+        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+          class="btn btn-outline-grey" (click)="showSlider('bangle')">
           <i class="fa fa-repeat"></i>
         </button>
-        <input *ngIf="sliderBangleEnable" class="custom-range" style="z-index:500; width:80%"  type="range" min="-180" max="180" value="0"
-          (ngModelChange)="rotateImage('bangle')" [(ngModel)]="bangleDeg">
+        <input *ngIf="sliderBangleEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+          max="180" value="0" (ngModelChange)="rotateImage('bangle')" [(ngModel)]="bangleDeg">
         <img id="bangle" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
       </div>
 
       <div class="col-sm-8" [ngDraggable]="!sliderBraceletsEnable" [ngResizable]="!sliderBraceletsEnable" [rzMaxWidth]="300"
         style="z-index: 10;width: 300px">
-        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus" class="btn btn-outline-grey" (click)="showSlider('bracelets')">
+        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+          class="btn btn-outline-grey" (click)="showSlider('bracelets')">
           <i class="fa fa-repeat"></i>
         </button>
-        <input *ngIf="sliderBraceletsEnable" class="custom-range" style="z-index:500; width:80%"  type="range" min="-180" max="180" value="0"
-          (ngModelChange)="rotateImage('bracelets')" [(ngModel)]="braceletsDeg">
+        <input *ngIf="sliderBraceletsEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+          max="180" value="0" (ngModelChange)="rotateImage('bracelets')" [(ngModel)]="braceletsDeg">
         <img id="bracelets" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
       </div>
 
       <div class="col-sm-8" [ngDraggable]="!sliderRingEnable" [ngResizable]="!sliderRingEnable" [rzMaxWidth]="300"
         style="z-index: 10;width: 300px">
-        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"  class="btn btn-outline-grey" (click)="showSlider('ring')">
+        <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+          class="btn btn-outline-grey" (click)="showSlider('ring')">
           <i class="fa fa-repeat"></i>
         </button>
-        <input *ngIf="sliderRingEnable" class="custom-range" style="z-index:500; width:80%"  type="range" min="-180" max="180" value="0"
-          (ngModelChange)="rotateImage('ring')" [(ngModel)]="ringDeg">
+        <input *ngIf="sliderRingEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180" max="180"
+          value="0" (ngModelChange)="rotateImage('ring')" [(ngModel)]="ringDeg">
         <img id="ring" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   </div>
+</div>
+
+<div class="card card-cascade wider reverse" style="padding : 20px;" [ngStyle]="{'background-image': 'url('+picApi+'image/bg_w.jpg)'}"
+  align="center">
+  <div class="row">
+    <div class="col-md-10">
+
+      <div style="height: 1800px">
+        <div class="row">
+
+          <img src="https://www.catdumb.com/wp-content/uploads/2016/02/%E0%B8%AB%E0%B8%B8%E0%B9%88%E0%B8%99-3.jpg"
+            style="height: 50vw; ">
+
+          <div class="col-sm-8">
+            <div class="col-sm-8" [ngDraggable]="!sliderNecklaceEnable" [ngResizable]="!sliderNecklaceEnable"
+              [rzMaxWidth]="300" style="z-index: 10;width: 300px">
+              <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+                class="btn btn-outline-grey" (click)="showSlider('necklace')">
+                <i class="fa fa-repeat"></i>
+              </button>
+              <input *ngIf="sliderNecklaceEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+                max="180" value="0" (ngModelChange)="rotateImage('necklace')" [(ngModel)]="necklaceDeg">
+              <img id="necklace" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
+            </div>
+
+            <div class="col-sm-8" [ngDraggable]="!sliderEarringEnable" [ngResizable]="!sliderEarringEnable"
+              [rzMaxWidth]="300" style="z-index: 10;width: 300px">
+              <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+                class="btn btn-outline-grey" (click)="showSlider('earring')">
+                <i class="fa fa-repeat"></i>
+              </button>
+              <input *ngIf="sliderEarringEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+                max="180" value="0" (ngModelChange)="rotateImage('earring')" [(ngModel)]="earringDeg">
+              <img id="earring" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
+            </div>
+
+
+            <div class="col-sm-8" [ngDraggable]="!sliderBangleEnable" [ngResizable]="!sliderBangleEnable" [rzMaxWidth]="300"
+              style="z-index: 10;width: 300px">
+              <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+                class="btn btn-outline-grey" (click)="showSlider('bangle')">
+                <i class="fa fa-repeat"></i>
+              </button>
+              <input *ngIf="sliderBangleEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+                max="180" value="0" (ngModelChange)="rotateImage('bangle')" [(ngModel)]="bangleDeg">
+              <img id="bangle" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
+            </div>
+
+            <div class="col-sm-8" [ngDraggable]="!sliderBraceletsEnable" [ngResizable]="!sliderBraceletsEnable"
+              [rzMaxWidth]="300" style="z-index: 10;width: 300px">
+              <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+                class="btn btn-outline-grey" (click)="showSlider('bracelets')">
+                <i class="fa fa-repeat"></i>
+              </button>
+              <input *ngIf="sliderBraceletsEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+                max="180" value="0" (ngModelChange)="rotateImage('bracelets')" [(ngModel)]="braceletsDeg">
+              <img id="bracelets" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
+            </div>
+
+            <div class="col-sm-8" [ngDraggable]="!sliderRingEnable" [ngResizable]="!sliderRingEnable" [rzMaxWidth]="300"
+              style="z-index: 10;width: 300px">
+              <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
+                class="btn btn-outline-grey" (click)="showSlider('ring')">
+                <i class="fa fa-repeat"></i>
+              </button>
+              <input *ngIf="sliderRingEnable" class="custom-range" style="z-index:500; width:80%" type="range" min="-180"
+                max="180" value="0" (ngModelChange)="rotateImage('ring')" [(ngModel)]="ringDeg">
+              <img id="ring" src="https://yaowarat101.net/image/tryproducts/test.png" style="height: inherit; width: inherit;">
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-md-2">
+      <div class='table-responsive'>
+        <!--Table-->
+        <table id="tablePreview" class="table table-hover table-bordered table-sm">
+
+          <!--Table body-->
+          <tbody>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  45</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:white;"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  56</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:black;"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  46</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:white;"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  57</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 130, 0);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  47</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:#dadadb;"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  58</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:blue;"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  48</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 180, 0);"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  59</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 180, 180);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  49</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 230, 150);"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  60</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(150, 230, 0);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  50</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(150, 50, 25);"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  61</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 255, 255);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  51</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(215, 40, 180);"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  62</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(66, 66, 66);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  52</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 150, 255);"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  63</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 0, 150);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  53</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 255, 0);"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  64</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 230, 0);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  54</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 90, 0);"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  65</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(160, 20, 225);"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  55</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:#215b63;"></i>
+              </td>
+              <td>
+                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
+                  66</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:white;"></i>
+              </td>
+            </tr>
+          </tbody>
+          <!--Table body-->
+        </table>
+        <!--Table-->
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<div>
+  <style>
+    .hidden {
+      visibility: hidden
+    }
+  </style>
 </div>
