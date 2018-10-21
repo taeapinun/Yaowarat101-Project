@@ -1,19 +1,19 @@
-import { Component, OnInit, Inject} from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Product } from './product';
-import { ProductService } from './product.service';
-import { CartService } from '../cart/cart.service';
-import { Title } from '@angular/platform-browser';
-import { LinkApi } from '../app.link-api';
-import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
-import swal from 'sweetalert2';
+import { Component, OnInit, Inject } from "@angular/core";
+import { Router, ActivatedRoute, Params } from "@angular/router";
+import { Product } from "./product";
+import { ProductService } from "./product.service";
+import { CartService } from "../cart/cart.service";
+import { Title } from "@angular/platform-browser";
+import { LinkApi } from "../app.link-api";
+import { SESSION_STORAGE, WebStorageService } from "angular-webstorage-service";
+import swal from "sweetalert2";
 
 // import { SearchProductFilterPipe } from './searchProductFilter.pipe';
 
 @Component({
-  selector: 'my-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: "my-products",
+  templateUrl: "./products.component.html",
+  styleUrls: ["./products.component.css"]
 })
 export class ProductsComponent implements OnInit {
   products: Product[];
@@ -26,55 +26,51 @@ export class ProductsComponent implements OnInit {
   iteminPageStr = "10";
   maxPage = 0;
   pageArray: number[];
-  categoryBy = '';
-  searchProductText = '';
+  categoryBy = "";
+  searchProductText = "";
   linkApi = LinkApi.link;
   picApi = LinkApi.pic;
 
   userName = undefined;
   userRole = undefined;
   userId = undefined;
+
+  listTryproduct = [];
   // this.user.userName = null;
   // this.user.userRole = null;
 
-  
-
-  constructor(private router: Router, private productService: ProductService, private cartService: CartService, private titleService:Title, private route:ActivatedRoute, @Inject(SESSION_STORAGE) private storage: WebStorageService) {}
+  constructor(
+    private router: Router,
+    private productService: ProductService,
+    private cartService: CartService,
+    private titleService: Title,
+    private route: ActivatedRoute,
+    @Inject(SESSION_STORAGE) private storage: WebStorageService
+  ) {}
 
   ngOnInit(): void {
-    window.scroll(0,0);
-    this.titleService.setTitle('Yaowarat101 - Products');
-    this.userName = this.storage.get('userName');
-    this.userRole = this.storage.get('userRole');
-    this.userId = this.storage.get('userId');
-    
+    window.scroll(0, 0);
+    this.titleService.setTitle("Yaowarat101 - Products");
+    this.userName = this.storage.get("userName");
+    this.userRole = this.storage.get("userRole");
+    this.userId = this.storage.get("userId");
 
-
-
-    
     this.route.params.forEach((param: Params) => {
-      if(param['category'] !== undefined){
-        this.categoryBy = param['category'];
+      if (param["category"] !== undefined) {
+        this.categoryBy = param["category"];
       }
-      
-    })
+    });
 
     this.getProducts();
   }
 
-
   getProducts(): void {
-    this.productService
-      .getProducts()
-      .subscribe(
-        products => (
-          this.products = products
-          // this.getPageArray()
-          ),
-        error => (this.error = error)
-      )
-      
-      
+    this.productService.getProducts().subscribe(
+      products =>
+        (this.products = products),
+        // this.getPageArray()
+      error => (this.error = error)
+    );
   }
 
   // getPageArray(): void{
@@ -90,13 +86,11 @@ export class ProductsComponent implements OnInit {
   //   }
   // }
 
-
   addProduct(): void {
-    if(this.addingProduct == false) {
+    if (this.addingProduct == false) {
       this.addingProduct = true;
       this.selectedProduct = null;
-    }
-    else{
+    } else {
       this.addingProduct = false;
     }
   }
@@ -106,57 +100,53 @@ export class ProductsComponent implements OnInit {
     if (savedProduct) {
       this.getProducts();
     }
-    let element: HTMLElement = document.getElementById('closemodalProduct') as HTMLElement;
+    let element: HTMLElement = document.getElementById(
+      "closemodalProduct"
+    ) as HTMLElement;
     element.click();
   }
 
   async deleteProduct(product: Product) {
     await swal({
-      title: 'ยืนยันที่จะลบสินค้านี้?',
+      title: "ยืนยันที่จะลบสินค้านี้?",
       text: "",
-      type: 'warning',
+      type: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'ยืนยัน',
-      cancelButtonText: 'ยกเลิก'
-    }).then((result) => {
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "ยืนยัน",
+      cancelButtonText: "ยกเลิก"
+    }).then(result => {
       if (result.value) {
-        this.productService.deleteProduct(product).subscribe(async res => {
-          this.products = this.products.filter(h => h !== product);
-          await swal(
-            'ลบสินค้าสำเร็จ!',
-            'สินค้าของคุณถูกลบแล้ว.',
-            'success'
-          )
-          if (this.selectedProduct === product) {
-            this.selectedProduct = null;
-          }
-        }, error => (this.error = error));
-        
-
+        this.productService.deleteProduct(product).subscribe(
+          async res => {
+            this.products = this.products.filter(h => h !== product);
+            await swal("ลบสินค้าสำเร็จ!", "สินค้าของคุณถูกลบแล้ว.", "success");
+            if (this.selectedProduct === product) {
+              this.selectedProduct = null;
+            }
+          },
+          error => (this.error = error)
+        );
       }
-    })
-    
+    });
   }
 
-  
-
-  selectChange(): void{
+  selectChange(): void {
     // this.getPageArray()
   }
 
-  categoryChange(): void{
-    if(this.categoryBy == 'all') this.categoryBy = '';
+  categoryChange(): void {
+    if (this.categoryBy == "all") this.categoryBy = "";
     // this.getPageArray()
     this.changePage(1);
     // console.log(this.categoryBy)
   }
 
-  changePage(page: number): void{
-    if(page > 0 && page <= this.maxPage){
+  changePage(page: number): void {
+    if (page > 0 && page <= this.maxPage) {
       this.inPage = page;
-      window.scroll(0,0);
+      window.scroll(0, 0);
     }
     // this.getPageArray()
   }
@@ -167,37 +157,67 @@ export class ProductsComponent implements OnInit {
     // this.router.navigate(['/detail', this.selectedProduct.p_Id]);
   }
 
-
-
   async addtoCart(product: Product, id: number) {
-    if(this.userId != undefined)
-    {
-      this.cartService.post(product,id).subscribe(async res => {
+    if (this.userId != undefined) {
+      this.cartService.post(product, id).subscribe(async res => {
         await swal({
-          title: 'ตะกร้าสินค้า',
-          text: 'เพิ่มในตะกร้าสินค้าสำเร็จ',
-          type: 'success',
-          confirmButtonText: 'ยืนยัน',
+          title: "ตะกร้าสินค้า",
+          text: "เพิ่มในตะกร้าสินค้าสำเร็จ",
+          type: "success",
+          confirmButtonText: "ยืนยัน",
           backdrop: false
-        })
-      })
-    }
-    else{
+        });
+      });
+    } else {
       await swal({
-        title: 'เข้าสู่ระบบ',
-        text: 'โปรดเข้าสู่ระบบ',
-        type: 'error',
+        title: "เข้าสู่ระบบ",
+        text: "โปรดเข้าสู่ระบบ",
+        type: "error",
         showConfirmButton: true
-      })
+      });
     }
-    
-    
   }
 
   counter(i: number) {
-    i = Math.ceil(Number(i/Number(this.iteminPage)));
+    i = Math.ceil(Number(i / Number(this.iteminPage)));
     this.maxPage = new Array(i).length;
     return new Array(i);
+  }
+
+  async clickTryproductBtn(product: Product) {
+    if (this.listTryproduct.length < 5) {
+      this.listTryproduct.push({ p_Id: product.p_Id, p_Name: product.p_Name });
+    }
+
+    let text = "";
+    this.listTryproduct.forEach(data => {
+      text += "<div>";
+      text += "(" + data.p_Id + ")" + data.p_Name;
+      text += "</div>";
+    });
+    await swal({
+      position: "top-end",
+      title: "รายการลองทอง",
+      html: text,
+      showConfirmButton: true,
+      confirmButtonText: "ไปที่หน้าลองทอง",
+      showCancelButton: true,
+      cancelButtonText: "ลบทั้งหมด",
+      showCloseButton: true,
+      backdrop: false,
+      width: 400
+    }).then(result => {
+      if (result.value) {
+        this.storage.set("tryproduct", this.listTryproduct);
+        if (this.categoryBy) {
+          this.router.navigate(["../../tryproduct"], { relativeTo: this.route });
+        } else {
+          this.router.navigate(["../tryproduct"], { relativeTo: this.route });
+        }
+      } else {
+        this.listTryproduct = [];
+      }
+    });
   }
 
   // searchTextChange(text: any): void{

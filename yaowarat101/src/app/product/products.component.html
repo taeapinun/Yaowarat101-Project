@@ -138,6 +138,9 @@
                   </div>
                   <input type="number" class="form-control" [(ngModel)]="product.p_Amount" min="1" oninput="this.value = Math.abs(this.value)">
                 </div>
+                <button class="btn btn-sm float-left" style="text-transform: none; background-color: #c0c0c0;" (click)="clickTryproductBtn(product)">
+                    ลอง
+                  </button>
                 <button class="btn btn-sm float-right" style="text-transform: none; background-color: #d6b50f;" (click)="addtoCart(product,userId)">
                   <i class="fa fa-shopping-cart"></i>
                   เพิ่มในตะกร้าสินค้า
@@ -249,6 +252,7 @@
     </div>
   </div>
 </div>
+
 
 
 
