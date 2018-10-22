@@ -1,104 +1,116 @@
-<div class="card card-cascade" style="padding : 20px;" [ngStyle]="{'background-image': 'url('+picApi+'image/bg_w.jpg)'}"
-  align="center">
-  <input type='file' (change)="readURL($event);" />
-  <div class="row">
-    <div class="col-md-10">
-      <div style="height: 1800px">
-        <div class="row">
-          <img id="ImageForTest" src="https://www.catdumb.com/wp-content/uploads/2016/02/%E0%B8%AB%E0%B8%B8%E0%B9%88%E0%B8%99-3.jpg"
-            style="height: 50vw; ">
-          <div class="col-sm-8">
+<div class="col-md-10 mr-auto ml-auto">
+  <div class="card card-cascade" style="padding : 20px;" [ngStyle]="{'background-image': 'url('+picApi+'image/bg_w.jpg)'}"
+    align="center">
 
-            <div *ngFor="let item of listTryproduct; let i = index">
-              <div *ngIf="i+1 === 1">
-                <div class="col-sm-8" [ngDraggable]="!slider1Enable" style="z-index:500;width: 300px;height:300px;margin-bottom:100px">
-                  <div style="width:300px;height:300px" [ngResizable]="!slider1Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
-                    <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
-                  </div>
-
-                  <div style="margin-top:40px">
-                    <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
-                      triggers="focus" class="btn btn-outline-grey btn-responsive float-left" (click)="showSlider(i+1)">
-                      <i class="fa fa-repeat"></i>
-                    </button>
-                    <input *ngIf="slider1Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
-                      type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg1">
-                  </div>
-                </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div style="height: auto">
+          <div class="row">
+            <div class="col-sm-7" align="center">
+              <div class="text-left" style="margin-left: 8vw;">
+                <input type='file' (change)="readURL($event);" />
               </div>
-              <div *ngIf="i+1 === 2">
-                <div class="col-sm-8" [ngDraggable]="!slider2Enable" style="z-index:500;width: 300px;height:300px;margin-bottom:100px">
-                  <div style="width:300px;height:300px" [ngResizable]="!slider2Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
-                    <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
-                  </div>
-
-                  <div style="margin-top:40px">
-                    <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
-                      triggers="focus" class="btn btn-outline-grey btn-responsive float-left" (click)="showSlider(i+1)">
-                      <i class="fa fa-repeat"></i>
-                    </button>
-                    <input *ngIf="slider2Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
-                      type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg2">
-                  </div>
-                </div>
+              <div class="mb-5">
+                <img id="ImageForTest" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Man_Silhouette2.jpg/320px-Man_Silhouette2.jpg"
+                  class="mt-3 rounded img-fluid z-depth-3" style="width:30vw; height:40vw;">
               </div>
-              <div *ngIf="i+1 === 3">
-                <div class="col-sm-8" [ngDraggable]="!slider3Enable" style="z-index:500;width: 300px;height:300px;margin-bottom:100px">
-                  <div style="width:300px;height:300px" [ngResizable]="!slider3Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
-                    <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
-                  </div>
-
-                  <div style="margin-top:40px">
-                    <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
-                      triggers="focus" class="btn btn-outline-grey btn-responsive float-left" (click)="showSlider(i+1)">
-                      <i class="fa fa-repeat"></i>
-                    </button>
-                    <input *ngIf="slider3Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
-                      type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg3">
-                  </div>
-                </div>
-              </div>
-              <div *ngIf="i+1 === 4">
-                <div class="col-sm-8" [ngDraggable]="!slider4Enable" style="z-index:500;width: 300px;height:300px;margin-bottom:100px">
-                  <div style="width:300px;height:300px" [ngResizable]="!slider4Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
-                    <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
-                  </div>
-
-                  <div style="margin-top:40px">
-                    <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
-                      triggers="focus" class="btn btn-outline-grey btn-responsive float-left" (click)="showSlider(i+1)">
-                      <i class="fa fa-repeat"></i>
-                    </button>
-                    <input *ngIf="slider4Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
-                      type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg4">
-                  </div>
-                </div>
-              </div>
-              <div *ngIf="i+1 === 5">
-                <div class="col-sm-8" [ngDraggable]="!slider5Enable" style="z-index:500;width: 300px;height:300px;margin-bottom:100px">
-                  <div style="width:300px;height:300px" [ngResizable]="!slider5Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
-                    <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
-                  </div>
-
-                  <div style="margin-top:40px">
-                    <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
-                      triggers="focus" class="btn btn-outline-grey btn-responsive float-left" (click)="showSlider(i+1)">
-                      <i class="fa fa-repeat"></i>
-                    </button>
-                    <input *ngIf="slider5Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
-                      type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg5">
-                  </div>
-                </div>
+              <div *ngFor="let item of listTryproduct; let i = index" class="text-left" style="margin-left: 8vw;">
+                <p class="font-weight-bold">
+                  {{i+1}} : {{item.p_Name}}
+                </p>
               </div>
             </div>
+            <div class="col-sm-5">
+              <div *ngFor="let item of listTryproduct; let i = index">
+                <div *ngIf="i+1 === 1">
+                  <div class="col-sm-8" [ngDraggable]="!slider1Enable" style="z-index:500;width: 12vw;height:12vw;margin-bottom:100px">
+                    <div style="width:12vw;height:12vw" [ngResizable]="!slider1Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
+                      <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
+                    </div>
+
+                    <div style="margin-top:0px">
+                      <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
+                        triggers="focus" class="btn btn-responsive float-left btn-link" (click)="showSlider(i+1)">
+                        <i class="fa fa-repeat"></i>
+                      </button>
+                      <input *ngIf="slider1Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
+                        type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg1">
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="i+1 === 2">
+                  <div class="col-sm-8" [ngDraggable]="!slider2Enable" style="z-index:500;width: 12vw;height:12vw;margin-bottom:100px">
+                    <div style="width:12vw;height:12vw" [ngResizable]="!slider2Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
+                      <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
+                    </div>
+
+                    <div style="margin-top:0px">
+                      <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
+                        triggers="focus" class="btn btn-responsive float-left btn-link" (click)="showSlider(i+1)">
+                        <i class="fa fa-repeat"></i>
+                      </button>
+                      <input *ngIf="slider2Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
+                        type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg2">
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="i+1 === 3">
+                  <div class="col-sm-8" [ngDraggable]="!slider3Enable" style="z-index:500;width: 12vw;height:12vw;margin-bottom:100px">
+                    <div style="width:12vw;height:12vw" [ngResizable]="!slider3Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
+                      <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
+                    </div>
+
+                    <div style="margin-top:0px">
+                      <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
+                        triggers="focus" class="btn btn-responsive float-left btn-link" (click)="showSlider(i+1)">
+                        <i class="fa fa-repeat"></i>
+                      </button>
+                      <input *ngIf="slider3Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
+                        type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg3">
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="i+1 === 4">
+                  <div class="col-sm-8" [ngDraggable]="!slider4Enable" style="z-index:500;width: 12vw;height:12vw;margin-bottom:100px">
+                    <div style="width:12vw;height:12vw" [ngResizable]="!slider4Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
+                      <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
+                    </div>
+
+                    <div style="margin-top:0px">
+                      <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
+                        triggers="focus" class="btn btn-responsive float-left btn-link" (click)="showSlider(i+1)">
+                        <i class="fa fa-repeat"></i>
+                      </button>
+                      <input *ngIf="slider4Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
+                        type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg4">
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="i+1 === 5">
+                  <div class="col-sm-8" [ngDraggable]="!slider5Enable" style="z-index:500;width: 12vw;height:12vw;margin-bottom:100px">
+                    <div style="width:12vw;height:12vw" [ngResizable]="!slider5Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
+                      <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
+                    </div>
+
+                    <div style="margin-top:0px">
+                      <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
+                        triggers="focus" class="btn btn-responsive float-left btn-link" (click)="showSlider(i+1)">
+                        <i class="fa fa-repeat"></i>
+                      </button>
+                      <input *ngIf="slider5Enable" class="custom-range" style="z-index:500; width:80%; margin-top:25px"
+                        type="range" min="-90" max="90" value="0" (ngModelChange)="rotateImage(i+1)" [(ngModel)]="Deg5">
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
-            <!-- 
+              <!-- 
             <div class="col-sm-8" [ngDraggable]="!sliderEarringEnable" style="z-index:500;width: 300px;height:300px;margin-bottom:100px">
                 <div style="width:300px;height:300px" [ngResizable]="!sliderNecklaceEnable" [rzMaxWidth]="300" [rzMaxHeight]="300">
                     <img id="earring" src="https://yaowarat101.net/image/tryproducts/test.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
                 </div>
-                <div style="margin-top:40px">
+                <div style="margin-top:0px">
                     <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top" triggers="focus"
                         class="btn btn-outline-grey float-left" (click)="showSlider('earring')">
                         <i class="fa fa-repeat"></i>
@@ -152,135 +164,120 @@
                 </div>
             </div> -->
 
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-2">
-      <div class='table-responsive'>
-        <!--Table-->
-        <table id="tablePreview" class="table table-hover table-bordered table-sm">
 
-          <!--Table body-->
-          <tbody>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  45</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:white;"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  56</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:black;"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  46</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:white;"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  57</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 130, 0);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  47</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:#dadadb;"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  58</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:blue;"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  48</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 180, 0);"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  59</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 180, 180);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  49</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 230, 150);"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  60</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(150, 230, 0);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  50</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(150, 50, 25);"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  61</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 255, 255);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  51</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(215, 40, 180);"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  62</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(66, 66, 66);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  52</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 150, 255);"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  63</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(0, 0, 150);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  53</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 255, 0);"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  64</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 230, 0);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  54</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(255, 90, 0);"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  65</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:rgb(160, 20, 225);"></i>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  55</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:#215b63;"></i>
-              </td>
-              <td>
-                <p class="font-weight-bold float-left m-0" id="exampleModalPreviewLabel" style="font-size:30px; padding-right: 8px;">
-                  66</p><i class="fa fa-circle" aria-hidden="true" style="font-size:40px;color:white;"></i>
-              </td>
-            </tr>
-          </tbody>
-          <!--Table body-->
-        </table>
-        <!--Table-->
-      </div>
     </div>
+    <div class="dpb row block-example border-top mt-3">
+      <a (click)="showNecklace()" class="ml-4 mt-3" style="padding-left: 7px; padding-right: 20px;">
+        <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJpSURBVGhD7ZfL6w1hGICP247cV25/gIVy2dsp91J2WEtSJISyZeNuY0WiLNxJ2IiFCHsKJbfsXQvPU+etr9P51Zk5czmjeeqpr3dm3vf9zsx35ptOS0tLy3/DEbzfdaWBmliF0cdhA1m5hX+7bjVQE9sw+rCnzFzGSLDfQE0cwOjjkoGsHMdIcMpATZzG6OOogazsxkhw00BNWDv62GUgK+swErwzUBPvMfpYYyArCzAS6EysmtmY9jAXc/EFI8kGAxWzEaP+RwN5uYiR6KyBirFm1L9gIC9bMBJ9xUlYFdayZtTfjLmZhj8wkq3GqliLUdce7GUormAkvGugIh5g1PXlPDQrMBL+wUVYNkswaupyHJpx+BIj6R0sm3sY9V4YKIr1GIk114tpQNIXsbpWCuURRvIPOB2LxpzmjjoPsXAWYvoP5iM2AYvCXP6ZRH5rWbMU9mIU0hNYBK7DM5jm3oelYcEbmBY8huMxL96Jk5jmvI7WKpWp+BTTwtdwBmZlFqbbdH2C1qgEd6XPMW3ATd0mHOTueBfccnzCNMczNHelTMHbmDair9DP08U4EQPHvugO4mvsvc5HdjLWgs+xX23fsLcx/Y2fuzrud47X7sTS18QgzMfz+Av7NdtPzz2HXjtyzMM9+Bi/Y2/zxjzmOXOwEbgm/MVjEo7TNdMo0pec48aS7mIdN5LtGJMIjTWKpfgTeydizGONwG/rN9g7idBjQ39/V8Eh7DeBVM8Zefy132K/CajHGnFHZBmOtUY81ih2YO9EjDUON4FXMSbheCQ2hnmI9dKodTEWronGrYuWlpaWMul0/gGdcQVoK1PIxgAAAABJRU5ErkJggg==">
+        สร้อยคอ
+      </a>
+      <a (click)="showRings()" class="ml-4 mt-3" style="padding-left: 7px; padding-right: 20px;">
+        <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQmSURBVGhD7ZlZzF1TFMe/moqEkNbURCMeCCGKFzEkRSNB0gcikRIxJDRBanzwYHpQVHnwQHlpQlNBzGoIEsMDQgkSTYM0hiilqaGGatHfLzlLVnbOucP3ffe7N3L+yS85d5219lnnnL3X3vvcsVatWrVq9X/SNNgbDoTDKjzWNrLaGU6Cm+Fx+AS2wL8NeE6fx8CYE2EnGIp2hDPhCfgV6hLuB9uwrTPAtgeu3eBa+ArqEqrjj4q6c3V8CdfArjAQXQhNN/APvA/3wsVwNOwPORmPtR0D+uhrTF174g1dAJOmmfA01F3sY7gKZsN4dRD4Bhw3ddd4EmbAhHQ4fANl42+C/dnqNFmyLcedbZfX+xqsfOOSXeAHyA1+C+fBIOUNnQ/rIV97A9hl+9Is+B5yQ6tgKucBu9OLkHP4Dg6AnmT5K1/vnbADTLW85lLIubwBPZVoB14OvB2Grbsg53Q1dNRe8AtEwDMwCnLcPAuR1ybYExp1BYTzb7APjIrMxZwiP3Nt1PMQjo9qGKece5zMlsBDFR5rm8icYE6Rn2+oUWsgHK/U0Kecd5zAtkG0U+I511X69qtFEO18qqFJayEcz9HQo+zDN8FWiPhu6Hsj9DOpngsRb66N+gjC8XoNPchS+AhEXODk+TDcWuGxttJvJfS64rWCRtyHGpr0MoTjqxp6kH0/YoL7wX1KKW3LoPS/A7rJ2HUQMU6WjboFwvFvOAo6aR6Ef+ZHcKVbSttGKP1dPc+FTroOcoxduVHHQnZ2mb071Mm+vRrC11e9Of120Jd6CuK8vsbE7/egabycCuWu01w7qlyevAX7Qim3qOHj27MKXZ5s4uIv5HE+p68xxobteCi1AH6HHPs6dNUJUJZPu4qlbw8I5TVQ1HSfqGMr7CbwRUVORp94+s9B2B1vIZ94ns0DczsOelKuDhln1htA+abCfpmGSm6Uus0j+oQWQpxzQajugxyTuQ16VlNJlXtAfQZhO1lDpbMg+9dxNoSMDbttKrfB2T/op1T/p13ApUXZWKyG837lbXilwj1D2C2RVjbJewtjw/+dyibGqroesRwm9NnIsZErxgOgPoB8oRJn7kMg5HG3md821YMQtj/BHCZFh4KVwoZf0oAsr3GxJk6DkMd1Phk/8KmYmF+D/DAmTafDC2A/vQQiAQewG7JL4d3KJn4+8g1K/pSkj77G5MJwEdi23dBrTYncH+SSGmNnDnSrWvqovLwZ6v7HNVIk4jiaD9PBj2thL/GcPqfAX5VNFsPQ5NbYyS6S8WbKLx/RtbLNDVx+m5bdjlvXqdCR8DPkRANn7ZD7/zqfn+AIGAm5nPBrYF2idp/chTLG+CFwpOQSfQXkRWAT+rjR2g9GVu5hXMbksRN8DndDt33OyMm/Eg6uGNj/Ha1atWrVakgaG9sOolRAH9bqvswAAAAASUVORK5CYII=">
+        แหวน
+      </a>
+      <a (click)="showBracelets()" class="ml-4 mt-3" style="padding-left: 7px; padding-right: 20px;">
+        <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMZSURBVGhD7Zk3qxRRGECfWlgYUBS0NIA2Zuy1ERULwYiFEbEw/Ba1sFLLJwqKnYU5gAlBsTGBYGFsVEyF8Zz39sLHoLjOzJ1dZA4c2L278907Ozd+O9DS0tLSEliExzv6uu+ZiXtx5dC7YSbiO/zZ8S1OwMQq9Bqv7Qvm4SdMDb6I1/F9KEta5meXQpnXzsWecxBjY/UWHsGvoczXlt0IZUlj9JRl+Bxjo15iYhM+woe40YIOLzBeYwxjNcYMvICv8Cr+wCd4F22Q3WQ9/o0N+Bm95j4aw1jGNPY5nIbZOI/xl7yGY3AUzkYHeLc48OfgSDRGsct5M9l4g7Gyk1gXpzDGtq5sOCPFynZgXWzDGPsyZmEJ2o/tTqdxO9bJCPRmfMpO0da1FGtjPu7HZ+igtD/nZhw+Reu0bsdSJZylPmJ63LfRwZkb67iDqV7bMB1LswdTsOQszI11FOu1LaVZgTGYv8xYzM14jD1BbUslXAAN5Gq82oKGWIvuEqzbNlTGcXFz+GVPsG7bUIkp+AUPD73rDUfRNkwaelcCD0If0EfrznUzNs0W/Ia2wfNMqcPZMTRA0jWkadw1xzbYpn+mH27kAcY2lLqRBRi7lo+5abbid7QNdq2FWIo02B1wvaLyYE849d0bftkTapl+JW3dXZzWWNAQHpNfo3VXXhB/t0VxZ5obT48xM6OVtii92jR6bC7Wuw9LU9zGm2RoYhtvDiAlNNSnUzmRZ/LsAHrIcV4fjbmxDuuyzkNoErA20lHXTIqJAo+6Hk/rZCd6jD6DtR91IyYE0uNWF6y62IUxdrbkgxTTQSewLkw6xNhZ00HFBJ1dwP7s4HQ282TXLX7Xa7zWGMaKsc9iNkwAWIEL1RW0H7tDdeW3cmeXbhZNv5PWCWcnYxjLmMa2jqwp0yIORmeW+Euau014hnmMJrLXWdAhHWGTxsg2sLvlT38ruNlLhyLt678VxHUmLprONt6IO9bYWLXMz1JCQz0q9MUfPeLY8W80syxpbZmK8QY9T0zGxHLcjZUSb02xGAc7lj4UtbS0tPxvDAz8ApkTOxUR9/CjAAAAAElFTkSuQmCC">
+        สร้อยข้อมือ
+      </a>
+      <a (click)="showEarring()" class="ml-4 mt-3" style="padding-left: 7px; padding-right: 20px;">
+        <img width="25" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALySURBVGhD7ZnZq01xFMdPyPRgekEo04syJV48EMKL+cn0ZEpJFw8opWR4QaHk0ZAhIaUM5X+QB3NkKHPKEFKmz7f2qtVt1733/IZzLvtTnzqtc/dav87+nX3Wb91aRUVFxX/PaFyNB/A83izUa8VW4ShsSgbgVryPf9rpPdQ1/bHh9MSd+BnLFtseP+EO7I4NYSI+wLLFPcGTuA83Fuq1Ynqv7BrdoXGYlcX4Hf1CvuAeHI9tMQH1t7rG51BO5c7CcvyJVvw3HsWB2FEGoa5VDsun3MswKTPwB1pRfaKLMJQl6O+OakzHJAzGt2jF3qG2SCyU6z1a/tdYz11ukwtoRfSJzcTYKKe/42cxKtPQkssWTMVm9LWmYjSuoyW+g10xFcp9F63eVYzCcPRPlXmYmvlo9X7hMAxGbYQlfaZAJp6j1d2iQCg30BIeViATqmV1rykQyge0hLMVyMQctLp61AehrtaSyZGYC7X6vnY/rBudLXwydbu5UC1fO+gMo27UEqmFyI1vW4I646FoiWQXzEU39LWHYN30xmjJOohq+dq9MIgXaMn0Q5WLhWh1nyoQim8WDyqQiUNodc8pEMo6tIQvMcf3RP2W2niruwaD0ZTDH2uXYmp0CrV637AvRuEUWmKNfFJOPJT7IVq94xgN/Rj5A89uTMVetDqqOQKjoimhFdCAYAHGRjn9YGM/Rkctw220Il9Rw4hYzELltPy3sAcmYQyqE7ViuvWa5Zahvb4SjxSuKGJlrEW/dVVDfV5SJuFHtKLyEnrUJZfNgRVr3UFfRv83yq0pZhY0TfSjzytoaAs+Qr84r55IfsvoWnvvMY7FrOischG1gPUKFGib2ML0xdW8V/ovsd+OG1AxdRANnczPRb8VtGhb8DEFCvTa4icUKNC1Og02HWfQFqxHtqE+zeKnFWh2NqEtWO3FrkLf5ujfDE2P+qI3aItu7Svsg52CKegH3qY62snYqdATaDvq8Sq3YdAkpKKiouJfoVb7CzlAPiA289e/AAAAAElFTkSuQmCC">
+        ต่างหู
+      </a>
+      <a (click)="showBangle()" class="ml-4 mt-3" style="padding-left: 7px; padding-right: 20px;">
+        <img width="25" src="data:image/png;base64,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">
+        กำไล
+      </a>
+      <!-- <div *ngFor="let item of listTryproduct; let i = index" class="text-left">
+        <p class="font-weight-bold">
+          {{i+1}} : {{item.p_Name}}
+        </p>
+      </div> -->
+    </div>
+
+    <div class="row mt-3">
+
+      <!-- <div *ngFor="let item of products"> -->
+      <!-- {{products | productFilter : searchProductText : "แหวน"}} -->
+      <div *ngFor="let product of products | productFilter : searchProductText : categoryBy as testvalue ; let i=index"
+        class="col-2" style="padding-left: 1vw; padding-right: 1vw;">
+        <div class="row shadowstry view overlay zoom" *ngIf="i < iteminPage*inPage && i >= (iteminPage*inPage)-iteminPage"
+          style="margin: 0vw; background-color:whitesmoke;">
+          <img class="mr-auto ml-auto" *ngIf="product.p_Type == categoryBy" src="https://yaowarat101.net/image/tryproducts/{{ product.p_Id }}.png"
+            style="width: 9vw; height: 9vw;">
+          <!-- {{product.p_Name}} -->
+        </div>
+
+        <!-- <img *ngIf="product.p_Type == categoryBy" src="https://yaowarat101.net/image/tryproducts/{{ product.p_Id }}.png" style="width: 7vw; height: 7vw;"> -->
+        <!-- <img *ngIf="item.p_Type == 'แหวน'" src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 7vw; height: 7vw;">
+          <img *ngIf="item.p_Type == 'ต่างหู'" src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 7vw; height: 7vw;">
+          <img *ngIf="item.p_Type == 'สร้อยข้อมือ'" src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 7vw; height: 7vw;">
+          <img *ngIf="item.p_Type == 'กำไล'" src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 7vw; height: 7vw;"> -->
+        <!-- {{product.p_Id}} -->
+      </div>
+      <!-- <div *ngIf="item.p_Type == 'แหวน'" class="col-4">
+          <img src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 100px; height: 100px;">
+          {{item.p_Id}}
+        </div>
+        <div *ngIf="item.p_Type == 'ต่างหู'" class="col-4">
+          <img src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 100px; height: 100px;">
+          {{item.p_Id}}
+        </div>
+        <div *ngIf="item.p_Type == 'สร้อยข้อมือ'" class="col-4">
+          <img src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 100px; height: 100px;">
+          {{item.p_Id}}
+        </div>
+        <div *ngIf="item.p_Type == 'กำไล'" class="col-4">
+          <img src="https://yaowarat101.net/image/tryproducts/{{ item.p_Id }}.png" style="width: 100px; height: 100px;">
+          {{item.p_Id}}
+        </div> -->
+      <!-- </div> -->
+    </div>
+
+    <nav>
+      <ul class="pagination pg-blue float-right" style="margin-top: 0.7em;">
+        <!--Arrow left-->
+        <li class="page-item">
+          <a class="page-link" aria-label="Previous" (click)="changePage(inPage-1)">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+
+        <!--Numbers-->
+        <div *ngFor="let items of (counter((products | productFilter : searchProductText : categoryBy)?.length)) ; let page=index">
+          <li class="page-item active" *ngIf="inPage == page+1">
+            <a class="page-link" style="background-color: rgba(214, 181, 15, 1);" (click)="changePage(page+1)">{{page+1}}</a>
+          </li>
+          <li class="page-item" *ngIf="inPage != page+1 && page+1 >= inPage-3 && page+1 <= inPage+3">
+            <a class="page-link" (click)="changePage(page+1)">{{page+1}}</a>
+          </li>
+        </div>
+
+
+        <!--Arrow right-->
+        <li class="page-item">
+          <a class="page-link" aria-label="Next" (click)="changePage(inPage+1)">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+
+
 
   </div>
+</div>
 
-
+<div>
+  <style>
+    .hidden {
+      visibility: hidden
+    }
+  </style>
 </div>

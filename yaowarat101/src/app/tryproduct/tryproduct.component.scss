@@ -22,3 +22,31 @@ img {
     line-height: 1.2;
   }
 }
+
+
+// test
+.dpb a {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #000 !important;
+}
+
+.dpb a:hover {
+  background-color: #d6b50f !important;
+  text-decoration: none;
+  color : #ffffff !important;
+}
+
+.dpb p {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #000 !important;
+}
+
+div.shadowstry {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

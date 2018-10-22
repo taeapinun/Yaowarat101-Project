@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { LinkApi } from "../app.link-api";
 import { ActivatedRoute, Params } from '@angular/router'
+import { Product } from "../product/product";
 import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
+import { ProductService } from "../product/product.service";
 
 @Component({
   selector: "my-tryproduct",
@@ -9,6 +11,13 @@ import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
   styleUrls: ["./tryproduct.component.scss"]
 })
 export class TryproductComponent implements OnInit {
+  categoryBy = "สร้อยคอ";
+  searchProductText = "";
+  inPage = 1;
+  iteminPage = "6";
+  maxPage = 0;
+
+  products: Product[];
   picApi = LinkApi.link;
   Deg1 = 0;
   slider1Enable = false;
@@ -23,20 +32,64 @@ export class TryproductComponent implements OnInit {
 
   listTryproduct = []
 
-  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService) {}
+  constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,private productService: ProductService,private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.listTryproduct = this.storage.get('tryproduct')
     console.log(this.listTryproduct)
+    this.getProducts();
     
-
+    
     // this.route.params.subscribe(data => {
     //   console.log(data)
     // })
     // alert('กำลังอยู่ในการพัฒนา v0.0.1');
   }
 
+  showRings(){
+    this.categoryBy = "แหวน";
+    this.inPage = 1;
+  }
+  showNecklace(){
+    this.categoryBy = "สร้อยคอ";
+    this.inPage = 1;
+  }
+  showBracelets(){
+    this.categoryBy = "สร้อยข้อมือ";
+    this.inPage = 1;
+  }
+  showEarring(){
+    this.categoryBy = "ต่างหู";
+    this.inPage = 1;
+  }
+  showBangle(){
+    this.categoryBy = "กำไล";
+    this.inPage = 1;
+  }
+  changePage(page: number): void {
+    if (page > 0 && page <= this.maxPage) {
+      this.inPage = page;
+      window.scroll(0, 0);
+    }
+    // this.getPageArray()
+  }
+  counter(i: number) {
+    i = Math.ceil(Number(i / Number(this.iteminPage)));
+    this.maxPage = new Array(i).length;
+    return new Array(i);
+  }
+
+  getProducts(): void {
+    this.productService.getProducts().subscribe(
+      products =>
+        (this.products = products),
+        // this.getPageArray()
+      
+    );
+  }
+
   rotateImage(name: number, deg: number): void {
+    // console.log(this.products);
     console.log(this.listTryproduct)
     let element: HTMLElement = document.getElementById(
       String(name)
@@ -111,7 +164,7 @@ export class TryproductComponent implements OnInit {
       reader.onloadend = (e) => {
         const element: HTMLImageElement = document.getElementById('ImageForTest') as HTMLImageElement;
         element.src = reader.result.toString()
-        element.style.height = '50vw'
+        element.style.height = '40vw'
       }
       reader.readAsDataURL(input.srcElement.files[0])
     }

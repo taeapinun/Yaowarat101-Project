@@ -58,6 +58,7 @@ export class ProductsComponent implements OnInit {
     this.route.params.forEach((param: Params) => {
       if (param["category"] !== undefined) {
         this.categoryBy = param["category"];
+        this.inPage = 1;
       }
     });
 
