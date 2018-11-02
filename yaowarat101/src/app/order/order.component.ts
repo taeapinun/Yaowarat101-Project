@@ -49,11 +49,11 @@ export class OrderComponent implements OnInit {
     else {
       this.userId = this.storage.get('userId');
     }
-    // console.log(this.userId)
+    // console.log(this.userName)
 
     this.orderService.getOrders(this.userId).subscribe(orders => (
       this.orders = orders,
-      console.log(this.orders),
+      // console.log(this.orders),
       // console.log(orders),
       this.orderService.getOrderList(this.userId).subscribe(orderlist => (
         this.orderlist = orderlist,

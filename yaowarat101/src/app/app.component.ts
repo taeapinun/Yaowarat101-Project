@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
     this.appService.getGoldPrice().subscribe(data => {
       this.goldPrice = data
-      console.log(this.goldPrice)
+      // console.log(this.goldPrice)
     });
     
     this.userName = this.storage.get('userName');
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
       xfbml: true,
       version: "v2.8"
     };
-    console.log(this.goldPrice);
+    // console.log(this.goldPrice);
     this.fb.init(initParams);
   }
 

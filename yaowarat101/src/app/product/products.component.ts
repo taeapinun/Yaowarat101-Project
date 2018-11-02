@@ -160,6 +160,7 @@ export class ProductsComponent implements OnInit {
 
   async addtoCart(product: Product, id: number) {
     if (this.userId != undefined) {
+      // console.log(product , id);
       this.cartService.post(product, id).subscribe(async res => {
         await swal({
           title: "ตะกร้าสินค้า",

@@ -39,14 +39,16 @@ export class CartsComponent implements OnInit {
     if (this.userRole == 'admin') {
       this.userId = '1 or 1=1';
       this.getUserAdmin(this.storage.get('userId'))
+      
     }
     else {
       this.userId = this.storage.get('userId');
       this.getUser()
+      
     }
     this.getCarts(this.userId);
     this.user = new User;
-
+    
   }
 
   getCarts(id: number): void {
@@ -56,7 +58,7 @@ export class CartsComponent implements OnInit {
         carts => (this.carts = carts, this.calTotalPrice()),
         error => (this.error = error)
       )
-    // console.log(this.carts);
+    
   }
 
   getUser(): void {
@@ -164,5 +166,9 @@ export class CartsComponent implements OnInit {
     console.log(this.user)
     this.cartService.updateUser(Number(this.user.u_Id), this.user).subscribe();
 
+  }
+
+  test(){
+    console.log(this.carts.length)
   }
 }

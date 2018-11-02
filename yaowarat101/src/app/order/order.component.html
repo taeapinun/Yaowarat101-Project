@@ -60,7 +60,7 @@
             <div>{{ order.o_Datetime | date:'fullDate' }} {{ order.o_Datetime | date:'h:mm a' }} </div>
             <div> ที่อยู่จัดส่ง : {{ order.u_Address }}</div>
             <div> เบอร์โทรศัพท์ : {{ order.u_Tel }}</div>
-            <button [disabled]="order.o_Paymentdatetime != null" type="button" class="btn btn-rounded btn-amber" data-toggle="modal" data-target="#modalPayment"
+            <button *ngIf="userRole == 'user'" [disabled]="order.o_Paymentdatetime != null" type="button" class="btn btn-rounded btn-amber" data-toggle="modal" data-target="#modalPayment"
               style="color : #000 !important;" (click)="selectOrder(order.o_Id)">แจ้งชำระเงิน</button>
 
 

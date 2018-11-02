@@ -11,11 +11,13 @@ import { ProductService } from "../product/product.service";
   styleUrls: ["./tryproduct.component.scss"]
 })
 export class TryproductComponent implements OnInit {
+  changeTryProduct = false;
   categoryBy = "สร้อยคอ";
   searchProductText = "";
   inPage = 1;
   iteminPage = "6";
   maxPage = 0;
+  countTry = 0;
 
   products: Product[];
   picApi = LinkApi.link;
@@ -35,15 +37,20 @@ export class TryproductComponent implements OnInit {
   constructor(@Inject(SESSION_STORAGE) private storage: WebStorageService,private productService: ProductService,private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.listTryproduct = this.storage.get('tryproduct')
-    console.log(this.listTryproduct)
+    this.listTryproduct = this.storage.get('tryproduct');
+    console.log(this.listTryproduct);
     this.getProducts();
+    this.countTry = this.listTryproduct.length;
     
-    
-    // this.route.params.subscribe(data => {
-    //   console.log(data)
-    // })
     // alert('กำลังอยู่ในการพัฒนา v0.0.1');
+  }
+
+  changeTry(item_Id : Product){
+    if (this.countTry >= 5){
+      this.countTry = 0;
+    }
+    this.listTryproduct[this.countTry] = item_Id;
+    this.countTry ++
   }
 
   showRings(){

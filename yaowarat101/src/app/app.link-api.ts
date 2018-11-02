@@ -7,9 +7,9 @@ export class LinkApi {
     // public static link = "https://localhost:8081/";
     // public static pic = "https://localhost:8081/";
 
-    // public static link = "http://192.168.1.198:3000/";
-    // public static pic = "http://192.168.1.198:3000/";
+    public static link = "http://localhost:3000/";
+    public static pic = "http://localhost:3000/";
 
-    public static link = "https://yaowarat101.net/";
-    public static pic = "https://yaowarat101.net/";
+    // public static link = "https://yaowarat101.net/";
+    // public static pic = "https://yaowarat101.net/";
 }

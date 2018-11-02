@@ -30,12 +30,12 @@ export class UserComponent implements OnInit {
 
 
 
-  ngOnInit() {
+  ngOnInit() { 
     this.userName = this.storage.get('userName');
     // console.log(this.storage.get('userRole'));
-    // console.log(this.storage.get('userName'))
     // console.log(this.storage.get('userId'));
     this.user = new User();
+    // console.log(this.user)
   }
 
 

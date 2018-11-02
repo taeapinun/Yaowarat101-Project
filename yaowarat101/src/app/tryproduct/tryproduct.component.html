@@ -11,12 +11,12 @@
                 <input type='file' (change)="readURL($event);" />
               </div>
               <div class="mb-5">
-                <img id="ImageForTest" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Man_Silhouette2.jpg/320px-Man_Silhouette2.jpg"
+                <img id="ImageForTest" src="https://yaowarat101.net/image/no-profile.jpg"
                   class="mt-3 rounded img-fluid z-depth-3" style="width:30vw; height:40vw;">
               </div>
               <div *ngFor="let item of listTryproduct; let i = index" class="text-left" style="margin-left: 8vw;">
                 <p class="font-weight-bold">
-                  {{i+1}} : {{item.p_Name}}
+                  {{i+1}} : {{item.p_Name}} (No.{{item.p_Id}})
                 </p>
               </div>
             </div>
@@ -43,7 +43,6 @@
                     <div style="width:12vw;height:12vw" [ngResizable]="!slider2Enable" [rzMaxWidth]="300" [rzMaxHeight]="300">
                       <img id="{{i+1}}" src="https://yaowarat101.net/image/tryproducts/{{item.p_Id}}.png" style="max-height: 300px;max-width: 300px;height: inherit; width: inherit;">
                     </div>
-
                     <div style="margin-top:0px">
                       <button mdbTooltip="คลิกเพื่อหมุนรูป ในขณะที่หมุนจะไม่สามารถขยับขยายรูปได้" placement="top"
                         triggers="focus" class="btn btn-responsive float-left btn-link" (click)="showSlider(i+1)">
@@ -205,7 +204,7 @@
       <div *ngFor="let product of products | productFilter : searchProductText : categoryBy as testvalue ; let i=index"
         class="col-2" style="padding-left: 1vw; padding-right: 1vw;">
         <div class="row shadowstry view overlay zoom" *ngIf="i < iteminPage*inPage && i >= (iteminPage*inPage)-iteminPage"
-          style="margin: 0vw; background-color:whitesmoke;">
+          style="margin: 0vw; background-color:whitesmoke;" (click)="changeTry(product)">
           <img class="mr-auto ml-auto" *ngIf="product.p_Type == categoryBy" src="https://yaowarat101.net/image/tryproducts/{{ product.p_Id }}.png"
             style="width: 9vw; height: 9vw;">
           <!-- {{product.p_Name}} -->
