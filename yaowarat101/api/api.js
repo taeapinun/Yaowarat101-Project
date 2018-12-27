@@ -1,3 +1,8 @@
+
+
+
+///////////////////// start config server mysql ////////////////////
+
 const express = require('express'); // Web Framework
 const app = express();
 const bodyParser = require('body-parser')
@@ -9,7 +14,7 @@ const multer = require('multer');
 const https = require('https');
 const request = require('request');
 const cheerio = require('cheerio');
-const email   = require('emailjs/email');
+
 
 
 ///////////////////// start config server mysql ////////////////////
@@ -21,7 +26,7 @@ const connConfig = {
 	database: 'yaowarat101'
 };
 
-// const connConfig = {c
+// const connConfig = {
 // 	user: 'root',
 // 	password: 'rootroot',
 // 	host: 'localhost',
@@ -758,24 +763,3 @@ app.get('/getgoldprice', function (req, res) {
 })
 
 
-app.post('/sendmail', function (req, res) {
-	var server  = email.server.connect({
-		user:    "yaowarat101@yaowarat101.net", 
-		password:"0Bbpo49.admin", 
-		host:    "yaowarat101.net", 
-		ssl:     true
-	 });
-	 
-	 // send the message and get a callback with an error or details of the message that was sent
-	 server.send({
-		text:    "You have signed up", 
-		from:    "yaowarat101@yaowarat101.net", 
-		to:      "kakmai731200@gmail.com",
-		subject: "Welcome to my app"
-	 }, function(err, message) { 
-		 if(err)
-		 console.log(err);
-		 else
-		 res.json({success: true, msg: 'sent'});
-	  });
-})

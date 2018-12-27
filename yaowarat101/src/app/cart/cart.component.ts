@@ -141,7 +141,13 @@ export class CartsComponent implements OnInit {
           type: 'success',
           showConfirmButton: true
         })
-        window.location.reload();
+        window.location.reload(true);
+        setTimeout(() => {
+          window.location.href = '/#/order';
+        }, 1000);
+        
+       
+       
       })
 
     }

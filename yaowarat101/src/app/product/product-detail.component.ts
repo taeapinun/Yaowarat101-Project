@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from './product';
 import { ProductService } from './product.service';
 import { CartService } from '../cart/cart.service';
 
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
-
+import { SESSION_STORAGE, WebStorageService } from "angular-webstorage-service";
 import { LinkApi } from '../app.link-api';
 
 
@@ -26,12 +26,16 @@ export class ProductDetailComponent implements OnInit {
   picApi = LinkApi.pic;
   textAfterSave = '';
   uploader: FileUploader = new FileUploader({ url: this.urlUpload, itemAlias: 'photo' });
+  userRole = undefined;
 
 
   constructor(
-    private productService: ProductService, private route: ActivatedRoute, private cartService: CartService) { }
+    private productService: ProductService, private route: ActivatedRoute, private cartService: CartService,
+    @Inject(SESSION_STORAGE) private storage: WebStorageService) { }
 
   ngOnInit(): void {
+    this.userRole = this.storage.get("userRole");
+    console.log(this.userRole);
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
         const id = +params['id'];
